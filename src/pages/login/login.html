@@ -1,0 +1,52 @@
+<ion-header >
+  <ion-navbar>
+    <ion-title>{{ 'LOGIN_TITLE' | translate }}</ion-title>
+  </ion-navbar> 
+</ion-header>
+
+<ion-content style="background: url('../assets/img/login.jpg') repeat transparent; background-size: cover;">
+  <form (ngSubmit)="doLogin()">
+    <!-- <ion-list> -->
+      <!-- <ion-item>
+        <ion-label floating>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item> -->
+
+      <!--
+      Want to use a Username instead of an Email? Here you go:
+
+      <ion-item>
+        <ion-label floating>{{ 'USERNAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+      </ion-item>
+      -->
+
+      
+
+      <!-- <ion-item>
+        <ion-label floating>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item> -->
+      <div class="loginBox">
+        <div>
+          <p class="headerStyle">Madhuban India</p>
+        </div>
+          <div>
+              <input type="text" class="emailAndPassword" [(ngModel)]="email" [ngModelOptions]="{standalone: true}" placeholder="E-mail" >
+              <input type="password" class="emailAndPassword" [(ngModel)]="password" [ngModelOptions]="{standalone: true}"style="margin-top:12px" placeholder="Password">
+          </div>
+          <div style="padding:6px" >
+            <button class="loginButton" ion-button color="secondary" round >Login</button>
+          </div>
+          <div style="margin-left:21%;color:#32db64">
+              <label>Forgot Password </label>
+              <label> | </label>
+              <label (click)="newUserRegister()">Register</label>
+          </div>
+          <label style="color:#32db64">{{array}}</label>
+      </div>
+      
+
+    <!-- </ion-list> -->
+  </form>
+</ion-content> 
