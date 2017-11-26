@@ -56,12 +56,9 @@ export class LoginPage {
   //     });
   //     toast.present();
   //   });
-  // }
+  // } 
 
   doLogin() {
-    console.log(typeof this.email)
-    console.log(typeof this.account.email)
-    
     if ((this.account.email == this.email)&&(this.account.password == this.password)) {
       this.navCtrl.push(MainPage);
     } else {
@@ -73,12 +70,13 @@ export class LoginPage {
       });
       toast.present();
     }
-    
-
   }
 
   newUserRegister() {
-    
     this.navCtrl.push('SignupPage');
+  }
+
+  forgotPassword(){
+    this.navCtrl.push('ForgtoPasswordPage')
   }
 }
