@@ -1,3 +1,48 @@
 page-signup {
-
+    
+    }
+.newHewader{
+    font-size: 30px;
+    color: sandybrown;
+    margin-left: 16%;
+    margin-top: 9%;
+}
+.allfieldsCss{
+    margin-left: 7%;
+    margin-top: 22px;
+    height: 38px;
+    width: 254px;
+    border-radius: 3.5em;
+    text-align: center;
+    background: rgb(23, 29, 29);
+    color:whitesmoke;
+}
+.item-md.item-block .item-inner,
+.item-md.item-input.input-has-focus .item-inner,
+.item-md.item-input.ng-valid.input-has-value:not(.input-has-focus) .item-inner,
+.item-md.item-input.ng-invalid.ng-touched:not(.input-has-focus) .item-inner,
+.list-md .item-input.input-has-focus:last-child,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child,
+.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child {
+    border-bottom: none;
+    box-shadow: none;
+}
+.list-md .item-input.input-has-focus:last-child .item-inner,
+.list-md .item-input.ng-valid.input-has-value:not(.input-has-focus):last-child .item-inner,
+.list-md .item-input.ng-invalid.ng-touched:not(.input-has-focus):last-child .item-inner {
+    box-shadow: none; 
+}
+.registerButton{
+    margin-left: 5%;
+    width: 254px;
+    text-align: center;
+}
+.no-spinners {
+    -moz-appearance:textfield;
+    }
+    
+.no-spinners::-webkit-outer-spin-button,
+.no-spinners::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
 }

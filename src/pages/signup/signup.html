@@ -1,44 +1,45 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
   </ion-navbar>
-
 </ion-header>
 
-
-<ion-content>
+<ion-content style="background: url('../assets/img/login.jpg') repeat transparent; background-size: cover;">
   <form (submit)="doSignup()">
     <ion-list>
-
-      <ion-item>
-        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
-        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
-        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
-      </ion-item>
-
-      <!--
-      Want to add a Username? Here you go:
-
-      <ion-item>
-        <ion-label floating>Username</ion-label>
-        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
-      </ion-item>
-      -->
-
-      <ion-item>
-        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
-        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
-      </ion-item>
-
-      <div padding>
-        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+      <div class="loginBox">
+        <div>
+          <p class="newHewader">Madhuban India</p>
+        </div>
+        <div>
+          <input type="text" class="allfieldsCss" [(ngModel)]="signUpName" [ngModelOptions]="{standalone: true}" placeholder="Name" >
+          <input type="text" class="allfieldsCss" [(ngModel)]="signUpEmail" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="E-mail">
+          <input type="password" class="allfieldsCss" [(ngModel)]="signUpPassword" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="Password">
+          <div >
+            <ion-row radio-group [(ngModel)]="signUpAddressType" [ngModelOptions]="{standalone: true}" >
+              <ion-col>
+                <ion-item style="background:transparent;margin-left: 9px;color: whitesmoke;">
+                  <ion-label>Current</ion-label>
+                  <ion-radio value="currentAddress"></ion-radio>
+                </ion-item>
+              </ion-col>
+              <ion-col>
+                <ion-item style="background:transparent;margin-left: -14px;color: whitesmoke;" >
+                  <ion-label>Permanent</ion-label>
+                  <ion-radio value="permanentAddress"></ion-radio>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </div>
+          <div style="margin-top: -15px;">
+              <input type="text" class="allfieldsCss " [(ngModel)]="signUpAddress" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="Address">
+              <input type="number" class="allfieldsCss no-spinners" [(ngModel)]="signUpPhone" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="Phone Number">
+          </div>
+          <div style="padding:6px">
+              <button ion-button class="registerButton" color="secondary" round>Register</button>
+          </div>  
+        </div>
       </div>
-
     </ion-list>
   </form>
 </ion-content>
