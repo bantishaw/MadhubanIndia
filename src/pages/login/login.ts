@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-console.log("hi")
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 
