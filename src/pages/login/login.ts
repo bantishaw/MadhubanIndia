@@ -5,7 +5,6 @@ import { Api } from '../../providers/providers';
 import { User } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
 import { MainPage } from '../pages';
-import { Spinner } from 'ionic-angular/components/spinner/spinner';
 
 @IonicPage()
 @Component({
@@ -17,7 +16,6 @@ export class LoginPage {
   email: string;
   password: string;
 
-  private loginErrorString: string;
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
@@ -35,7 +33,6 @@ export class LoginPage {
     this.apiProvider.userLogin(userObject).then((data) => {
       this.existingUser = data;
       if (this.existingUser.response === 'success') {
-        var spinner = false;
         this.navCtrl.push(MainPage);
       } else {
         let toast = this.toastCtrl.create({
