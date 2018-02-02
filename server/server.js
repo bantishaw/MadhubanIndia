@@ -44,5 +44,26 @@ app.post('/getLogin', function (request, response) {
         }
     })
 })
+
+app.post('/newUserSignUp', function (request, response) {
+    databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "failure", "data": result[0].name + " has already an account with us" })
+            } else {
+                databaseConnectivity.collection('UserRegistrations').insert(request.body, function (error, result) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        response.json({ "response": "success", "data": "User added successfully" })
+                    }
+                })
+            }
+        }
+    })
+})
+
 app.listen(8080)
 console.log("Running on port 8080")

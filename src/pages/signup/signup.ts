@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { User } from '../../providers/providers';
 import { MainPage } from '../pages';
+import { Api } from '../../providers/providers';
+import { Http } from '@angular/http';
 
 @IonicPage()
 @Component({
@@ -16,11 +17,12 @@ export class SignupPage {
   signUpAddressType: string;
   signUpAddress: string;
   signUpPhone: string
-
+  newUserAccount: any;
   constructor(public navCtrl: NavController,
-    public user: User,
+    public apiProvider: Api,
     public toastCtrl: ToastController,
-    public translateService: TranslateService) { }
+    public translateService: TranslateService,
+    public http: Http) { }
 
   doSignup() {
     var account = {
@@ -31,20 +33,19 @@ export class SignupPage {
       address: this.signUpAddress,
       phoneNumber: this.signUpPhone
     }
-    console.log("account",account)
-    this.user.signup(account).subscribe((resp) => {
-      this.navCtrl.push(MainPage);
-    }, (err) => {
-
-      this.navCtrl.push(MainPage);
-
-      // Unable to sign up
-      let toast = this.toastCtrl.create({
-        //message: this.signupErrorString,
-        duration: 3000,
-        position: 'top'
-      });
-      toast.present();
-    });
+    this.apiProvider.newUserSignUp(account).then((data) => {
+      this.newUserAccount = data;
+      if (this.newUserAccount.response === 'success') {
+        this.navCtrl.push(MainPage);
+      } else {
+        let toast = this.toastCtrl.create({
+          message: this.newUserAccount.data,
+          duration: 3000,
+          position: 'middle',
+          cssClass: 'showToast'
+        });
+        toast.present();
+      }
+    })
   }
 }

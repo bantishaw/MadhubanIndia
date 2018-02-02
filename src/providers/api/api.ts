@@ -2,6 +2,7 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
 
 /**
  * Api is a generic REST Api handler. Set your API url first.
@@ -28,7 +29,6 @@ export class Api {
   }
 
   userLogin(userObject) {
-    console.log("providerpage", userObject)
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -39,6 +39,21 @@ export class Api {
           reject(err);
         });
     });
+  }
+
+  newUserSignUp(account){
+    console.log("provider page for sign up",account)
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post('http://localhost:8080/newUserSignUp', account, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err);
+        });
+    });
+
   }
 
   get(endpoint: string, params?: any, reqOpts?: any) {
