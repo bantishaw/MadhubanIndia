@@ -24,7 +24,6 @@ var UserRegistration = module.exports = mongoose.model('Model', schemaName);
 
 //getUserRegistration
 module.exports.getUserRegistration = function (callback) {
-    UserRegistration.find(callback, function(){
-        
+    UserRegistration.find(callback, function () {
     })
 }
