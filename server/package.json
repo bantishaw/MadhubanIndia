@@ -4,7 +4,8 @@
   "description": "catering server",
   "main": "server.js",
   "dependencies": {
-    "mongoose": "^4.13.9"
+    "mongoose": "^4.13.9",
+    "nodemailer": "^4.4.2"
   },
   "devDependencies": {
     "express": "*",
