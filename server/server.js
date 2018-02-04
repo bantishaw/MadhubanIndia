@@ -13,9 +13,10 @@ app.use(bodyParser.json());
 var databaseConnectivity = mongoose.connection;
 var mongoConnectivity = mongoose.connect('mongodb://localhost/Catering', function (error) {
     if (error) console.log(error);
-
+    console.log(Date.now())
+    console.log(Math.random())
     console.log("MongoDB Connection is Successful");
-});
+}); 
 
 app.get("/", function (request, response) {
     response.send('Hello User. come back later');
@@ -62,6 +63,31 @@ app.post('/newUserSignUp', function (request, response) {
                 })
             }
         }
+    })
+})
+
+app.post('/forgotPassword', function (request,response) {
+    databaseConnectivity.collection('UserRegistrations').find({email: request.body.email}).toArray(function (error,result) {
+        if (error) {
+          throw error;
+        } else {
+          if (result.length > 0) {
+            //var currentTime = Date.now();
+            var OTP = Math.floor(1000 + Math.random() * 9000);
+            databaseConnectivity.collection('UserRegistrations').findOneAndUpdate(request.body, {$set : {oneTimePassword : OTP }}, function (error, result) {
+                if(error){
+                    throw error;
+                }else{
+                    response.json({"response" : "success",data : "Email sent successfully"})
+
+                }
+            })
+          }else{
+              response.json({ "response": "failure", "data": "E-Mail Id does not exist. Please enter correct E-mail Id" })
+          }
+          
+        }
+
     })
 })
 
