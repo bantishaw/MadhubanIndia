@@ -13,8 +13,6 @@ app.use(bodyParser.json());
 var databaseConnectivity = mongoose.connection;
 var mongoConnectivity = mongoose.connect('mongodb://localhost/Catering', function (error) {
     if (error) console.log(error);
-    console.log(Date.now())
-    console.log(Math.random())
     console.log("MongoDB Connection is Successful");
 }); 
 
@@ -79,7 +77,7 @@ app.post('/forgotPassword', function (request,response) {
                     throw error;
                 }else{
                     response.json({"response" : "success",data : "Email sent successfully"})
-
+                    
                 }
             })
           }else{
