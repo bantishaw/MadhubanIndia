@@ -80,21 +80,19 @@ app.post('/forgotPassword', function (request, response) {
             throw error;
         } else {
             if (result.length > 0) {
-                //var currentTime = Date.now();
                 var OTP = Math.floor(1000 + Math.random() * 9000);
-                databaseConnectivity.collection('UserRegistrations').findOneAndUpdate(request.body, { $set: { oneTimePassword: OTP } }, function (error, newResult) {
+                databaseConnectivity.collection('UserRegistrations').findOneAndReplace(request.body, { $set: { oneTimePassword: OTP } }, { returnOriginal: false }, function (error, newResult) {
                     if (error) {
                         throw error;
                     } else {
                         // Preparing message object to be send in send mail function
                         let message = {
-                            to: result[0].name + '<bantishaw8@live.com>',
+                            to: result[0].name + '<' + result[0].email + '>',
                             subject: 'One time password to reset account',
                              html:
-                                 '<p>OTP for your login : ' + result[0].oneTimePassword + '. Please use this One time password to reset your password<br/></p>',
+                                 '<p>OTP for your login : ' + newResult.value.oneTimePassword + '. Please use this One time password to reset your password<br/></p>',
                         };
                         // send mail function is being called here to send mail with OTP for users to login
-                        console.log("message",message)
                         sendmail(message)
                         response.json({ "response": "success", data: "Email sent successfully" })
                     }
