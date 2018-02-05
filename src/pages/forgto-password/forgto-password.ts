@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { Http } from '@angular/http';
-
 
 @IonicPage()
 @Component({
@@ -11,8 +10,9 @@ import { Http } from '@angular/http';
 })
 export class ForgtoPasswordPage {
   forgotEmail: string;
+  account: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
-    public apiProvider: Api, public http: Http) {}
+    public apiProvider: Api, public http: Http, public toastCtrl: ToastController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ForgtoPasswordPage');
@@ -20,10 +20,21 @@ export class ForgtoPasswordPage {
 
   forgotPassword() {
     var forgotAccount = {
-      email : this.forgotEmail
+      email: this.forgotEmail
     }
     this.apiProvider.forgotPassword(forgotAccount).then((data) => {
-      console.log(data)
+      this.account = data;
+      if (this.account.response === 'success') {
+        this.navCtrl.push('OtpPage');
+      } else {
+        let toast = this.toastCtrl.create({
+          message: this.account.data,
+          duration: 3000,
+          position: 'middle',
+          cssClass: 'showToast'
+        });
+        toast.present();
+      }
     })
   }
 
