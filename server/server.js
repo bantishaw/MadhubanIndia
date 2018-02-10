@@ -80,23 +80,44 @@ app.post('/forgotPassword', function (request, response) {
             throw error;
         } else {
             if (result.length > 0) {
-                var OTP = Math.floor(1000 + Math.random() * 9000);
-                databaseConnectivity.collection('UserRegistrations').findOneAndReplace(request.body, { $set: { oneTimePassword: OTP } }, { returnOriginal: false }, function (error, newResult) {
-                    if (error) {
-                        throw error;
-                    } else {
-                        // Preparing message object to be send in send mail function
-                        let message = {
-                            to: result[0].name + '<' + result[0].email + '>',
-                            subject: 'One time password to reset account',
-                             html:
-                                 '<p>OTP for your login : ' + newResult.value.oneTimePassword + '. Please use this One time password to reset your password<br/></p>',
-                        };
-                        // send mail function is being called here to send mail with OTP for users to login
-                        sendmail(message)
-                        response.json({ "response": "success", data: "Email sent successfully" })
-                    }
-                })
+                if (request.body.action) {
+                    var OTP = Math.floor(1000 + Math.random() * 9000);
+                    databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { oneTimePassword: OTP } }, { returnOriginal: false }, function (error, newResult) {
+                        if (error) {
+                            throw error;
+                        } else {
+                            // Preparing message object to be send in send mail function
+                            let message = {
+                                to: result[0].name + '<' + result[0].email + '>',
+                                subject: 'One time password to reset account',
+                                html:
+                                    '<p>OTP for your login : ' + newResult.value.oneTimePassword + '. Please use this One time password to reset your password<br/></p>',
+                            };
+                            // send mail function is being called here to send mail with OTP for users to login
+                            sendmail(message)
+                            response.json({ "response": "success", data: "Email sent successfully" })
+                        }
+                    })
+                } else {
+                    databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, OtpVerification) {
+                        if (error) {
+                            throw error;
+                        } else {
+                            if (OtpVerification[0].oneTimePassword == request.body.otp) {
+                                response.json({ "response": "success", data: "OTP verified successfully." })
+                                databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { oneTimePassword: "" } }, { returnOriginal: false }, function (error, removedOtpResult) {
+                                    if (error) {
+                                        throw error;
+                                    } else {
+                                        console.log("Removed One time Password from Database since otp matched. Now user will go to reset Password page")
+                                    }
+                                })
+                            } else {
+                                response.json({ "response": "failure", data: "Incorrect OTP. Please enter correct otp" })
+                            }
+                        }
+                    })
+                }
             } else {
                 response.json({ "response": "failure", "data": "E-Mail Id does not exist. Please enter correct E-mail Id" })
             }
