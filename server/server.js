@@ -1,21 +1,37 @@
-var express = require('express')
-var app = express();
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var cors = require('cors')
-var UserRegistration = require('./models/userRegistration')
-var bodyParser = require('body-parser')
+var express = require('express'),
+    app = express(),
+    bodyParser = require('body-parser'),
+    mongoose = require('mongoose'),
+    cors = require('cors'),
+    UserRegistration = require('./models/userRegistration'),
+    bodyParser = require('body-parser');
+
+const nodemailer = require('nodemailer'),
+    fs = require('fs');
+    //busboyBodyParser = require('busboy-body-parser');
+
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
-const nodemailer = require('nodemailer');
+//app.use(busboyBodyParser({ limit: '10mb' }));
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
+
 
 //Connect to mongoose
 var databaseConnectivity = mongoose.connection;
-var mongoConnectivity = mongoose.connect('mongodb://localhost/Catering', function (error) {
-    if (error) console.log(error);
-    console.log("MongoDB Connection is Successful");
-});
+var mongoDbUrl = 'mongodb://localhost/Catering';
+mongoose.Promise = global.Promise;
+var mongoConnectivity = mongoose.connect(mongoDbUrl, { useMongoClient: true ,})
+    .then(() => {
+        console.log(`MongoDB is connected to URL ${mongoDbUrl}`)
+    }).catch((error) =>{
+        throw error;
+    });
 
 app.get("/", function (request, response) {
     response.send('Hello User. come back later');
@@ -166,5 +182,19 @@ var sendmail = function (message) {
         });
     })
 }
+
+app.post('/getCategoryList', function (request, response) {
+    databaseConnectivity.collection('CategoryList').find().toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "success", "data": result })
+            } else {
+                response.json({ "response": "failure", "data": "Please enter correct Username or Password" })
+            }
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080")
