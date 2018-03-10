@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { User } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
@@ -15,15 +15,17 @@ export class LoginPage {
   existingUser: any;
   email: string;
   password: string;
-
+  showSpinner: any = false;
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public apiProvider: Api,
-    public http: Http) { }
+    public http: Http,
+    public loadingCtrl: LoadingController) { }
 
   doLogin() {
+    this.showSpinner = true;
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     var userObject = {
@@ -32,8 +34,16 @@ export class LoginPage {
     }
     this.apiProvider.userLogin(userObject).then((data) => {
       this.existingUser = data;
+      let loading = this.loadingCtrl.create({
+        spinner : 'crescent',
+        cssClass : "wrapper"
+      });
       if (this.existingUser.response === 'success') {
-        this.navCtrl.push(MainPage);
+        loading.present();
+        setTimeout(() => {
+          loading.dismiss();
+          this.navCtrl.push(MainPage);
+        }, 500);
       } else {
         let toast = this.toastCtrl.create({
           message: this.existingUser.data,
