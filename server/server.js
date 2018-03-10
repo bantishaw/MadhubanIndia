@@ -53,7 +53,7 @@ app.post('/getLogin', function (request, response) {
             throw error;
         } else {
             if (result.length > 0) {
-                response.json({ "response": "success", "data": "User is authenticated" })
+                response.json({ "response": "success", "data": "User is authenticated", "settingsInformation":result })
             } else {
                 response.json({ "response": "failure", "data": "Please enter correct Username or Password" })
             }

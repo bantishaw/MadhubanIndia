@@ -11,7 +11,7 @@ import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
 export class Api {
   url: string = 'http://localhost:8080/userRegistration';
   data: any;
-
+  settingsInformation : any;
   constructor(public http: Http) {
     this.data = null;
   }
@@ -34,6 +34,8 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/getLogin', userObject, { headers: headers })
         .subscribe(res => {
+          this.settingsInformation = res.json();
+          console.log(this.settingsInformation)
           resolve(res.json());
         }, (err) => {
           reject(err);
