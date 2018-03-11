@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, AlertController } from 'ionic-angular';
 import { Settings } from '../../providers/providers';
 import { Api } from '../../providers/providers';
 
@@ -18,12 +18,14 @@ import { Api } from '../../providers/providers';
 export class SettingsPage {
   settingDisplay : any;
   settingDisplayname : String;
+  showChangePasswordForm : any = false;
   constructor(public navCtrl: NavController,
     public settings: Settings,
     public formBuilder: FormBuilder,
     public navParams: NavParams,
     public translate: TranslateService,
-    public apiProvider: Api) {
+    public apiProvider: Api,
+    private alertCtrl: AlertController) {
   }
 
   ionViewDidLoad() {
@@ -35,7 +37,20 @@ export class SettingsPage {
 
   }
 
+  mailSetting() {
+    this.showChangePasswordForm = false;
+    let alert = this.alertCtrl.create({
+      title: 'Change email',
+      subTitle: 'To change your email address, please get in touch with us at banti.shaw@outlook.com',
+      buttons: ['OK']
+    });
+    alert.present();
+  }
 
+  changePassword() {
+    console.log("show password page")
+    this.navCtrl.push('ChangePasswordPage')
+  }
   ionViewWillEnter() {
     // Build an empty form for the template to render
   }
