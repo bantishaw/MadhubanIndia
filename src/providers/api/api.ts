@@ -70,6 +70,19 @@ export class Api {
     })
   }
 
+  saveNewSettingsPassword(credentials){
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post('http://localhost:8080/saveNewSettingsPassword', credentials, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err)
+        })
+    })
+  }
+
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {

@@ -196,5 +196,15 @@ app.post('/getCategoryList', function (request, response) {
         }
     })
 })
+
+app.post('/saveNewSettingsPassword', function (request, response) {
+    databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { password: request.body.password } }, { returnOriginal: false }, function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            response.json({ "response": "success", "data": "New Password is changed successfully" })
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080")
