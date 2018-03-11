@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, LoadingController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
+import { App } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -16,7 +17,8 @@ export class ChangePasswordPage {
   reTypeNewPassword: any;
   passwordMatchCorrectly: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public http: Http, private alertCtrl: AlertController, public loadingCtrl: LoadingController) { }
+    public http: Http, private alertCtrl: AlertController, public loadingCtrl: LoadingController,
+    public appCtrl: App) { }
 
   ionViewDidLoad() {
     this.databaseEmail = this.apiProvider.settingsInformation.settingsInformation[0].email;
@@ -61,7 +63,7 @@ export class ChangePasswordPage {
           loading.present();
           setTimeout(() => {
             loading.dismiss();
-            this.navCtrl.push('LoginPage');
+            this.appCtrl.getRootNav().push('LoginPage')
           }, 500);
         }
       })
