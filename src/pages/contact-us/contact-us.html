@@ -1,31 +1,45 @@
-<!--
-  Generated template for the ContactUsPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
 
-  <ion-navbar>
-    <ion-title>ContactUs</ion-title>
-  </ion-navbar>
-  <style>
-      
-            body {
-                background-color: lightblue;
-              /* background-image: url("/aboutus.jpg"); */
-            }
-          </style>  
-          <body>   
-  <p>We are please to serve  24 x 7 <p><br>
-    <p>If you have any query <p>
-      <p> Call Us : 9082450264/8988105148<p>
-      <p> Mail Us : madhuwanIndia@gmail.com <p>
-       <p> Visit Our Webseite : www.MadhuwanIndia.com<p> 
-        </body> 
-</ion-header>
+    <ion-navbar>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+          <ion-title>Contact Us</ion-title>
+        </ion-navbar>
+    </ion-header>
 
+        <ion-content >
+          <ion-card>
+          <img src="assets/img/speakers/bear.jpg">  
+        </ion-card>
 
-<ion-content padding>
+           <ion-card>
+           <ion-card-header>
+             We are please to serve  24 x 7 
+              </ion-card-header>
 
-</ion-content>
+             <ion-card-header>
+              For any query
+               </ion-card-header>
+
+               <ion-card-content >
+                  <ion-item>
+                      <ion-icon name="call" ></ion-icon>
+                      Call Us :
+                    <ion-badge item-right>
+                        9082450264/8961323449
+                    </ion-badge>
+                  </ion-item>
+            
+                  <ion-item>
+                      <ion-icon name="mail" ></ion-icon>
+                     Mail Us
+                    <ion-badge item-right>
+                        madhuwanIndia@gmail.com 
+                    </ion-badge>
+                  </ion-item>
+                </ion-card-content>
+          
+    </ion-card>
+       </ion-content>
+       

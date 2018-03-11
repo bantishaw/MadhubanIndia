@@ -14,12 +14,16 @@ import { Settings } from '../providers/providers';
 import { User } from '../providers/providers';
 import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
-import {AboutUsPage} from '../pages/about-us/about-us';
-import {YourOrdersPage} from '../pages/your-orders/your-orders';
-import {LogOutPage} from '../pages/log-out/log-out';
-import {ContactUsPage} from '../pages/contact-us/contact-us';
-// The translate loader needs to know where to load i18n files
-// in Ionic's static asset pipeline.
+import { AboutUsPage } from '../pages/about-us/about-us';
+import { YourOrdersPage } from '../pages/your-orders/your-orders';
+import { LogOutPage } from '../pages/log-out/log-out';
+import { ContactUsPage } from '../pages/contact-us/contact-us';
+import { HomePage } from '../pages/home/home';
+import { InboxPage } from '../pages/inbox/inbox';
+import { ListMasterPage } from '../pages/list-master/list-master';
+import { TabsPage } from '../pages/tabs/tabs';
+import { TabsPageModule } from '../pages/tabs/tabs.module';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -43,14 +47,16 @@ export function provideSettings(storage: Storage) {
   declarations: [
     MyApp,
     AboutUsPage,
-     YourOrdersPage, 
-     LogOutPage, 
-     ContactUsPage
+    YourOrdersPage,
+    LogOutPage,
+    ContactUsPage,
+    HomePage,
+    InboxPage
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
-    HttpModule,  
+    HttpModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -65,9 +71,11 @@ export function provideSettings(storage: Storage) {
   entryComponents: [
     MyApp,
     AboutUsPage,
-    YourOrdersPage, 
-    LogOutPage, 
-    ContactUsPage
+    YourOrdersPage,
+    LogOutPage,
+    ContactUsPage,
+    HomePage,
+    InboxPage,
   ],
   providers: [
     Api,

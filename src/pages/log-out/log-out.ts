@@ -1,12 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angular';
-
-/**
- * Generated class for the LogOutPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import {LoginPage} from '../login/login';
+import { MainPage } from '../pages';
 
 @IonicPage()
 @Component({
@@ -15,40 +10,42 @@ import { IonicPage, NavController, NavParams,AlertController } from 'ionic-angul
 })
 export class LogOutPage {
   public todos = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private alertController: AlertController) {
+  constructor(
+    public navCtrl: NavController,
+     public navParams: NavParams, 
+     private alertController: AlertController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LogOutPage');
-  }
-
-  DoLogout(){
-    let addTodoAlert = this.alertController.create({
-      title: "Add A Todo",
-      message: "Enter Your Todo",
-      inputs: [
-        {
-          type: "text",
-          name: "addTodoInput"
-        }
-      ],
+  
+    let confirm = this.alertController.create({
+      title: 'Log Out !',
+      message: 'Are You Sure to Log Out ?',
       buttons: [
         {
-          text: "Cancel"
+          text: 'Yes',
+          handler: () => {
+            this.navCtrl.push(LoginPage);
+          }
         },
         {
-          text: "Add Todo",
-          handler: (inputData)=> {
-            let todoText;
-            todoText = inputData.addTodoInput;
-            this.todos.push(todoText);
+          text: 'No',
+          handler: () => {
+            this.navCtrl.push(MainPage);
           }
         }
       ]
     });
-    addTodoAlert.present();
-
+    confirm.present()
   }
 
+  
+  }
 
-}
+ 
+
+
+
+
+

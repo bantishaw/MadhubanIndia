@@ -3,12 +3,16 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
-import { FirstRunPage } from '../pages/pages';
+import { FirstRunPage, MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
-import {AboutUsPage} from '../pages/about-us/about-us';
-import {ContactUsPage} from '../pages/contact-us/contact-us';
-import {YourOrdersPage} from '../pages/your-orders/your-orders';
-import {LogOutPage} from '../pages/log-out/log-out';
+import { AboutUsPage } from '../pages/about-us/about-us';
+import { ContactUsPage } from '../pages/contact-us/contact-us';
+import { YourOrdersPage } from '../pages/your-orders/your-orders';
+import { LogOutPage } from '../pages/log-out/log-out';
+import { ListMasterPage } from '../pages/list-master/list-master';
+import { HomePage } from '../pages/home/home';
+import { InboxPage } from '../pages/inbox/inbox';
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -16,8 +20,8 @@ import {LogOutPage} from '../pages/log-out/log-out';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
   rootPage = FirstRunPage;
-  pages: Array<{title: string, component: any}>;
- 
+  pages: Array<{ title: string, component: any }>;
+
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
@@ -26,9 +30,11 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.pages = [
-      { title: 'About Us', component: AboutUsPage },
-      { title: 'Contact US', component: ContactUsPage },
+      { title: 'Home', component: MainPage },
+      { title: 'Inbox', component: InboxPage },
       { title: 'Your Orders', component: YourOrdersPage },
+      { title: 'About Us', component: AboutUsPage },
+      { title: 'Contact Us', component: ContactUsPage },
       { title: 'Logout', component: LogOutPage }
     ];
     this.initTranslate();
