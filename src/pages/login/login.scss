@@ -1,40 +1,41 @@
 page-login {
-}
-
-.loginBox{
-    position: absolute;
-    top : 50%;
-    left : 50%;
-    transform: translate(-50%,-50%);
-    width: 100%;
-    height : 100%;
-    box-shadow: border-box;
-    background: rgba(0,0,0,.83)
-}
-.headerStyle{
-    font-size: 30px;
-    color: sandybrown;
-    margin-left: 16%;
-    margin-top: 50%;
-}
-.emailAndPassword{
-    margin-left: 7%;
-    margin-top: 22px;
-    height: 38px;
-    width: 254px;
-    border-radius: 3.5em;
-    text-align: center;
-    background: rgb(23, 29, 29);
-    color:whitesmoke;
-}
-.loginButton{
-    margin-left: 5%;
-    width: 254px;
-    text-align: center;
     
 }
-ion-loading.wrapper {
-    .loading-wrapper {
-      background: black;
-    }
-  }
+.backgroundstyle{
+    background: #0087df;
+}
+
+.fieldStyle{
+    color : white;
+    border-bottom: 1px solid #dedede;
+}
+
+.boxPlacement{
+    width: 50%;
+    float: right;
+    margin-right: -7px;
+    background-color: white;
+    color:#0087df;
+}
+
+.logInPlacement{
+    font-weight:bold;
+    color:white;
+    margin-left: 15px;
+}
+.resetPlacement{
+    color: white;
+    float: right;
+    margin-top: -30px;
+}
+.bottomScreen {
+    color: white !important;
+    margin-top: 67% !important;
+    font-size: 12px !important;
+}
+.bottom2Screen{
+    color: white !important;
+    font-size: 12px !important;
+    margin-top: -16px !important;
+    margin-left: 47% !important;
+}
