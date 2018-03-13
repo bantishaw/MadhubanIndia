@@ -14,8 +14,7 @@ export class SignupPage {
   signUpName: string;
   signUpEmail: string;
   signUpPassword: string;
-  signUpAddressType: string;
-  signUpAddress: string;
+  ConfirmSignUpPassword: string;
   signUpPhone: string
   newUserAccount: any;
   constructor(public navCtrl: NavController,
@@ -29,8 +28,7 @@ export class SignupPage {
       name: this.signUpName,
       email: this.signUpEmail,
       password: this.signUpPassword,
-      addressType: this.signUpAddressType,
-      address: this.signUpAddress,
+      Confirmpassword: this.ConfirmSignUpPassword,
       phoneNumber: this.signUpPhone
     }
     this.apiProvider.newUserSignUp(account).then((data) => {

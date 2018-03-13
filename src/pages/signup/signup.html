@@ -1,45 +1,36 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
-  </ion-navbar>
+
 </ion-header>
 
-<ion-content style="background: url('../assets/img/login.jpg') repeat transparent; background-size: cover;">
-  <form (submit)="doSignup()">
-    <ion-list>
-      <div class="loginBox">
-        <div>
-          <p class="newHewader">Madhuban India</p>
-        </div>
-        <div>
-          <input type="text" class="allfieldsCss" [(ngModel)]="signUpName" [ngModelOptions]="{standalone: true}" placeholder="Name" >
-          <input type="text" class="allfieldsCss" [(ngModel)]="signUpEmail" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="E-mail">
-          <input type="password" class="allfieldsCss" [(ngModel)]="signUpPassword" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="Password">
-          <div >
-            <ion-row radio-group [(ngModel)]="signUpAddressType" [ngModelOptions]="{standalone: true}" >
-              <ion-col>
-                <ion-item style="background:transparent;margin-left: 9px;color: whitesmoke;">
-                  <ion-label>Current</ion-label>
-                  <ion-radio value="Current"></ion-radio>
-                </ion-item>
-              </ion-col>
-              <ion-col>
-                <ion-item style="background:transparent;margin-left: -14px;color: whitesmoke;" >
-                  <ion-label>Permanent</ion-label>
-                  <ion-radio value="Permanent"></ion-radio>
-                </ion-item>
-              </ion-col>
-            </ion-row>
-          </div>
-          <div style="margin-top: -15px;">
-              <input type="text" class="allfieldsCss " [(ngModel)]="signUpAddress" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="Address">
-              <input type="number" class="allfieldsCss no-spinners" [(ngModel)]="signUpPhone" [ngModelOptions]="{standalone: true}" style="margin-top:12px" placeholder="Phone Number">
-          </div>
-          <div style="padding:6px">
-              <button ion-button class="registerButton" color="secondary" round>Register</button>
-          </div>  
-        </div>
-      </div>
-    </ion-list>
-  </form>
+<ion-content class="backgroundstyle">
+  <h2 class="logInPlacement">Sign Up</h2>
+  <ion-item class="backgroundstyle">
+    <ion-label stacked style="color:white;">Name</ion-label>
+    <ion-input type="text" class="fieldStyle" [(ngModel)]="signUpName"></ion-input>
+  </ion-item>
+
+  <ion-item class="backgroundstyle">
+    <ion-label stacked style="color:white;">Email Address</ion-label>
+    <ion-input type="text" class="fieldStyle" [(ngModel)]="signUpEmail"></ion-input>
+  </ion-item>
+
+  <ion-item class="backgroundstyle">
+    <ion-label stacked style="color:white;">Password</ion-label>
+    <ion-input type="password" class="fieldStyle" [(ngModel)]="signUpPassword"></ion-input>
+  </ion-item>
+
+  <ion-item class="backgroundstyle">
+    <ion-label stacked style="color:white;">Confirm password</ion-label>
+    <ion-input type="password" class="fieldStyle" [(ngModel)]="ConfirmSignUpPassword"></ion-input>
+  </ion-item>
+
+  <ion-item class="backgroundstyle">
+    <ion-label stacked style="color:white;">Mobile Number</ion-label>
+    <ion-input type="text" class="fieldStyle" [(ngModel)]="signUpPhone"></ion-input>
+  </ion-item>
+
+  <div padding>
+    <button ion-button color="primary" class="boxPlacement" block (click)="doSignup()">SIGN UP</button>
+  </div>
+
 </ion-content>
