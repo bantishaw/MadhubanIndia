@@ -96,7 +96,7 @@ app.post('/forgotPassword', function (request, response) {
             throw error;
         } else {
             if (result.length > 0) {
-                if (request.body.action) {
+                if (request.body.action === 1) {
                     var OTP = Math.floor(1000 + Math.random() * 9000);
                     databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { oneTimePassword: OTP } }, { returnOriginal: false }, function (error, newResult) {
                         if (error) {
@@ -114,7 +114,7 @@ app.post('/forgotPassword', function (request, response) {
                             response.json({ "response": "success", data: "Email sent successfully" })
                         }
                     })
-                } else {
+                } else if (request.body.action === 2) {
                     databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, OtpVerification) {
                         if (error) {
                             throw error;
@@ -131,6 +131,21 @@ app.post('/forgotPassword', function (request, response) {
                             } else {
                                 response.json({ "response": "failure", data: "Incorrect OTP. Please enter correct otp" })
                             }
+                        }
+                    })
+                } else {
+                    console.log("Hello Baby")
+                    databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, changePasswordResult) {
+                        if (error) {
+                            throw error;
+                        } else {
+                            databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { password: request.body.password } }, { returnOriginal: false }, function (error, removedOtpResult) {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    response.json({ "response": "success", "data": "Password is changed successfully" })
+                                }
+                            })
                         }
                     })
                 }
