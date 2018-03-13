@@ -7,46 +7,47 @@
   <ion-title class="showTitle">{{settingDisplayname}}</ion-title>
 </ion-header>
 
-  <ion-content>
-    <ion-list>
-      <ion-list-header>
-        Account settings
-      </ion-list-header>
-  
-      <ion-item (click)="mailSetting()">
-        <ion-icon name='mail' item-start></ion-icon>
-        Change email
-      </ion-item>
-  
-      <ion-item (click)="changePassword()">
-          <ion-icon name='key' item-start></ion-icon>
-          Change password
-      </ion-item>
-  
-      <ion-item>
-        <ion-icon name='trash' item-start></ion-icon>
-        Delete account
-      </ion-item>
-    </ion-list>
-  
-    <ion-list>
-      <ion-list-header>
-        Connected Accounts
-      </ion-list-header>
-  
-      <ion-item>
-        Facebook
-        <ion-icon name='logo-facebook'  style="color: #3B5998" item-start></ion-icon>
-      </ion-item>
-  
-      <ion-item>
-          Twitter
-        <ion-icon name='logo-twitter' style="color: #1DA1F2" item-start></ion-icon>
-      </ion-item>
-      
-      <ion-item>
-          Instagram
-        <ion-icon name='logo-instagram' style="color: #e95950" item-start></ion-icon>
-      </ion-item>
-    </ion-list>
-  </ion-content>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Account settings
+    </ion-list-header>
+
+    <ion-item (click)="mailSetting()">
+      <ion-icon name='mail' item-start></ion-icon>
+      Change email
+    </ion-item>
+
+    <ion-item (click)="changePassword()">
+      <ion-icon name='key' item-start></ion-icon>
+      Change password
+    </ion-item>
+
+    <ion-item>
+      <ion-icon name='trash' item-start></ion-icon>
+      Delete account
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Connected Accounts
+    </ion-list-header>
+
+    <ion-item>
+      Facebook
+      <ion-icon name='logo-facebook' style="color: #3B5998" item-start></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      Twitter
+      <ion-icon name='logo-twitter' style="color: #1DA1F2" item-start></ion-icon>
+    </ion-item>
+
+    <ion-item>
+      Instagram
+      <ion-icon name='logo-instagram' style="color: #e95950" item-start></ion-icon>
+    </ion-item>
+  </ion-list>
+  <button ion-button block outline style="width: 90%;margin-left: 5%;" (click)="doLogout()">Logout</button>
+</ion-content>
