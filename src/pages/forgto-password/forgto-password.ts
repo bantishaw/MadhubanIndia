@@ -11,7 +11,7 @@ import { Http } from '@angular/http';
 export class ForgtoPasswordPage {
   forgotEmail: string;
   account: any;
-  showForgotPage: any = 0;
+  showForgotPage: number = 0;
   otp: number;
   newPassword: any;
   reNewPassword: any;

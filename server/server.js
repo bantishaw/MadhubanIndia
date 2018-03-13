@@ -134,7 +134,6 @@ app.post('/forgotPassword', function (request, response) {
                         }
                     })
                 } else {
-                    console.log("Hello Baby")
                     databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, changePasswordResult) {
                         if (error) {
                             throw error;
