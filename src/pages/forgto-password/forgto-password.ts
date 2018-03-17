@@ -30,20 +30,18 @@ export class ForgtoPasswordPage {
       email: this.forgotEmail,
       action: 1
     }
-    this.apiProvider.forgotPassword(forgotAccount).then((data) => {
-      this.account = data;
-      if (this.account.response === 'success') {
-        this.showForgotPage = 1;
-      } else {
-        let toast = this.toastCtrl.create({
-          message: this.account.data,
-          duration: 3000,
-          position: 'middle',
-          cssClass: 'showToast'
-        });
-        toast.present();
-      }
-    })
+    if (!forgotAccount.email) {
+      this.toastMessage("Email Address cannot be empty")
+    } else {
+      this.apiProvider.forgotPassword(forgotAccount).then((data) => {
+        this.account = data;
+        if (this.account.response === 'success') {
+          this.showForgotPage = 1;
+        } else {
+          this.toastMessage(this.account.data)
+        }
+      })
+    }
   }
 
   otpSubmit() {
@@ -52,20 +50,18 @@ export class ForgtoPasswordPage {
       otp: this.otp,
       action: 2
     }
-    this.apiProvider.forgotPassword(otpObject).then((data) => {
-      this.account = data;
-      if (this.account.response === 'success') {
-        this.showForgotPage = 2;
-      } else {
-        let toast = this.toastCtrl.create({
-          message: this.account.data,
-          duration: 3000,
-          position: 'middle',
-          cssClass: 'showToast'
-        });
-        toast.present();
-      }
-    })
+    if (!otpObject.otp) {
+      this.toastMessage("Enter the OTP to change password")
+    } else {
+      this.apiProvider.forgotPassword(otpObject).then((data) => {
+        this.account = data;
+        if (this.account.response === 'success') {
+          this.showForgotPage = 2;
+        } else {
+          this.toastMessage(this.account.data)
+        }
+      })
+    }
   }
 
   changePassword() {
@@ -75,8 +71,8 @@ export class ForgtoPasswordPage {
       action: 3
     }
     let loading = this.loadingCtrl.create({
-      spinner : 'crescent',
-      cssClass : "wrapper"
+      spinner: 'crescent',
+      cssClass: "wrapper"
     });
     if (!this.newPassword || !this.reNewPassword) {
       let toast = this.toastCtrl.create({
@@ -95,7 +91,7 @@ export class ForgtoPasswordPage {
       });
       toast.present();
     } else {
-      
+
       this.apiProvider.forgotPassword(changePass).then((data) => {
         this.account = data;
         if (this.account.response === 'success') {
@@ -114,8 +110,16 @@ export class ForgtoPasswordPage {
         }
       })
     }
+  }
 
-
+  toastMessage(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 1000,
+      position: 'middle',
+      cssClass: 'showToast'
+    });
+    toast.present();
   }
 
 }

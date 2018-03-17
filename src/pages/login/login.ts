@@ -32,28 +32,28 @@ export class LoginPage {
       email: this.email,
       password: this.password
     }
-    this.apiProvider.userLogin(userObject).then((data) => {
-      this.existingUser = data;
-      let loading = this.loadingCtrl.create({
-        spinner : 'crescent',
-        cssClass : "wrapper"
-      });
-      if (this.existingUser.response === 'success') {
-        loading.present();
-        setTimeout(() => {
-          loading.dismiss();
-          this.navCtrl.push(MainPage);
-        }, 500);
-      } else {
-        let toast = this.toastCtrl.create({
-          message: this.existingUser.data,
-          duration: 3000,
-          position: 'middle',
-          cssClass: 'showToast'
+    if (!userObject.email) {
+      this.toastMessage("Email address cannot be empty")
+    } else if (!userObject.password) {
+      this.toastMessage("Password cannot be empty")
+    } else {
+      this.apiProvider.userLogin(userObject).then((data) => {
+        this.existingUser = data;
+        let loading = this.loadingCtrl.create({
+          spinner: 'crescent',
+          cssClass: "wrapper"
         });
-        toast.present();
-      }
-    })
+        if (this.existingUser.response === 'success') {
+          loading.present();
+          setTimeout(() => {
+            loading.dismiss();
+            this.navCtrl.push(MainPage);
+          }, 500);
+        } else {
+          this.toastMessage(this.existingUser.data)
+        }
+      })
+    }
   }
 
   newUserRegister() {
@@ -62,5 +62,15 @@ export class LoginPage {
 
   forgotPassword() {
     this.navCtrl.push('ForgtoPasswordPage')
+  }
+
+  toastMessage(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'middle',
+      cssClass: 'showToast'
+    });
+    toast.present();
   }
 }
