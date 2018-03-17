@@ -8,10 +8,12 @@
     <ion-label stacked style="color:white;"> First Name</ion-label>
     <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpName" pattern="[a-zA-Z]*"></ion-input>
   </ion-item>
+
   <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;"> Last Name (Optional)</ion-label>
     <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpLastName"></ion-input>
   </ion-item>
+
   <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;">Email Address</ion-label>
     <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpEmail"></ion-input>
@@ -29,7 +31,7 @@
 
   <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;">Mobile Number</ion-label>
-    <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpPhone"></ion-input>
+    <ion-input type="number" class="fieldStyle1" [(ngModel)]="signUpPhone"></ion-input>
   </ion-item>
 
   <div padding>

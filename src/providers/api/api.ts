@@ -35,7 +35,6 @@ export class Api {
       this.http.post('http://localhost:8080/getLogin', userObject, { headers: headers })
         .subscribe(res => {
           this.settingsInformation = res.json();
-          console.log(this.settingsInformation)
           resolve(res.json());
         }, (err) => {
           reject(err);
@@ -50,6 +49,7 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/newUserSignUp', account, { headers: headers })
         .subscribe(res => {
+          this.settingsInformation = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err);

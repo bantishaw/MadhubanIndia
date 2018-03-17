@@ -82,7 +82,7 @@ app.post('/newUserSignUp', function (request, response) {
                         };
                         // Activating send mail function to send mail to new users
                         sendmail(message);
-                        response.json({ "response": "success", "data": "User added successfully" })
+                        response.json({ "response": "success", "data": "User added successfully","settingsInformation":[request.body]})
                     }
                 })
             }

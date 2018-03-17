@@ -17,6 +17,7 @@ export class SignupPage {
   ConfirmSignUpPassword: string;
   signUpPhone: string
   newUserAccount: any;
+  signUpLastName: string;
   constructor(public navCtrl: NavController,
     public apiProvider: Api,
     public toastCtrl: ToastController,
@@ -26,24 +27,48 @@ export class SignupPage {
   doSignup() {
     var account = {
       name: this.signUpName,
+      lastName: this.signUpLastName,
       email: this.signUpEmail,
       password: this.signUpPassword,
       Confirmpassword: this.ConfirmSignUpPassword,
       phoneNumber: this.signUpPhone
     }
-    this.apiProvider.newUserSignUp(account).then((data) => {
-      this.newUserAccount = data;
-      if (this.newUserAccount.response === 'success') {
-        this.navCtrl.push(MainPage);
-      } else {
-        let toast = this.toastCtrl.create({
-          message: this.newUserAccount.data,
-          duration: 3000,
-          position: 'middle',
-          cssClass: 'showToast'
-        });
-        toast.present();
-      }
-    })
+    console.log( typeof this.signUpPhone.length,this.signUpPhone.length)
+    var nameValidator = new RegExp("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
+    var emailValidator = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
+    var passwordValidator = new RegExp("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
+    var phoneNumberValidator = new RegExp("/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/")
+    if (!account.name || !account.lastName || !account.email || !account.password || !account.Confirmpassword || !account.phoneNumber) {
+      this.toastMessage("Enter all the Details")
+    } else if (!(nameValidator.test(account.name))) {
+      this.toastMessage("Enter a valid First name")
+    } else if (!(nameValidator.test(account.lastName))) {
+      this.toastMessage("Enter a valid Last name")
+    } else if (!(emailValidator.test(account.email))) {
+      this.toastMessage("Enter a valid Email address")
+    } else if (account.phoneNumber.length !== 10) {
+      this.toastMessage("Enter a valid Phone number")
+    } else if (account.password !== account.Confirmpassword) {
+      this.toastMessage("Password and Confirm password are not same")
+    } else {
+      this.apiProvider.newUserSignUp(account).then((data) => {
+        this.newUserAccount = data;
+        if (this.newUserAccount.response === 'success') {
+          this.navCtrl.push(MainPage);
+        } else {
+          this.toastMessage(this.newUserAccount.data)
+        }
+      })
+    }
+  }
+
+  toastMessage(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'middle',
+      cssClass: 'showToast'
+    });
+    toast.present();
   }
 }
