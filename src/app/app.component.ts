@@ -8,7 +8,6 @@ import { Settings } from '../providers/providers';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
-import { LogOutPage } from '../pages/log-out/log-out';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
@@ -34,8 +33,7 @@ export class MyApp {
       { title: 'Inbox', component: InboxPage },
       { title: 'Your Orders', component: YourOrdersPage },
       { title: 'About Us', component: AboutUsPage },
-      { title: 'Contact Us', component: ContactUsPage },
-      { title: 'Logout', component: LogOutPage }
+      { title: 'Contact Us', component: ContactUsPage }
     ];
     this.initTranslate();
   }

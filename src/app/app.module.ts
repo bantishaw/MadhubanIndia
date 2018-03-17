@@ -16,13 +16,13 @@ import { Api } from '../providers/providers';
 import { MyApp } from './app.component';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
-import { LogOutPage } from '../pages/log-out/log-out';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
+import { Geolocation } from '@ionic-native/geolocation';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -48,7 +48,6 @@ export function provideSettings(storage: Storage) {
     MyApp,
     AboutUsPage,
     YourOrdersPage,
-    LogOutPage,
     ContactUsPage,
     HomePage,
     InboxPage
@@ -72,7 +71,6 @@ export function provideSettings(storage: Storage) {
     MyApp,
     AboutUsPage,
     YourOrdersPage,
-    LogOutPage,
     ContactUsPage,
     HomePage,
     InboxPage,
@@ -84,6 +82,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    Geolocation,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
