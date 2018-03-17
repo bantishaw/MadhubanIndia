@@ -4,33 +4,36 @@
 
 <ion-content class="backgroundstyle">
   <h2 class="logInPlacement">Sign Up</h2>
-  <ion-item class="backgroundstyle">
-    <ion-label stacked style="color:white;">Name</ion-label>
-    <ion-input type="text" class="fieldStyle" [(ngModel)]="signUpName"></ion-input>
+  <ion-item class="backgroundstyle1">
+    <ion-label stacked style="color:white;"> First Name</ion-label>
+    <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpName" pattern="[a-zA-Z]*"></ion-input>
   </ion-item>
-
-  <ion-item class="backgroundstyle">
+  <ion-item class="backgroundstyle1">
+    <ion-label stacked style="color:white;"> Last Name (Optional)</ion-label>
+    <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpLastName"></ion-input>
+  </ion-item>
+  <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;">Email Address</ion-label>
-    <ion-input type="text" class="fieldStyle" [(ngModel)]="signUpEmail"></ion-input>
+    <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpEmail"></ion-input>
   </ion-item>
 
-  <ion-item class="backgroundstyle">
+  <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;">Password</ion-label>
-    <ion-input type="password" class="fieldStyle" [(ngModel)]="signUpPassword"></ion-input>
+    <ion-input type="password" class="fieldStyle1" [(ngModel)]="signUpPassword"></ion-input>
   </ion-item>
 
-  <ion-item class="backgroundstyle">
+  <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;">Confirm password</ion-label>
-    <ion-input type="password" class="fieldStyle" [(ngModel)]="ConfirmSignUpPassword"></ion-input>
+    <ion-input type="password" class="fieldStyle1" [(ngModel)]="ConfirmSignUpPassword"></ion-input>
   </ion-item>
 
-  <ion-item class="backgroundstyle">
+  <ion-item class="backgroundstyle1">
     <ion-label stacked style="color:white;">Mobile Number</ion-label>
-    <ion-input type="text" class="fieldStyle" [(ngModel)]="signUpPhone"></ion-input>
+    <ion-input type="text" class="fieldStyle1" [(ngModel)]="signUpPhone"></ion-input>
   </ion-item>
 
   <div padding>
-    <button ion-button color="primary" class="boxPlacement" block (click)="doSignup()">SIGN UP</button>
+    <button ion-button color="primary" class="boxPlacement1" block (click)="doSignup()">SIGN UP</button>
   </div>
 
 </ion-content>
