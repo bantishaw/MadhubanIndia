@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Send Feedback</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h6 style="font-weight:bold">Give us your feedback for FreshPool India </h6>
+  <p style="color:#a8a8a8;font-size: 12px;">Thank you for taking the time to give us your feedback. We appreciate your feedback and use it to help create better services
+    and products.</p>
+
+
+  <p class="feedbackLabel">Enter feedback</p>
+
+  <div>
+    <textarea rows="5" maxLength="1000" [(ngModel)]="feedback" class="textArea"></textarea>
+  </div>
+  <p style="color:#a8a8a8;font-size: 12px;margin-top: 30%;">We want your both positive and negative feedback to improve ourselves. For more detailed feedback ,
+    just drop a mail at <span style="color:red">feedback@freshpool.com</span>
+  </p>
+  <div padding>
+    <button ion-button color="primary" block (click)="submitFeedback()">SUBMIT</button>
+  </div>
+</ion-content>

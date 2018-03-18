@@ -11,6 +11,7 @@ import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
+import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 
 @Component({
   templateUrl: 'app.html'
@@ -32,6 +33,7 @@ export class MyApp {
       { title: 'Home', component: MainPage },
       { title: 'Inbox', component: InboxPage },
       { title: 'Your Orders', component: YourOrdersPage },
+      { title: 'Send Feedback', component: SendFeedbackPage },
       { title: 'About Us', component: AboutUsPage },
       { title: 'Contact Us', component: ContactUsPage }
     ];

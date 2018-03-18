@@ -23,6 +23,7 @@ import { ListMasterPage } from '../pages/list-master/list-master';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { Geolocation } from '@ionic-native/geolocation';
+import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -50,7 +51,9 @@ export function provideSettings(storage: Storage) {
     YourOrdersPage,
     ContactUsPage,
     HomePage,
-    InboxPage
+    InboxPage,
+    SendFeedbackPage
+
   ],
   imports: [
     BrowserModule,
@@ -74,6 +77,7 @@ export function provideSettings(storage: Storage) {
     ContactUsPage,
     HomePage,
     InboxPage,
+    SendFeedbackPage
   ],
   providers: [
     Api,

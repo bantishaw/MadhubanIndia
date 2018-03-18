@@ -220,5 +220,16 @@ app.post('/saveNewSettingsPassword', function (request, response) {
         }
     })
 })
+
+app.post('/submitFeedback', function (request, response) {
+    databaseConnectivity.collection('Feedback').insert(request.body, function (error, newResult) {
+        if (error) {
+            response.json({ "response": "failure", "data": "Database is unreachable , Please try again by refreshing" })
+            throw error;
+        } else {
+            response.json({ "response": "success", "data": "Thanks you for sending your feedback" })
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080")
