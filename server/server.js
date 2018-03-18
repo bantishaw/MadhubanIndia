@@ -76,7 +76,7 @@ app.post('/newUserSignUp', function (request, response) {
                         // prepearing message object to be send in send mail function
                         let message = {
                             to: request.body.name + '<' + request.body.email + '>',
-                            subject: 'Welcome to AB Catering India',
+                            subject: 'Welcome to FreshPool India',
                              html:
                                  '<p>We are looking forward to assist you to find the best Catering. To avail our best services , Please login now with your credentials. <br/></p>',
                         };
@@ -179,7 +179,7 @@ var sendmail = function (message) {
                     debug: false // include SMTP traffic in the logs
                 },
                 {
-                    from: 'AB Catering India <no-reply@CateringIndia.com>',
+                    from: 'FreshPool India <no-reply@CateringIndia.com>',
                 }
             );
             transporter.sendMail(message, (error, info) => {
