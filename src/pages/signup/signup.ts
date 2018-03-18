@@ -36,8 +36,7 @@ export class SignupPage {
     console.log( typeof this.signUpPhone.length,this.signUpPhone.length)
     var nameValidator = new RegExp("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
     var emailValidator = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
-    var passwordValidator = new RegExp("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
-    var phoneNumberValidator = new RegExp("/^[(]{0,1}[0-9]{3}[)]{0,1}[-\s\.]{0,1}[0-9]{3}[-\s\.]{0,1}[0-9]{4}$/")
+    // var passwordValidator = new RegExp("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
     if (!account.name || !account.lastName || !account.email || !account.password || !account.Confirmpassword || !account.phoneNumber) {
       this.toastMessage("Enter all the Details")
     } else if (!(nameValidator.test(account.name))) {
