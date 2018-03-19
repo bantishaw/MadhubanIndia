@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { Http } from '@angular/http';
+import {LoginPage} from '../login/login'
 
 @IonicPage()
 @Component({
@@ -98,7 +99,7 @@ export class ForgtoPasswordPage {
           setTimeout(() => {
             loading.present();
             loading.dismiss();
-            this.navCtrl.push('LoginPage');
+            this.navCtrl.push(LoginPage);
           }, 1000);
           let toast = this.toastCtrl.create({
             message: this.account.data,

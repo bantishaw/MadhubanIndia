@@ -3,7 +3,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform } from 'ionic-angular';
-import { FirstRunPage, MainPage } from '../pages/pages';
+import { StartUpPage, MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
@@ -19,7 +19,7 @@ import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage = FirstRunPage;
+  rootPage = "StartUpPage";
   pages: Array<{ title: string, component: any }>;
 
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen) {

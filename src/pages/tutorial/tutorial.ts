@@ -1,7 +1,9 @@
-import { Component } from '@angular/core';
-import { IonicPage, MenuController, NavController, Platform } from 'ionic-angular';
-
+import { IonicPage, MenuController, NavController, Platform,Slides } from 'ionic-angular';
+import { Component, ViewChild, trigger, transition, style, state, animate, keyframes } from '@angular/core';
+import {LoginPage} from '../login/login';
 import { TranslateService } from '@ngx-translate/core';
+import {SignupPage} from '../signup/signup';
+
 
 export interface Slide {
   title: string;
@@ -12,62 +14,64 @@ export interface Slide {
 @IonicPage()
 @Component({
   selector: 'page-tutorial',
-  templateUrl: 'tutorial.html'
+  templateUrl: 'tutorial.html',
+  animations: [
+
+    trigger('bounce', [
+      state('*', style({
+        transform: 'translateX(0)'
+      })),
+      transition('* => rightSwipe', animate('700ms ease-out', keyframes([
+        style({transform: 'translateX(0)', offset: 0}),
+        style({transform: 'translateX(-65px)', offset: .3}),
+        style({transform: 'translateX(0)', offset: 1})
+      ]))),
+      transition('* => leftSwipe', animate('700ms ease-out', keyframes([
+        style({transform: 'translateX(0)', offset: 0}),
+        style({transform: 'translateX(65px)', offset: .3}),
+        style({transform: 'translateX(0)', offset: 1})
+      ])))
+    ])
+  ]
 })
 export class TutorialPage {
-  slides: Slide[];
-  showSkip = true;
-  dir: string = 'ltr';
+ 
+  @ViewChild(Slides) slides: Slides;
+  skipMsg: string = "Skip";
+  state: string = 'x';
 
-  constructor(public navCtrl: NavController, public menu: MenuController, translate: TranslateService, public platform: Platform) {
-    this.dir = platform.dir();
-    translate.get(["TUTORIAL_SLIDE1_TITLE",
-      "TUTORIAL_SLIDE1_DESCRIPTION",
-      "TUTORIAL_SLIDE2_TITLE",
-      "TUTORIAL_SLIDE2_DESCRIPTION",
-      "TUTORIAL_SLIDE3_TITLE",
-      "TUTORIAL_SLIDE3_DESCRIPTION",
-    ]).subscribe(
-      (values) => {
-        this.slides = [
-          {
-            title: values.TUTORIAL_SLIDE1_TITLE,
-            description: values.TUTORIAL_SLIDE1_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-1.png',
-          },
-          {
-            title: values.TUTORIAL_SLIDE2_TITLE,
-            description: values.TUTORIAL_SLIDE2_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-2.png',
-          },
-          {
-            title: values.TUTORIAL_SLIDE3_TITLE,
-            description: values.TUTORIAL_SLIDE3_DESCRIPTION,
-            image: 'assets/img/ica-slidebox-img-2.png',
-          }
-        ];
-      });
+  constructor(public navCtrl: NavController) {
+
   }
 
-  startApp() {
-    this.navCtrl.setRoot('LoginPage', {}, {
-      animate: true,
-      direction: 'forward'
-    });
+  newUserRegister(){
+    this.navCtrl.push(SignupPage);
   }
 
-  onSlideChangeStart(slider) {
-    this.showSkip = !slider.isEnd();
+  doLogin() {
+    this.navCtrl.push(LoginPage);
   }
 
-  ionViewDidEnter() {
-    // the root left menu should be disabled on the tutorial page
-    this.menu.enable(false);
+  slideChanged() {
+    if (this.slides.isEnd()){
+      this.skipMsg = "Alright, I got it";
+      console.log("Arun2.Chauhan");
+
+  }
+}
+
+  slideMoved() {
+    if (this.slides.getActiveIndex() >= this.slides.getPreviousIndex()){
+     console.log("Arun1.Chauhan");
+      this.state = 'rightSwipe';
+    }
+    else
+      this.state = 'leftSwipe';
   }
 
-  ionViewWillLeave() {
-    // enable the root left menu when leaving the tutorial page
-    this.menu.enable(true);
+  animationDone() {
+    this.state = 'x';
   }
+
 
 }

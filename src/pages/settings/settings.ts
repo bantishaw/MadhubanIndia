@@ -4,6 +4,7 @@ import { Settings } from '../../providers/providers';
 import { Api } from '../../providers/providers';
 import { MainPage } from '../pages';
 import { App } from 'ionic-angular';
+import {LoginPage} from '../login/login'
 
 @IonicPage()
 @Component({
@@ -57,7 +58,7 @@ export class SettingsPage {
         {
           text: 'Yes',
           handler: () => {
-            this.appCtrl.getRootNav().push('LoginPage')
+            this.appCtrl.getRootNav().push(LoginPage)
           }
         },
         {

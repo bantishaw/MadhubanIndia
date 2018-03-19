@@ -1,27 +1,42 @@
-<ion-header no-shadow>
-  <ion-navbar>
-    <ion-buttons end *ngIf="showSkip">
-      <button ion-button (click)="startApp()" color="primary">{{ 'TUTORIAL_SKIP_BUTTON' | translate}}</button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+<ion-content class="backColor">
+  <ion-slides pager (ionSlideDidChange)="slideChanged()" (ionSlideDrag)="slideMoved()">
+    <ion-slide>
+      <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat">
+        <ion-icon class="tutorialIcon" ios="ios-analytics" md="md-analytics" color="primary" [@bounce]='state' (@bounce.done)="animationDone()"></ion-icon>
+      </div>
+      <div [@bounce]='state' style="margin-bottom:10%">
+        <h2 class="height2">Get service at Your home</h2>
+        <p class="print">We provide Car Decoration , Water Cane Delivery and Mehndi Service at your door step</p>
+      </div>
 
-<ion-content no-bounce>
-  <ion-slides pager="true" dir="{{dir}}" (ionSlideWillChange)="onSlideChangeStart($event)" >
-    <ion-slide *ngFor="let slide of slides">
-      <!-- <img [src]="slide.image" class="slide-image" /> -->
-      <div class="splash-logo"></div>
-        <h2 class="slide-title" [innerHTML]="slide.title"></h2>
-        <p [innerHTML]="slide.description"></p>
     </ion-slide>
     <ion-slide>
-      <!-- <img src="assets/img/ica-slidebox-img-4.png" class="slide-image" /> -->
-      <div class="splash-logo"></div>
-        <h2 style="margin-top:5.8rem">{{ 'TUTORIAL_SLIDE4_TITLE' | translate }}</h2>
-        <p>By clicking Continue you agree to the <b>Terms and Conditions</b>.</p>
-        <button ion-button round (click)="startApp()">
-          {{ 'TUTORIAL_CONTINUE_BUTTON' | translate }}
-      </button>
+      <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat">
+        <ion-icon class="tutorialIcon" ios="ios-trophy" md="md-trophy" color="primary" [@bounce]='state'></ion-icon>
+      </div>
+      <div [@bounce]='state'>
+        <h2 class="height2">Get service at Your home</h2>
+        <p class="print">We provide Car Decoration , Water Cane Delivery and Mehndi Service at your door step</p>
+      </div>
     </ion-slide>
+    <ion-slide>
+      <div class="diag" style="background: url('assets/img/whitebg.svg') no-repeat">
+        <ion-icon class="tutorialIcon" ios="ios-chatboxes" md="md-chatboxes" color="primary" [@bounce]='state'></ion-icon>
+      </div>
+      <div [@bounce]='state'>
+        <h2 class="height2">Get service at Your home</h2>
+        <p class="print">We provide Car Decoration , Water Cane Delivery and Mehndi Service at your door step</p>
+      </div>
+    </ion-slide>
+
   </ion-slides>
+  <div>
+    <div padding>
+      <button ion-button color="primary" class="CreateAnAccountPlacement" block (click)="newUserRegister()">Create An Account</button>
+    </div>
+    <ion-item style="background-color: #8f90ee">
+      <p class="bottom_11_Screen">Already have an account? </p>
+      <p class="bottom_22_Screen" (click)="doLogin()">Log In</p>
+    </ion-item>
+  </div>
 </ion-content>

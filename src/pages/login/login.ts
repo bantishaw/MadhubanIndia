@@ -5,6 +5,7 @@ import { Api } from '../../providers/providers';
 import { User } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
 import { MainPage } from '../pages';
+import {SignupPage} from '../signup/signup';
 
 @IonicPage()
 @Component({
@@ -57,7 +58,7 @@ export class LoginPage {
   }
 
   newUserRegister() {
-    this.navCtrl.push('SignupPage');
+    this.navCtrl.push(SignupPage);
   }
 
   forgotPassword() {

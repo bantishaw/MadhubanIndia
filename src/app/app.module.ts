@@ -19,10 +19,14 @@ import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { HomePage } from '../pages/home/home';
 import { InboxPage } from '../pages/inbox/inbox';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { Geolocation } from '@ionic-native/geolocation';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { LoginPage } from '../pages/login/login';
+import { SignupPage } from '../pages/signup/signup';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 
 export function createTranslateLoader(http: HttpClient) {
@@ -52,7 +56,9 @@ export function provideSettings(storage: Storage) {
     ContactUsPage,
     HomePage,
     InboxPage,
-    SendFeedbackPage
+    SendFeedbackPage,
+    TutorialPage,
+    LoginPage, SignupPage
 
   ],
   imports: [
@@ -67,7 +73,8 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
+    BrowserAnimationsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -77,7 +84,9 @@ export function provideSettings(storage: Storage) {
     ContactUsPage,
     HomePage,
     InboxPage,
-    SendFeedbackPage
+    SendFeedbackPage,
+    TutorialPage,
+    LoginPage, SignupPage
   ],
   providers: [
     Api,
