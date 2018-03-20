@@ -5,7 +5,7 @@ import { Api } from '../../providers/providers';
 import { User } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
 import { MainPage } from '../pages';
-import {SignupPage} from '../signup/signup';
+import { SignupPage } from '../signup/signup';
 
 @IonicPage()
 @Component({
@@ -16,7 +16,6 @@ export class LoginPage {
   existingUser: any;
   email: string;
   password: string;
-  showSpinner: any = false;
   constructor(public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
@@ -26,7 +25,6 @@ export class LoginPage {
     public loadingCtrl: LoadingController) { }
 
   doLogin() {
-    this.showSpinner = true;
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
     var userObject = {
@@ -38,20 +36,23 @@ export class LoginPage {
     } else if (!userObject.password) {
       this.toastMessage("Password cannot be empty")
     } else {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
       this.apiProvider.userLogin(userObject).then((data) => {
         this.existingUser = data;
-        let loading = this.loadingCtrl.create({
-          spinner: 'crescent',
-          cssClass: "wrapper"
-        });
         if (this.existingUser.response === 'success') {
-          loading.present();
+          loading.dismiss();
           setTimeout(() => {
-            loading.dismiss();
             this.navCtrl.push(MainPage);
           }, 500);
         } else {
-          this.toastMessage(this.existingUser.data)
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.existingUser.data)
+          }, 500);
         }
       })
     }

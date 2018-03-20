@@ -1,45 +1,41 @@
 <ion-header>
-
     <ion-navbar>
-            <button ion-button menuToggle>
-                <ion-icon name="menu"></ion-icon>
-              </button>
-          <ion-title>Contact Us</ion-title>
-        </ion-navbar>
-    </ion-header>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>Contact Us</ion-title>
+    </ion-navbar>
+</ion-header>
 
-        <ion-content >
-          <ion-card>
-          <img src="assets/img/speakers/bear.jpg">  
-        </ion-card>
+<ion-content padding>
+    <ion-footer style="margin-bottom: 15%;">
+        <h6 class="heading">Get in touch with us !!</h6>
+        <p class="subHeading">Please fill out this form with your query. One of our executive will reach you shortly.
+        </p>
 
-           <ion-card>
-           <ion-card-header>
-             We are please to serve  24 x 7 
-              </ion-card-header>
+        <ion-item>
+            <ion-label floating>Name</ion-label>
+            <ion-input type="text" [(ngModel)]="name" class="showInputBorder"></ion-input>
+        </ion-item>
 
-             <ion-card-header>
-              For any query
-               </ion-card-header>
+        <ion-item>
+            <ion-label floating>Email Address</ion-label>
+            <ion-input type="text" [(ngModel)]="emailId" class="showInputBorder"></ion-input>
+        </ion-item>
 
-               <ion-card-content >
-                  <ion-item>
-                      <ion-icon name="call" ></ion-icon>
-                      Call Us :
-                    <ion-badge item-right>
-                        9082450264/8961323449
-                    </ion-badge>
-                  </ion-item>
-            
-                  <ion-item>
-                      <ion-icon name="mail" ></ion-icon>
-                     Mail Us
-                    <ion-badge item-right>
-                        madhuwanIndia@gmail.com 
-                    </ion-badge>
-                  </ion-item>
-                </ion-card-content>
-          
-    </ion-card>
-       </ion-content>
-       
+        <ion-item>
+            <ion-label floating>Mobile Number (Optional)</ion-label>
+            <ion-input type="number" [(ngModel)]="mobileNumber" class="showInputBorder"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Query</ion-label>
+            <ion-textarea type="text" [(ngModel)]="query" class="showInputBorder"></ion-textarea>
+        </ion-item>
+
+        <div padding>
+            <button ion-button color="primary" block (click)="submitQuery()">SUBMIT</button>
+        </div>
+        <ion-label floating class="showInputBorder" style="width:50%;margin:auto;"></ion-label>
+    </ion-footer>
+</ion-content>

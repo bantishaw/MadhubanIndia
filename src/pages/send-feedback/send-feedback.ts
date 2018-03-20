@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Http, Headers } from '@angular/http';
 import { Api } from '../../providers/providers';
 
@@ -14,7 +14,7 @@ export class SendFeedbackPage {
   submitResult: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public toastCtrl: ToastController, public apiProvider: Api,
-    public http: Http) {
+    public http: Http, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -30,14 +30,23 @@ export class SendFeedbackPage {
     if (!userFeed.feedback) {
       this.toastMessage("Empty feedback cannot be sent")
     } else {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
       this.apiProvider.submitFeedback(userFeed).then((data) => {
         this.submitResult = data;
-        console.log(this.submitResult)
         if (this.submitResult.response === 'success') {
-          console.log()
-          this.toastMessage(this.submitResult.data)
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.submitResult.data)
+          }, 500);
         } else {
-          this.toastMessage(this.submitResult.data)
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.submitResult.data)
+          }, 500);
         }
       })
     }

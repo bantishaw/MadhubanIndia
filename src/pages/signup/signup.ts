@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
 import { MainPage } from '../pages';
 import { Api } from '../../providers/providers';
 import { Http } from '@angular/http';
@@ -22,7 +22,8 @@ export class SignupPage {
     public apiProvider: Api,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
-    public http: Http) { }
+    public http: Http,
+    public loadingCtrl: LoadingController) { }
 
   doSignup() {
     var account = {
@@ -33,7 +34,7 @@ export class SignupPage {
       Confirmpassword: this.ConfirmSignUpPassword,
       phoneNumber: this.signUpPhone
     }
-    console.log( typeof this.signUpPhone.length,this.signUpPhone.length)
+    console.log(typeof this.signUpPhone.length, this.signUpPhone.length)
     var nameValidator = new RegExp("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
     var emailValidator = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
     // var passwordValidator = new RegExp("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
@@ -50,12 +51,23 @@ export class SignupPage {
     } else if (account.password !== account.Confirmpassword) {
       this.toastMessage("Password and Confirm password are not same")
     } else {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
       this.apiProvider.newUserSignUp(account).then((data) => {
         this.newUserAccount = data;
         if (this.newUserAccount.response === 'success') {
-          this.navCtrl.push(MainPage);
+          loading.dismiss();
+          setTimeout(() => {
+            this.navCtrl.push(MainPage);
+          }, 500);
         } else {
-          this.toastMessage(this.newUserAccount.data)
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.newUserAccount.data)
+          }, 500);
         }
       })
     }

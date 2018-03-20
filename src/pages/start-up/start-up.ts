@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import {TutorialPage} from '../tutorial/tutorial';
+import { TutorialPage } from '../tutorial/tutorial';
 
 @IonicPage()
 @Component({
@@ -13,14 +13,11 @@ export class StartUpPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad StartUpPag23432');
-    console.log('Arun ');
-
+    console.log('ionViewDidLoad StartUp');
     setTimeout(() => {
-     
       this.navCtrl.push(TutorialPage);
     }, 3000);
-   
+
   }
 
 }

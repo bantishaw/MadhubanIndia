@@ -227,7 +227,18 @@ app.post('/submitFeedback', function (request, response) {
             response.json({ "response": "failure", "data": "Database is unreachable , Please try again by refreshing" })
             throw error;
         } else {
-            response.json({ "response": "success", "data": "Thanks you for sending your feedback" })
+            response.json({ "response": "success", "data": "Thank you for sending your feedback" })
+        }
+    })
+})
+
+app.post('/contactUs', function (request, response) {
+    databaseConnectivity.collection('contactCustomerForQuery').insert(request.body, function (error, newResult) {
+        if (error) {
+            response.json({ "response": "failure", "data": "Database is unreachable , Please try again by refreshing" })
+            throw error;
+        } else {
+            response.json({ "response": "success", "data": "Thanks you for contacting us. Our executive will get back to you within 24 hours" })
         }
     })
 })
