@@ -1,158 +1,50 @@
-.diag {
-  position:absolute;
-  // z-index:1;
-  z-index:1;
-  width:100%;
-  top: 0;
-  height: 66%;
-  margin-top:-12%;
-}
-
 .backColor {
-  background-color: rgb(143, 144, 238) !important;
-
+  background-color: white !important;
   font-family: 'Raleway';
 }
 
 .tutorialIcon {
-  margin-top:40%;
-  font-size:7em;
+  margin-top: 40%;
+  font-size: 7em;
 }
 
 .height2 {
-  margin-top:80% !important;
-  font-weight:bold;
-  font-size:1em;
+  font-weight: bold;
+  font-size: 1em;
 }
 
 .print {
-  width:80%;
-  display:block;
+  width: 80%;
   margin: 0 auto;
-  font-size:.9em;
+  font-size: .9em;
 }
 
 .swiper-pagination-bullet-active {
-  background:rgb(255, 153, 0);
+  background: #488aff;
 }
 
 .swiper-pagination {
   bottom: 1% !important;
-  
 }
 
-.CreateAnAccountPlacement{
-  width:80%;
-  display:block;
-   margin: 0 auto;
-  
-  font-size:.9em;
-
+.CreateAnAccountPlacement {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  font-size: .9em;
 }
 
 .bottom_11_Screen {
-  color: white !important;
+  color: #488aff !important;
   text-align: center;
-  margin : auto !important;
-}
-.bottom_22_Screen{
-  color :white !important ;
-  text-align: center;
-  margin : auto !important;
+  margin: auto !important;
+  font-weight: bold;
 }
 
+.bottom_22_Screen {
+  color: #488aff !important;
+  text-align: center;
+  margin: auto !important;
+  font-weight: bold;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// .Slide1Color {
-//   position:absolute;
-//   z-index:1;
-//   width:100%;
-//   top: 0;
-//   height: 100%;
-//   background: #0087df;
-// }
-
-
-// .Slide2Color {
-//   position:absolute;
-//   z-index:1;
-//   width:100%;
-//   top: 0;
-//   height: 100%;
-//   background: #5bbbfb;
-// }
-
-
-// .Slide3Color {
-//   position:absolute;
-//   z-index:1;
-//   width:100%;
-//   top: 0;
-//   height: 100%;
-//   background: #005a96;
-// }
-
-// ion-icon {
-//   margin-top:-150%;
-//   font-size:7em;
-// }
-
-// h2 {
-//   margin-top:10% !important;
-//   font-weight:bold;
-//   font-size:1em;
-// }
-
-// p {
-//   width:80%;
-//   display:block;
-//   margin: 0 auto;
-//   font-size:.9em;
-// }
-
-// .swiper-pagination-bullet-active {
-//   background:#C400FF;
-// }
-
-// .swiper-pagination {
-//   bottom: 12% !important;
-// }
-
-// #skip {
-//   position:absolute;
-//   bottom: 20px;
-//   width:100%;
-//   background: none !important;
-//   text-align: center;
-//   cursor: pointer;
-//   z-index: 5;
-// }
-
-// .CreateAnAccountPlacement{
-//   width: 50%;
-//     float: right;
-//     margin-right: -7px;
-//     background-color: white;
-//     color:#0087df;
-
-// }

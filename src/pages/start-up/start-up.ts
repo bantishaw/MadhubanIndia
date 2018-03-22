@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, MenuController } from 'ionic-angular';
 import { TutorialPage } from '../tutorial/tutorial';
 
 @IonicPage()
@@ -9,7 +9,8 @@ import { TutorialPage } from '../tutorial/tutorial';
 })
 export class StartUpPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,
+    private menu: MenuController) {
   }
 
   ionViewDidLoad() {
@@ -18,6 +19,14 @@ export class StartUpPage {
       this.navCtrl.push(TutorialPage);
     }, 3000);
 
+  }
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
   }
 
 }

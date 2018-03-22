@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController, MenuController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { User } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
@@ -16,7 +16,9 @@ export class LoginPage {
   existingUser: any;
   email: string;
   password: string;
-  constructor(public navCtrl: NavController,
+  constructor(
+    private menu: MenuController,
+    public navCtrl: NavController,
     public user: User,
     public toastCtrl: ToastController,
     public translateService: TranslateService,
@@ -24,6 +26,14 @@ export class LoginPage {
     public http: Http,
     public loadingCtrl: LoadingController) { }
 
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
+  
   doLogin() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');

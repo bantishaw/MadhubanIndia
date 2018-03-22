@@ -24,7 +24,6 @@ import { ListMasterPage } from '../pages/list-master/list-master';
 import { TabsPage } from '../pages/tabs/tabs';
 import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { Geolocation } from '@ionic-native/geolocation';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
@@ -73,9 +72,7 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot(),
-    BrowserAnimationsModule
-  ],
+    IonicStorageModule.forRoot()  ],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,

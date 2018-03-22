@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController, MenuController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { Http } from '@angular/http';
-import {LoginPage} from '../login/login'
+import { LoginPage } from '../login/login'
 
 @IonicPage()
 @Component({
@@ -18,12 +18,21 @@ export class ForgtoPasswordPage {
   reNewPassword: any;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public apiProvider: Api, public http: Http, public toastCtrl: ToastController,
-    public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController,
+    private menu: MenuController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ForgtoPasswordPage');
     this.showForgotPage = 0;
     console.log(typeof this.showForgotPage, this.showForgotPage)
+  }
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
   }
 
   forgotPassword() {

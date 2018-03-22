@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { IonicPage, NavController, ToastController, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, ToastController, LoadingController, MenuController } from 'ionic-angular';
 import { MainPage } from '../pages';
 import { Api } from '../../providers/providers';
 import { Http } from '@angular/http';
@@ -23,7 +23,16 @@ export class SignupPage {
     public toastCtrl: ToastController,
     public translateService: TranslateService,
     public http: Http,
-    public loadingCtrl: LoadingController) { }
+    public loadingCtrl: LoadingController,
+    private menu: MenuController) { }
+
+  ionViewDidEnter() {
+    this.menu.swipeEnable(false);
+  }
+
+  ionViewWillLeave() {
+    this.menu.swipeEnable(true);
+  }
 
   doSignup() {
     var account = {
@@ -34,7 +43,6 @@ export class SignupPage {
       Confirmpassword: this.ConfirmSignUpPassword,
       phoneNumber: this.signUpPhone
     }
-    console.log(typeof this.signUpPhone.length, this.signUpPhone.length)
     var nameValidator = new RegExp("^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$");
     var emailValidator = new RegExp("^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$")
     // var passwordValidator = new RegExp("(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=])(?=\\S+$).{8,}")
