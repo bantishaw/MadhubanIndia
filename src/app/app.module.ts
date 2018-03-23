@@ -71,7 +71,7 @@ export function provideSettings(storage: Storage) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
     IonicStorageModule.forRoot()  ],
   bootstrap: [IonicApp],
   entryComponents: [

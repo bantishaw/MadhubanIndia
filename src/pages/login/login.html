@@ -2,7 +2,6 @@
 </ion-header>
 
 <ion-content class="backgroundstyle">
-  <ion-footer style="margin-bottom:20px">
   <h2 class="logInPlacement">Log In</h2>
   <ion-label class="resetPlacement" (click)="forgotPassword()">RESET PASSWORD</ion-label>
   <ion-item class="backgroundstyle">
@@ -18,9 +17,8 @@
   <div padding>
     <button ion-button color="primary" class="boxPlacement" block (click)="doLogin()">GET STARTED</button>
   </div>
-  <ion-item class="backgroundstyle" style="margin-left:50px">
+  <ion-item class="backgroundstyle" style="bottom:0;position: absolute;">
     <p class="bottomScreen">Don't have an account? </p>
     <p class="bottom2Screen" (click)="newUserRegister()">Sign Up</p>
   </ion-item>
-</ion-footer>
 </ion-content>

@@ -1,41 +1,39 @@
 <ion-header>
-    <ion-navbar>
-        <button ion-button menuToggle>
-            <ion-icon name="menu"></ion-icon>
-        </button>
-        <ion-title>Contact Us</ion-title>
-    </ion-navbar>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Contact Us</ion-title>
+  </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-footer style="margin-bottom: 15%;">
-        <h6 class="heading">Get in touch with us !!</h6>
-        <p class="subHeading">Please fill out this form with your query. One of our executive will reach you shortly.
-        </p>
+  <h6 class="heading">Get in touch with us !!</h6>
+  <p class="subHeading">Please fill out this form with your query. One of our executive will reach you shortly.
+  </p>
 
-        <ion-item>
-            <ion-label floating>Name</ion-label>
-            <ion-input type="text" [(ngModel)]="name" class="showInputBorder"></ion-input>
-        </ion-item>
+  <ion-item>
+    <ion-label floating>Name</ion-label>
+    <ion-input type="text" [(ngModel)]="name" class="showInputBorder"></ion-input>
+  </ion-item>
 
-        <ion-item>
-            <ion-label floating>Email Address</ion-label>
-            <ion-input type="text" [(ngModel)]="emailId" class="showInputBorder"></ion-input>
-        </ion-item>
+  <ion-item>
+    <ion-label floating>Email Address</ion-label>
+    <ion-input type="text" [(ngModel)]="emailId" class="showInputBorder"></ion-input>
+  </ion-item>
 
-        <ion-item>
-            <ion-label floating>Mobile Number (Optional)</ion-label>
-            <ion-input type="number" [(ngModel)]="mobileNumber" class="showInputBorder"></ion-input>
-        </ion-item>
+  <ion-item>
+    <ion-label floating>Mobile Number (Optional)</ion-label>
+    <ion-input type="number" [(ngModel)]="mobileNumber" class="showInputBorder"></ion-input>
+  </ion-item>
 
-        <ion-item>
-            <ion-label floating>Query</ion-label>
-            <ion-textarea type="text" [(ngModel)]="query" class="showInputBorder"></ion-textarea>
-        </ion-item>
+  <ion-item>
+    <ion-label floating>Query</ion-label>
+    <ion-textarea type="text" [(ngModel)]="query" class="showInputBorder"></ion-textarea>
+  </ion-item>
 
-        <div padding>
-            <button ion-button color="primary" block (click)="submitQuery()">SUBMIT</button>
-        </div>
-        <ion-label floating class="showInputBorder" style="width:50%;margin:auto;"></ion-label>
-    </ion-footer>
+  <div padding>
+    <button ion-button color="primary" block (click)="submitQuery()">SUBMIT</button>
+  </div>
+  <ion-label floating class="showInputBorder" style="width:50%;margin:auto;"></ion-label>
 </ion-content>
