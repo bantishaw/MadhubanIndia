@@ -9,5 +9,28 @@ page-send-feedback {
     width: 100%;
     border: 1px solid #a8a8a8a8;
   }
+  .heading {
+    font-weight: bold;
+    color : #30426a;
+  }
+  .subHeading12 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  .subhead{
+    font-family: sans-serif,Helvetica,Arial;
+    font-size: 1.5rem !important;
+    font-weight: bold;
+  }
+
+  .tag{
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+  }
 }
 

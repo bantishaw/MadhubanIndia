@@ -2,23 +2,27 @@
 
 .catergory {
   text-align: center;
-  color: rgba(0, 0, 0, 0.7);
+  color: #fff;
   font-size: 16px;
   font-family: cursive;
-  font-weight: bold;
 }
 
 .listStyle {
   border-bottom: 1px solid #d2d2d2;
   height: 1px;
   font-size: 13px;
-  color: #999
+  color: #fff;
+  background-color:#30426a;
 }
 
 .versionPosition {
     position: absolute;
     font-size: 13px;
-    color: #999;
+    color: #fff;
     bottom: 0;
     margin-left: 26%;
+}
+
+.wholebackground{
+  background-color:#30426a;
 }

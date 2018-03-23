@@ -1,16 +1,22 @@
 page-contact-us {
   .heading {
     font-weight: bold;
-    margin-top: 10% !important;
-    margin-left: 5%;
+    color : #30426a;
   }
   .textSize {
     height: 60px;
   }
   .subHeading {
-    color: #a8a8a8;
-    font-size: 12px;
-    margin-left: 5%;
+    font-size: 13px;
+    font-weight: bold;
+    margin-top: 30px;
+    letter-spacing: 0.5px;
+  }
+
+  .subhead{
+    font-family: sans-serif,Helvetica,Arial;
+    font-size: 1.5rem !important;
+    font-weight: bold;
   }
 }
 
