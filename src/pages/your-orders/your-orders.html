@@ -1,21 +1,38 @@
-<!--
-  Generated template for the YourOrdersPage page.
-
-  See http://ionicframework.com/docs/components/#navigation for more info on
-  Ionic pages and navigation.
--->
 <ion-header>
-
   <ion-navbar>
-      <button ion-button menuToggle>
-          <ion-icon name="menu"></ion-icon>
-        </button>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
     <ion-title>My Orders</ion-title>
   </ion-navbar>
-
 </ion-header>
 
+<ion-content>
+  <div *ngFor="let item of ordersObject">
+    <ion-card *ngFor="let displayItems of item.myOrders">
 
-<ion-content padding>
+      <ion-card-header>
+        <h2 class="orderStyle">ORDER ID : {{displayItems.order_id}}</h2>
+        <p class="dateStyle">Ordered on : {{displayItems.date_of_order}}</p>
+      </ion-card-header>
 
+      <ion-card-content style="border-bottom:1px solid #999">
+          <p class="dateStyle"> Total Amount : {{displayItems.total_amount}}</p>
+
+        <ion-row style="margin-left: -16px;">
+          <ion-col>
+            <ion-icon md="md-square" color="secondary" style="font-size: 12px;margin-left: 5%;">
+              {{displayItems.OrderStatus}}
+            </ion-icon>
+          </ion-col>
+        </ion-row>
+      </ion-card-content>
+
+      <div >
+          <h4 class="showMoreStyle">show more</h4>
+      </div>
+
+
+    </ion-card>
+  </div>
 </ion-content>
