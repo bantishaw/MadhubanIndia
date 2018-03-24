@@ -26,3 +26,18 @@
 .wholebackground{
   background-color:#488aff;
 }
+.toolbar-background-md {
+  border-color: #b2b2b2;
+  background: #f8f8f8;
+  background-color: #488aff;
+}
+.toolbar-title-md {
+  padding: 0 12px;
+  font-size: 2rem;
+  font-weight: 500;
+  color: white;
+}
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+  color: white;
+  background-color: transparent;
+}
