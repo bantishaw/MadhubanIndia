@@ -8,40 +8,20 @@
 
 </ion-header>
 
-<ion-content >
-    
-  <ion-list>
-
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/Car.jpg">
-      </ion-avatar>
-      <h2>Car-Decoration </h2>
-      <p>Service</p>
-      <button ion-button color="primary" style="margin-right: 1px;margin-top: -29px;" class="BookServicePlacement" block (click)="processRequest()">Book</button>
-    </ion-item>
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/WaterCane.jpg">
-      </ion-avatar>
-      <h2>Water Can Delivery</h2>
-      <p>Service</p>
-      <button ion-button color="primary" style="margin-right: 1px;margin-top: -29px;" class="BookServicePlacement" block (click)="processRequest()">Book</button>
-    </ion-item>
-
-
-    <ion-item>
-      <ion-avatar item-start>
-        <img src="assets/img/mehndi.jpg">
-      </ion-avatar>
-      <h2>Mehndi </h2>
-      <p>Home-Service</p>
-      <button ion-button color="primary" style="margin-right: 1px;margin-top: -29px;" class="BookServicePlacement" block (click)="processRequest()">Book</button>
-    </ion-item>
-
-  </ion-list>
-
+<ion-content class="card-background-page">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content pullingText="Pull to refresh" refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 col-md-4 col-xl-93 *ngFor="let showItems of homeItemsDecorations">
+        <ion-card style="width:100%" (click)="processRequest()">
+          <img [src]="showItems.img_path" />
+          <div class="card-title">{{showItems.service_name}}</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
 </ion-content>

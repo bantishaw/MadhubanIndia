@@ -49,6 +49,7 @@ export function provideSettings(storage: Storage) {
 
 @NgModule({
   declarations: [
+    HomePage, 
     MyApp,
     AboutUsPage,
     YourOrdersPage,
@@ -59,7 +60,7 @@ export function provideSettings(storage: Storage) {
     LoginPage, 
     SignupPage, 
     ListMasterPage
-
+    
   ],
   imports: [
     BrowserModule,
@@ -77,6 +78,7 @@ export function provideSettings(storage: Storage) {
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
+    HomePage,
     AboutUsPage,
     YourOrdersPage,
     ContactUsPage,
