@@ -8,34 +8,37 @@
 </ion-header>
 
 <ion-content>
-  <div *ngFor="let item of ordersObject">
-    <ion-card *ngFor="let displayItems of item.myOrders">
+  <div *ngIf="!firstUserStatus">
+    <div *ngFor="let item of ordersObject">
+      <ion-card *ngFor="let displayItems of item.myOrders">
 
-      <ion-card-header>
-        <h2 class="orderStyle">ORDER ID : {{displayItems.order_id}}</h2>
-        <p class="dateStyle">Ordered on : {{displayItems.date_of_order}}</p>
-      </ion-card-header>
+        <ion-card-header>
+          <h2 class="orderStyle">ORDER ID : {{displayItems.order_id}}</h2>
+          <p class="dateStyle">Ordered on : {{displayItems.date_of_order}}</p>
+        </ion-card-header>
 
-      <ion-card-content style="border-bottom:1px solid #999">
-        <p class="dateStyle"> Total Amount : {{displayItems.total_amount}}</p>
-        <p class="dateStyle">Amount Status : {{displayItems.amount_status}}</p>
-        <div *ngFor="let fruitsDescrition of displayItems.fruits_order_descriptiion">
-          <p class="dateStyle">Items Ordered: {{fruitsDescrition.fruit_name}}</p>
-        </div>
-        <ion-row style="margin-left: -16px;">
-          <ion-col>
-            <ion-icon md="md-square" color="secondary" style="font-size: 12px;margin-left: 5%;">
-              {{displayItems.OrderStatus}}
-            </ion-icon>
-          </ion-col>
-        </ion-row>
-      </ion-card-content>
+        <ion-card-content style="border-bottom:1px solid #999">
+          <p class="dateStyle"> Total Amount : {{displayItems.total_amount}}</p>
+          <p class="dateStyle">Amount Status : {{displayItems.amount_status}}</p>
+          <div *ngFor="let fruitsDescrition of displayItems.fruits_order_descriptiion">
+            <p class="dateStyle">Items Ordered: {{fruitsDescrition.fruit_name}}</p>
+          </div>
+          <ion-row style="margin-left: -16px;">
+            <ion-col>
+              <ion-icon md="md-square" color="secondary" style="font-size: 12px;margin-left: 5%;">
+                {{displayItems.OrderStatus}}
+              </ion-icon>
+            </ion-col>
+          </ion-row>
+        </ion-card-content>
 
-      <div >
+        <div>
           <h4 class="showMoreStyle">show more</h4>
-      </div>
-
-
-    </ion-card>
+        </div>
+      </ion-card>
+    </div>
+  </div>
+  <div *ngIf="firstUserStatus" style="display:inline-flex;height:400px;">
+    <div  class="fontStyle">{{firstUserStatus}}</div>
   </div>
 </ion-content>

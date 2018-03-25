@@ -13,7 +13,7 @@ import { LoginPage } from '../login/login'
 export class YourOrdersPage {
   ordersObject: any[];
   dataObject: any;
-
+  firstUserStatus : string;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public apiProvider: Api, public toastCtrl: ToastController, public loadingCtrl: LoadingController,
     public http: Http) {
@@ -39,21 +39,10 @@ export class YourOrdersPage {
       } else {
         loading.dismiss();
         setTimeout(() => {
-          this.toastMessage("Please check your internet connectivity")
+          this.firstUserStatus = this.dataObject.data;
         }, 0)
       }
     })
 
   }
-
-  toastMessage(message: string) {
-    let toast = this.toastCtrl.create({
-      message: message,
-      duration: 3000,
-      position: 'middle',
-      cssClass: 'showToast'
-    });
-    toast.present();
-  }
-
 }
