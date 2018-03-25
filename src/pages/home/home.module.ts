@@ -8,6 +8,6 @@ import { HomePage } from './home';
   ],
   imports: [
     IonicPageModule.forChild(HomePage),
-  ],
+  ]
 })
 export class HomePageModule {}

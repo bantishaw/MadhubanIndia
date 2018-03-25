@@ -53,11 +53,12 @@ export function provideSettings(storage: Storage) {
     AboutUsPage,
     YourOrdersPage,
     ContactUsPage,
-    HomePage,
     InboxPage,
     SendFeedbackPage,
     TutorialPage,
-    LoginPage, SignupPage
+    LoginPage, 
+    SignupPage, 
+    ListMasterPage
 
   ],
   imports: [
@@ -79,11 +80,12 @@ export function provideSettings(storage: Storage) {
     AboutUsPage,
     YourOrdersPage,
     ContactUsPage,
-    HomePage,
     InboxPage,
     SendFeedbackPage,
     TutorialPage,
-    LoginPage, SignupPage
+    LoginPage, 
+    SignupPage, 
+    ListMasterPage
   ],
   providers: [
     Api,

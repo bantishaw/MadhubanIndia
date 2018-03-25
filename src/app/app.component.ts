@@ -30,9 +30,9 @@ export class MyApp {
       this.splashScreen.hide();
     });
     this.pages = [
-      { title: 'Home', component: MainPage },
+      { title: 'Home', component: HomePage },
       { title: 'Inbox', component: InboxPage },
-      { title: 'My Orders', component: YourOrdersPage },
+      { title: 'Your Orders', component: YourOrdersPage },
       { title: 'Send Feedback', component: SendFeedbackPage },
       { title: 'About Us', component: AboutUsPage },
       { title: 'Contact Us', component: ContactUsPage }
