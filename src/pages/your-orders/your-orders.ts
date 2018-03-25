@@ -36,11 +36,14 @@ export class YourOrdersPage {
         setTimeout(() => {
           this.ordersObject = this.dataObject.data;
         }, 0)
-      } else{
-        this.toastMessage("Please check your internet connectivity")
+      } else {
+        loading.dismiss();
+        setTimeout(() => {
+          this.toastMessage("Please check your internet connectivity")
+        }, 0)
       }
     })
-      
+
   }
 
   toastMessage(message: string) {

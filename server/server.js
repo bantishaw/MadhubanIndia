@@ -250,7 +250,7 @@ app.post('/getMyOrders', function (request, response) {
             console.log(error)
             response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
         } else {
-            response.json({ "response": "succes", "data": result })
+            response.json({ "response": "success", "data": result })
         }
     })
 })
