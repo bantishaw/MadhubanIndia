@@ -17,8 +17,11 @@
       </ion-card-header>
 
       <ion-card-content style="border-bottom:1px solid #999">
-          <p class="dateStyle"> Total Amount : {{displayItems.total_amount}}</p>
-
+        <p class="dateStyle"> Total Amount : {{displayItems.total_amount}}</p>
+        <p class="dateStyle">Amount Status : {{displayItems.amount_status}}</p>
+        <div *ngFor="let fruitsDescrition of displayItems.fruits_order_descriptiion">
+          <p class="dateStyle">Items Ordered: {{fruitsDescrition.fruit_name}}</p>
+        </div>
         <ion-row style="margin-left: -16px;">
           <ion-col>
             <ion-icon md="md-square" color="secondary" style="font-size: 12px;margin-left: 5%;">

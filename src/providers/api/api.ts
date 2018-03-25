@@ -109,6 +109,19 @@ export class Api {
     })
   }
 
+  getMyOrders(queryDoc){
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post('http://localhost:8080/getMyOrders', queryDoc, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          console.log(err)
+          reject(err)
+        })
+    })
+  }
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {

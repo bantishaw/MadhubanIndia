@@ -242,5 +242,17 @@ app.post('/contactUs', function (request, response) {
         }
     })
 })
+
+app.post('/getMyOrders', function (request, response) {
+    console.log("request.body", request.body)
+    databaseConnectivity.collection('UserOrders').find(request.body).toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            response.json({ "response": "succes", "data": result })
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080")
