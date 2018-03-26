@@ -34,10 +34,5 @@ export class HomePage {
       }
     ]
   }
-
-  processRequest() {
-    console.log('in processRequest ');
-    this.navCtrl.push(ListMasterPage);
-  }
-
+  
 }

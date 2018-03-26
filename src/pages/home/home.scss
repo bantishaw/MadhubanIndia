@@ -16,9 +16,26 @@ page-home {
 
   .card-title {
     position: absolute;
-    top: 50%;
-    font-size: 16px;
+    top: 75%;
+    font-size: 15px;
     width: 100%;
     color: #fff;
+    font-weight: bold;
+  }
+
+  .cardStyle {
+    width:100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    max-height: 100px;
+  }
+
+  .pHeading{
+    color: #999;
+    font-size: 11px;
+    margin-left: 5px;
+    margin-bottom: 0px;
+    font-family: sans-serif;
+    margin-top: 2px;
   }
 }
