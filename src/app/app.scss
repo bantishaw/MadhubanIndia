@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
-
 .catergory {
   text-align: center;
   color: #fff;
@@ -12,36 +11,64 @@
   height: 1px;
   font-size: 13px;
   color: #fff;
-  background-color:#488aff;
+  background-color: #488aff;
 }
 
 .versionPosition {
-    position: absolute;
-    font-size: 13px;
-    color: #fff;
-    bottom: 0;
-    margin-left: 26%;
+  position: absolute;
+  font-size: 13px;
+  color: #fff;
+  bottom: 0;
+  margin-left: 26%;
 }
 
-.wholebackground{
-  background-color:#488aff;
+.wholebackground {
+  background-color: #488aff;
 }
+
 .toolbar-background-md {
   border-color: #b2b2b2;
   background: #f8f8f8;
   background-color: #488aff;
 }
+
 .toolbar-title-md {
   padding: 0 12px;
   font-size: 2rem;
   font-weight: 500;
   color: white;
 }
-.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+
+.bar-button-default-md,
+.bar-button-clear-md-default,
+.bar-button-md-default {
   color: white;
   background-color: transparent;
 }
 
-.titleStyleAll{
+.titleStyleAll {
   font-family: cursive;
+}
+
+.toolbar-title-ios {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 600;
+  color: white;
+  pointer-events: auto;
+}
+
+.bar-button-default-ios,
+.bar-button-default.bar-button-ios-default,
+.bar-button-clear-ios-default {
+  color: white;
+  background-color: transparent;
+}
+
+.header-ios .toolbar-background-ios,
+.footer-ios .toolbar-background-ios {
+  border-style: solid;
+  border-color: rgba(0, 0, 0, 0.3);
+  background-color: #488aff;
+  color: white;
 }
