@@ -4,6 +4,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title class="titleStyleAll">My Orders</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only>
+        <ion-icon name="cart"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -39,6 +44,6 @@
     </div>
   </div>
   <div *ngIf="firstUserStatus" style="display:inline-flex;height:400px;">
-    <div  class="fontStyle">{{firstUserStatus}}</div>
+    <div class="fontStyle">{{firstUserStatus}}</div>
   </div>
 </ion-content>

@@ -27,6 +27,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
+import {ShowContentPage} from '../pages/show-content/show-content';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -58,7 +59,8 @@ export function provideSettings(storage: Storage) {
     TutorialPage,
     LoginPage, 
     SignupPage, 
-    ListMasterPage
+    ListMasterPage,
+    ShowContentPage
     
   ],
   imports: [
@@ -85,7 +87,8 @@ export function provideSettings(storage: Storage) {
     TutorialPage,
     LoginPage, 
     SignupPage, 
-    ListMasterPage
+    ListMasterPage,
+    ShowContentPage
   ],
   providers: [
     Api,

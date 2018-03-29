@@ -1,25 +1,46 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the AboutUsPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
+import { Http } from '@angular/http';
+import { Api } from '../../providers/providers';
+import { ShowContentPage } from '../show-content/show-content';
 @IonicPage()
 @Component({
   selector: 'page-about-us',
   templateUrl: 'about-us.html',
 })
 export class AboutUsPage {
+  About_Page_Headings: any;
+  displayAboutUs: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, public navParams: NavParams,
+    public apiProvider: Api, public toastCtrl: ToastController, public loadingCtrl: LoadingController,
+    public http: Http) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad AboutUsPage');
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      cssClass: "wrapper"
+    });
+    loading.present();
+    this.apiProvider.getAboutUsPage().then((result) => {
+      this.About_Page_Headings = result;
+      if (this.About_Page_Headings.response === "success") {
+        console.log(this.About_Page_Headings);
+        loading.dismiss();
+        setTimeout(() => {
+          this.displayAboutUs = this.About_Page_Headings.data[0].aboutUsContents
+        }, 0)
+      }
+    })
+
   }
+
+  showContent(getPageInfo) {
+    console.log(getPageInfo.content)
+    this.navCtrl.push(ShowContentPage, { content: getPageInfo });
+  }
+
 
 }

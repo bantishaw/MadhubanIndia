@@ -33,8 +33,8 @@ export class Api {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/getLogin', userObject, { headers: headers })
-        .subscribe(res => {
-          this.settingsInformation = res.json();
+      .subscribe(res => {
+        this.settingsInformation = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err);
@@ -122,6 +122,20 @@ export class Api {
         })
     })
   }
+
+  getAboutUsPage() {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.get('http://localhost:8080/getAboutUsMethod', { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err)
+        });
+    });
+  }
+
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
@@ -136,8 +150,11 @@ export class Api {
         reqOpts.params.set(k, params[k]);
       }
     }
+    console.log("this is url "+this.url);
 
-    return this.http.get(this.url + '/' + endpoint, reqOpts);
+    return this.http.get(this.url,reqOpts);
+
+    // return this.http.get(this.url + '/' + endpoint, reqOpts);
   }
 
   post(endpoint: string, body: any, reqOpts?: any) {

@@ -34,7 +34,7 @@ export class MyApp {
       { title: 'Inbox', component: InboxPage },
       { title: 'Your Orders', component: YourOrdersPage },
       { title: 'Send Feedback', component: SendFeedbackPage },
-      { title: 'About Us', component: AboutUsPage },
+      { title: 'About FreshPool', component: AboutUsPage },
       { title: 'Contact Us', component: ContactUsPage }
     ];
     this.initTranslate();
