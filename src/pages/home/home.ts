@@ -9,7 +9,7 @@ import { ListMasterPage } from '../list-master/list-master';
   templateUrl: 'home.html',
 })
 export class HomePage {
-  homeItemsDecorations : any;
+  homeItemsDecorations: any;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
@@ -17,22 +17,26 @@ export class HomePage {
     console.log('ionViewDidLoad HomePage');
     this.homeItemsDecorations = [
       {
-        "img_path" : "assets/img/fruits.jpg",
-        "service_name" : "Fruits"
+        "img_path": "assets/img/fruits.jpg",
+        "service_name": "Fruits"
       },
       {
-        "img_path" : "assets/img/WaterCan.jpg",
-        "service_name" : "Water Can"
+        "img_path": "assets/img/WaterCan.jpg",
+        "service_name": "Water Can"
       },
       {
-        "img_path" : "assets/img/mehendi.jpg",
-        "service_name" : "Mehendi"
+        "img_path": "assets/img/mehendi.jpg",
+        "service_name": "Mehendi"
       },
       {
-        "img_path" : "assets/img/carDecoration.jpg",
-        "service_name" : "Vehicle Decoration"
+        "img_path": "assets/img/carDecoration.jpg",
+        "service_name": "Vehicle Decoration"
       }
     ]
   }
-  
+
+  processRequest() {
+    console.log('in processRequest ');
+    this.navCtrl.push(ListMasterPage);
+  }
 }
