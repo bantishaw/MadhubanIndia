@@ -1,3 +1,35 @@
-page-list-master {
+page-list-master {}
 
+.cardNewStyle {
+  min-width: 50%;
+  max-width: 50%;
+  padding: 0px;
+}
+
+.cardHeight {
+  min-height: 90%;
+  max-height: 90%;
+  padding: 0px;
+}
+
+.cardTitle {
+  font-size: 14px;
+  line-height: 0;
+  margin: 0px;
+  padding: 5px;
+}
+
+.cardContentTitle {
+  font-size: 14px;
+  line-height: 0;
+  padding: 5px;
+  text-align: center;
+}
+
+.printText {
+  font-size: 12px !important;
+  font-weight: normal !important;
+  margin-bottom: -7px !important;
+  margin-top: 3px !important;
+  text-align: center !important;
 }

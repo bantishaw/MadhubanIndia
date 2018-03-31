@@ -2,41 +2,35 @@
   <ion-navbar>
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
-      </button>
-      <ion-title class="titleStyleAll">Menu</ion-title>
+    </button>
+    <ion-title class="titleStyleAll">Menu</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
       </button>
-    </ion-buttons>  
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content>
   <ion-refresher (ionRefresh)="doRefresh($event)">
-      <ion-refresher-content
-          pullingText="Pull to refresh"
-          refreshingText="Refreshing...">
-      </ion-refresher-content>
+    <ion-refresher-content pullingText="Pull to refresh" refreshingText="Refreshing...">
+    </ion-refresher-content>
   </ion-refresher>
 
-  <ion-list>
-    <ion-item-sliding *ngFor="let item of currentItems">
-      <button ion-item (click)="openItem(item)">
-        <ion-avatar item-start>
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col *ngFor="let item of currentItems" class="cardNewStyle">
+        <ion-card (click)="openItem(item)" class="cardHeight">
           <img [src]="item.profilePic" />
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>{{item.about}}</p>
-        <ion-note item-end *ngIf="item.note">{{item.note}}</ion-note>
-      </button>
+          <ion-card-content class="cardContentTitle">
+            <ion-card-title class="cardTitle">{{item.name}}</ion-card-title>
+            <p class="printText">Rate : {{item.rate}}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
 
-      <ion-item-options>
-        <button ion-button color="danger" (click)="deleteItem(item)">
-          {{ 'DELETE_BUTTON' | translate }}
-        </button>
-      </ion-item-options>
-    </ion-item-sliding>
-  </ion-list>
+  </ion-grid>
 </ion-content>
