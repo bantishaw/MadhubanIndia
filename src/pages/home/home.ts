@@ -35,8 +35,8 @@ export class HomePage {
     ]
   }
 
-  processRequest() {
-    console.log('in processRequest ');
+  processRequest(serviceName) {
+    console.log('in processRequest ',serviceName);
     this.navCtrl.push(ListMasterPage);
   }
 }
