@@ -267,7 +267,7 @@ app.get('/getAboutUsMethod', function (request, response) {
             if (result.length > 0) {
                 response.json({ "response": "success", "data": result })
             } else {
-                response.json({ "response": "failure", "data": "No orders placed yet" })
+                response.json({ "response": "failure", "data": "Not able to access this page. Please try later" })
             }
         }
     })

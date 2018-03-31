@@ -15,10 +15,12 @@
 
 <ion-content>
   <ion-list>
-    <button style="margin-left: 13px;" class="buttonDisplay" ion-item *ngFor="let item of displayAboutUs"
-    (click)="showContent(item)">
+    <button style="margin-left: 13px;" class="buttonDisplay" ion-item *ngFor="let item of displayAboutUs" (click)="showContent(item)">
       {{ item.keyField}}
     </button>
-
   </ion-list>
+
+  <div *ngIf="showFailureMessage" style="height: 400px;display: inline-flex;">
+    <div class="showTextStyle">{{About_Page_Headings.data}}</div>
+  </div>
 </ion-content>

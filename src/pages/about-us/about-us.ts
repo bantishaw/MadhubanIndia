@@ -11,7 +11,7 @@ import { ShowContentPage } from '../show-content/show-content';
 export class AboutUsPage {
   About_Page_Headings: any;
   displayAboutUs: any;
-
+  showFailureMessage : boolean = false;
   constructor(
     public navCtrl: NavController, public navParams: NavParams,
     public apiProvider: Api, public toastCtrl: ToastController, public loadingCtrl: LoadingController,
@@ -27,10 +27,14 @@ export class AboutUsPage {
     this.apiProvider.getAboutUsPage().then((result) => {
       this.About_Page_Headings = result;
       if (this.About_Page_Headings.response === "success") {
-        console.log(this.About_Page_Headings);
         loading.dismiss();
         setTimeout(() => {
           this.displayAboutUs = this.About_Page_Headings.data[0].aboutUsContents
+        }, 0)
+      } else{
+        loading.dismiss();
+        setTimeout(() => {
+          this.showFailureMessage = true;
         }, 0)
       }
     })
@@ -38,9 +42,7 @@ export class AboutUsPage {
   }
 
   showContent(getPageInfo) {
-    console.log(getPageInfo.content)
     this.navCtrl.push(ShowContentPage, { content: getPageInfo });
   }
-
 
 }
