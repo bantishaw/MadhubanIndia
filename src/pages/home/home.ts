@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ListMasterPage } from '../list-master/list-master';
-
+import { Http, Headers } from '@angular/http';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -10,33 +11,33 @@ import { ListMasterPage } from '../list-master/list-master';
 })
 export class HomePage {
   homeItemsDecorations: any;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  homeMenuService : any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
+    public http: Http,
+    public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad HomePage');
-    this.homeItemsDecorations = [
-      {
-        "img_path": "assets/img/fruits.jpg",
-        "service_name": "Fruits"
-      },
-      {
-        "img_path": "assets/img/WaterCan.jpg",
-        "service_name": "Water Can"
-      },
-      {
-        "img_path": "assets/img/mehendi.jpg",
-        "service_name": "Mehendi"
-      },
-      {
-        "img_path": "assets/img/carDecoration.jpg",
-        "service_name": "Vehicle Decoration"
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      cssClass: "wrapper"
+    });
+    loading.present();
+    this.apiProvider.getHomeMenuService().then((data) => {
+      this.homeMenuService = data;
+      if(this.homeMenuService.response  === "success"){
+        loading.dismiss();
+        setTimeout(() => {
+          this.homeItemsDecorations = this.homeMenuService.data[0].HomeMenuService
+        }, 500);
       }
-    ]
+    })
   }
 
   processRequest(serviceName) {
-    console.log('in processRequest ',serviceName);
+    console.log('in processRequest ', serviceName);
     this.navCtrl.push(ListMasterPage);
   }
 }

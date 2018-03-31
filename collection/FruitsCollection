@@ -1,0 +1,45 @@
+{
+    "_id" : ObjectId("5abfd5816f2fde5332c2f483"),
+    "FruitsNameAndPrices" : [ 
+        {
+            "name" : "Apple",
+            "profilePic" : "assets/img/apple.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Banana",
+            "profilePic" : "assets/img/banana.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Black Grapes",
+            "profilePic" : "assets/img/black_grapes.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Green Grapes",
+            "profilePic" : "assets/img/green_grapes.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Orange",
+            "profilePic" : "assets/img/orange.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Pineapple",
+            "profilePic" : "assets/img/pineapple.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Strawberry",
+            "profilePic" : "assets/img/strawberry.jpg",
+            "rate" : "30/kg"
+        }, 
+        {
+            "name" : "Watermelon",
+            "profilePic" : "assets/img/watermelon.jpg",
+            "rate" : "30/kg"
+        }
+    ]
+}

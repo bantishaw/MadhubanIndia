@@ -1,0 +1,25 @@
+{
+    "_id" : ObjectId("5abfd66c6f2fde5332c2f4e9"),
+    "HomeMenuService" : [ 
+        {
+            "img_path" : "assets/img/fruits.jpg",
+            "service_name" : "Fruits",
+            "collectionName" : "FruitsCollection"
+        }, 
+        {
+            "img_path" : "assets/img/WaterCan.jpg",
+            "service_name" : "Water Can",
+            "collectionName" : "waterCanCollection"
+        }, 
+        {
+            "img_path" : "assets/img/mehendi.jpg",
+            "service_name" : "Mehendi",
+            "collectionName" : "MehendiCollection"
+        }, 
+        {
+            "img_path" : "assets/img/carDecoration.jpg",
+            "service_name" : "Vehicle Decoration",
+            "collectionName" : "VehicleDecorationCollection"
+        }
+    ]
+}

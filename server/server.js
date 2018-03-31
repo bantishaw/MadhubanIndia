@@ -47,6 +47,7 @@ app.get('/userRegistration', function (request, response) {
     })
 })
 
+//method to check the login details of a user
 app.post('/getLogin', function (request, response) {
     databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email, password: request.body.password }).toArray(function (error, result) {
         if (error) {
@@ -61,6 +62,7 @@ app.post('/getLogin', function (request, response) {
     })
 })
 
+// method to store user details on first sign up
 app.post('/newUserSignUp', function (request, response) {
     databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, result) {
         if (error) {
@@ -90,6 +92,8 @@ app.post('/newUserSignUp', function (request, response) {
     })
 })
 
+
+//method for forgot password page
 app.post('/forgotPassword', function (request, response) {
     databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, result) {
         if (error) {
@@ -155,6 +159,8 @@ app.post('/forgotPassword', function (request, response) {
     })
 })
 
+
+//function to activate send mail function
 var sendmail = function (message) {
     // using Promises to make sure all asynchronous call should run properly
     return new Promise(function (resolve, reject) {
@@ -211,6 +217,8 @@ app.post('/getCategoryList', function (request, response) {
     })
 })
 
+
+//method to change the password of a user
 app.post('/saveNewSettingsPassword', function (request, response) {
     databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { password: request.body.password } }, { returnOriginal: false }, function (error, result) {
         if (error) {
@@ -221,6 +229,7 @@ app.post('/saveNewSettingsPassword', function (request, response) {
     })
 })
 
+// method to store the feedback in the Feedback collection
 app.post('/submitFeedback', function (request, response) {
     databaseConnectivity.collection('Feedback').insert(request.body, function (error, newResult) {
         if (error) {
@@ -232,6 +241,7 @@ app.post('/submitFeedback', function (request, response) {
     })
 })
 
+//get the contact us collection for the user to fill in
 app.post('/contactUs', function (request, response) {
     databaseConnectivity.collection('contactCustomerForQuery').insert(request.body, function (error, newResult) {
         if (error) {
@@ -243,6 +253,8 @@ app.post('/contactUs', function (request, response) {
     })
 })
 
+
+//get all the orders of a partcular user
 app.post('/getMyOrders', function (request, response) {
     databaseConnectivity.collection('UserOrders').find(request.body).toArray(function (error, result) {
         if (error) {
@@ -258,6 +270,8 @@ app.post('/getMyOrders', function (request, response) {
     })
 })
 
+
+// get Details of About Us page
 app.get('/getAboutUsMethod', function (request, response) {
     databaseConnectivity.collection('AboutUsPage').find().toArray(function (error, result) {
         if (error) {
@@ -268,6 +282,38 @@ app.get('/getAboutUsMethod', function (request, response) {
                 response.json({ "response": "success", "data": result })
             } else {
                 response.json({ "response": "failure", "data": "Not able to access this page. Please try later" })
+            }
+        }
+    })
+})
+
+//get Menu service list of Home page
+app.get('/getHomePageServiceMenu', function (request, response) {
+    databaseConnectivity.collection('HomePageServiceMenu').find().toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "success", "data": result })
+            } else {
+                response.json({ "response": "failure", "data": "Database is inaccessable. Please try later" })
+            }
+        }
+    })
+})
+
+//method to get the Fruits data from FruitsCollecton
+app.get('/getFruitsCollection', function (request, response) {
+    databaseConnectivity.collection('FruitsCollection').find().toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "success", "data": result })
+            } else {
+                response.json({ "response": "failure", "data": "Database is inaccessable. Please try later" })
             }
         }
     })
