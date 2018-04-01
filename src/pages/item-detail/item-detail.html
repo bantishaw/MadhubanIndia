@@ -11,19 +11,19 @@
 
   <div class="item-detail">
     <h5 class="itemColor">{{keyValue}} : {{item.product}}</h5>
-    <h6 class="itemColor">Price : {{item.rate}}</h6>
+    <h6 class="itemColor">Price : {{item.description}}</h6>
   </div>
 
   <ion-row>
     <h5 class="selectQuantityHeading">Select Quantity</h5>
     <div class="leftIconDiv">
-      <ion-icon md="md-arrow-dropleft" class="leftIcon"></ion-icon>
+      <ion-icon md="md-arrow-dropleft" class="leftIcon" (click)="decreaseQuantity(numberOfItemsOrdered)"></ion-icon>
     </div>
     <div style="margin-left: 5%;">
-      <h5 class="quantity">10</h5>
+      <h5 class="quantity">{{numberOfItemsOrdered}}</h5>
     </div>
     <div class="rightIconDiv">
-      <ion-icon md="md-arrow-dropright" class="rightIcon"></ion-icon>
+      <ion-icon md="md-arrow-dropright" class="rightIcon" (click)="increaseQuantity(numberOfItemsOrdered)"></ion-icon>
     </div>
   </ion-row>
 
