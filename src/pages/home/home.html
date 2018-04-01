@@ -19,9 +19,11 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <div class="col col-50" style="padding:5px;">
-    <img src="assets/img/fruits.jpg" style="width:100%">
-  </div>
+  <ion-slides pager class="slideImagesSize" autoplay="2000" loop="true" speed="1000">
+    <ion-slide *ngFor="let slide of slideData">
+      <img src="{{slide.image}}" />
+    </ion-slide>
+  </ion-slides>
   <ion-item class="noteHeading">
     <ion-label style="font-size:11px;color:white;white-space: normal;">Note : Only Fruits section is availbale for Electronics City. Others services are not started yet. We regret the inconvenience
       caused

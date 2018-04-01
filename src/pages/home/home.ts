@@ -12,6 +12,8 @@ import { Api } from '../../providers/providers';
 export class HomePage {
   homeItemsDecorations: any;
   homeMenuService: any;
+  slideData = [{ image: "assets/img/fruits.jpg" }, { image: "assets/img/Carslide.jpg" },
+  { image: "assets/img/MehndiSlide.jpg" }];
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public http: Http,
     public loadingCtrl: LoadingController) {

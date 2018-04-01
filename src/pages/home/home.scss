@@ -39,4 +39,16 @@ page-home {
     width: 96.5%;
     margin-left: 5px;
   }
+  .slideImagesSize{
+    width: 308px;
+    height: 223px;
+  }
+
+  .swiper-pagination-bullet-active {
+    background: white;
+  }
+  
+  .swiper-pagination {
+    bottom: 1% !important;
+  }
 }
