@@ -5,48 +5,49 @@
             "product" : "Apple",
             "profilePic" : "assets/img/apple.jpg",
             "description" : "Rs 30 per Kg",
-            "rate" : "30"
+            "rate" : 30
         }, 
         {
             "product" : "Banana",
             "profilePic" : "assets/img/banana.jpg",
             "description" : "Rs 20 per Kg",
-            "rate" : "20"
+            "rate" : 20
         }, 
         {
             "product" : "Black Grapes",
             "profilePic" : "assets/img/black_grapes.jpg",
             "description" : "Rs 50 per Kg",
-            "rate" : "50"
+            "rate" : 50
         }, 
         {
             "product" : "Green Grapes",
             "profilePic" : "assets/img/green_grapes.jpg",
             "description" : "Rs 60 per Kg",
-            "rate" : "60"
+            "rate" : 60
         }, 
         {
             "product" : "Orange",
             "profilePic" : "assets/img/orange.jpg",
             "description" : "Rs 30 per Kg",
-            "rate" : "30"
+            "rate" : 30
         }, 
         {
             "product" : "Pineapple",
             "profilePic" : "assets/img/pineapple.jpg",
-            "description" : "Rs 30 per Kg"
+            "description" : "Rs 30 per Kg",
+            "rate" : 90
         }, 
         {
             "product" : "Strawberry",
             "profilePic" : "assets/img/strawberry.jpg",
             "description" : "Rs 30 per Kg",
-            "rate" : "30"
+            "rate" : 30
         }, 
         {
             "product" : "Watermelon",
             "profilePic" : "assets/img/watermelon.jpg",
             "description" : "Rs 30 per Kg",
-            "rate" : "30"
+            "rate" : 30
         }
     ]
 }
