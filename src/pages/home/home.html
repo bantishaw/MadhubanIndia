@@ -33,7 +33,7 @@
     <ion-grid>
       <ion-row style="margin-left: -7px;margin-right: -6px;">
         <ion-col col-6 *ngFor="let showItems of homeItemsDecorations" style="padding:2px">
-          <ion-card class="cardStyle" (click)="processRequest(showItems.service_name)">
+          <ion-card class="cardStyle" (click)="processRequest(showItems)">
             <img [src]="showItems.img_path" />
             <div class="card-title">{{showItems.service_name}}</div>
           </ion-card>

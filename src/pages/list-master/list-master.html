@@ -3,7 +3,7 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title class="titleStyleAll">Menu</ion-title>
+    <ion-title class="titleStyleAll">{{fetchCollection.service_name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="addItem()">
         <ion-icon name="add"></ion-icon>
@@ -31,6 +31,9 @@
         </ion-card>
       </ion-col>
     </ion-row>
-
   </ion-grid>
+
+  <div *ngIf="showDataFailureText" style="height: 400px;display: inline-flex;">
+    <div class="showDatabaseFailure">{{showDataFailureText}}</div>
+  </div>
 </ion-content>

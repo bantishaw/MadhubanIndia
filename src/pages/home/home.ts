@@ -11,7 +11,7 @@ import { Api } from '../../providers/providers';
 })
 export class HomePage {
   homeItemsDecorations: any;
-  homeMenuService : any;
+  homeMenuService: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public http: Http,
     public loadingCtrl: LoadingController) {
@@ -27,7 +27,7 @@ export class HomePage {
     loading.present();
     this.apiProvider.getHomeMenuService().then((data) => {
       this.homeMenuService = data;
-      if(this.homeMenuService.response  === "success"){
+      if (this.homeMenuService.response === "success") {
         loading.dismiss();
         setTimeout(() => {
           this.homeItemsDecorations = this.homeMenuService.data[0].HomeMenuService
@@ -36,8 +36,8 @@ export class HomePage {
     })
   }
 
-  processRequest(serviceName) {
-    console.log('in processRequest ', serviceName);
-    this.navCtrl.push(ListMasterPage);
+  processRequest(serviceDetails) {
+    console.log('in processRequest ', serviceDetails);
+    this.navCtrl.push(ListMasterPage, { menuDetails: serviceDetails });
   }
 }

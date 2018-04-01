@@ -150,11 +150,11 @@ export class Api {
     });
   }
 
-  getFruitsCollection() {
+  getSubMenuItems(subMenuObject) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get('http://localhost:8080/getFruitsCollection', { headers: headers })
+      this.http.post('http://localhost:8080/getSubMenuCollection', subMenuObject, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {

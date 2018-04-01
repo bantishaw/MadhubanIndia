@@ -304,8 +304,8 @@ app.get('/getHomePageServiceMenu', function (request, response) {
 })
 
 //method to get the Fruits data from FruitsCollecton
-app.get('/getFruitsCollection', function (request, response) {
-    databaseConnectivity.collection('FruitsCollection').find().toArray(function (error, result) {
+app.post('/getSubMenuCollection', function (request, response) {
+    databaseConnectivity.collection(request.body.collectionName).find().toArray(function (error, result) {
         if (error) {
             console.log(error)
             response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })

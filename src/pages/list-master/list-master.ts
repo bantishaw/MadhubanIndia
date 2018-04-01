@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, ModalController, NavController } from 'ionic-angular';
-
+import { IonicPage, ModalController, NavController, LoadingController, NavParams } from 'ionic-angular';
 import { Item } from '../../models/item';
 import { Items } from '../../providers/providers';
+import { Http, Headers } from '@angular/http';
+import { Api } from '../../providers/providers';
 
 @IonicPage()
 @Component({
@@ -11,55 +12,38 @@ import { Items } from '../../providers/providers';
 })
 export class ListMasterPage {
   currentItems: Item[];
+  fetchCollection: any;
+  result: any;
+  showDataFailureText: any;
+  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController,
+    public apiProvider: Api, public http: Http, public loadingCtrl: LoadingController,
+    public navParams: NavParams) {
+    this.fetchCollection = navParams.get('menuDetails');
 
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
-    this.currentItems = [
-      {
-        "name": "Apple",
-        "profilePic": "assets/img/apple.jpg",
-        "rate": "30/kg"
-      },
-      {
-        "name": "Banana",
-        "profilePic": "assets/img/banana.jpg",
-        "rate": "30/kg"
-      },
-      {
-        "name": "Black Grapes",
-        "profilePic": "assets/img/black_grapes.jpg",
-        "rate": "30/kg"
-      },
-      {
-        "name": "Green Grapes",
-        "profilePic": "assets/img/green_grapes.jpg",
-        "rate": "30/kg"
-      },
-      {
-        "name": "Orange",
-        "profilePic": "assets/img/orange.jpg",
-        "rate": "30/kg"
-      },
-      {
-        "name": "Pineapple",
-        "profilePic": "assets/img/pineapple.jpg",
-        "rate": "30/kg"
+    let headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      cssClass: "wrapper"
+    });
+    loading.present();
+    this.apiProvider.getSubMenuItems(this.fetchCollection).then((data) => {
+      this.result = data;
+      if (this.result.response === "success") {
+        loading.dismiss();
+        setTimeout(() => {
+          this.currentItems = this.result.data[0].FruitsNameAndPrices
+        }, 0);
+      } else {
+        loading.dismiss();
+        setTimeout(() => {
+          this.showDataFailureText = this.result.data;
+        }, 0);
       }
-      ,
-      {
-        "name": "Strawberry",
-        "profilePic": "assets/img/strawberry.jpg",
-        "rate": "30/kg"
-      },
-      {
-        "name": "Watermelon",
-        "profilePic": "assets/img/watermelon.jpg",
-        "rate": "30/kg"
-      }
-
-    ]
+    })
   }
 
   /**
