@@ -1,0 +1,21 @@
+{
+    "_id" : ObjectId("5abbe485a985a99d06980f18"),
+    "aboutUsContents" : [ 
+        {
+            "keyField" : "About FreshPool",
+            "content" : "\nFreshPool aim is to find suitable professional to provide unorganized services like Car decoration,Water Cane delivery or Mehndi deoration at your door step with the use of advanced technology.Currently we provide following services: \n\n1.Mehndi decoration\n2.Car decoration\n3.Water cane\n4.Fruits delivery\n5.Vehicle service"
+        }, 
+        {
+            "keyField" : "Privacy policy",
+            "content" : "\nLast updadated on 31 March 2018.\nFresh Pool respect your privacy and comitted to protecting it through our complience with this privacy policy.\nThis policy describes:\n -the types of information that we may collect from you when you access or use our website,applications or othere online servces and\n-our practices for collecting ,using ,maintiing,protecting and disclosing that information."
+        }, 
+        {
+            "keyField" : "Terms of Services",
+            "content" : "\nTerms of Use \nThis terms of use was last updated : 31 March 2018.\nFreshPool Technologies Pvt Ltd (FreshPool) primarily operates ,controls and manages the services provided to it from its corporate office at Shree Sai Ganesh Paying Guest KIADB Industrial Area Phase - II, Electronic City, Bengaluru, Karnataka 560100.\n\nA.Acceptance of Terms:\n\n\nYOU SPECIFICALLY AGREE THAT BY USING THE WEBSITE, YOU ARE AT LEAST 18 YEARS OF AGE AND YOU ARE COMPETENT UNDER LAW TO ENTER INTO A LEGALLY BINDING AND ENFORCEABLE CONTRACT."
+        }, 
+        {
+            "keyField" : "Share FreshPool",
+            "content" : " ShareFreshPool"
+        }
+    ]
+}
