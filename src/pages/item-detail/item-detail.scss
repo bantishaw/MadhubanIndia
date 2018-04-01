@@ -1,14 +1,48 @@
-page-item-detail {
-  .item-profile {
-    width: 100%;
-    background-position: center center;
-    background-size: cover;
-    height: 250px;
-  }
+page-item-detail {}
 
-  .item-detail {
-    width: 100%;
-    background: white;
-    position: absolute;
-  }
+.item-detail {
+  margin-left: 15px;
+}
+
+.item-profile {
+  width: 100%;
+  background-position: center center;
+  background-size: cover;
+  height: 250px;
+  border-bottom: 1px solid #dedede;
+}
+
+.itemColor {
+  color: #424242;
+  text-transform: capitalize;
+}
+
+.rightIconDiv {
+  margin-left: 10%;
+  margin-top: 5px;
+}
+
+.rightIcon {
+  color: #424242;
+  font-size: 40px
+}
+
+.quantity {
+  color: #424242;
+  margin-left: 15px;
+}
+
+.leftIconDiv {
+  margin-left: 15%;
+  margin-top: 5px;
+}
+
+.leftIcon {
+  color: #424242;
+  font-size: 40px
+}
+
+.selectQuantityHeading {
+  color: #424242;
+  margin-left: 15px;
 }

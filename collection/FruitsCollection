@@ -2,44 +2,44 @@
     "_id" : ObjectId("5abfd5816f2fde5332c2f483"),
     "FruitsNameAndPrices" : [ 
         {
-            "name" : "Apple",
+            "product" : "Apple",
             "profilePic" : "assets/img/apple.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Banana",
+            "product" : "Banana",
             "profilePic" : "assets/img/banana.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Black Grapes",
+            "product" : "Black Grapes",
             "profilePic" : "assets/img/black_grapes.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Green Grapes",
+            "product" : "Green Grapes",
             "profilePic" : "assets/img/green_grapes.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Orange",
+            "product" : "Orange",
             "profilePic" : "assets/img/orange.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Pineapple",
+            "product" : "Pineapple",
             "profilePic" : "assets/img/pineapple.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Strawberry",
+            "product" : "Strawberry",
             "profilePic" : "assets/img/strawberry.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }, 
         {
-            "name" : "Watermelon",
+            "product" : "Watermelon",
             "profilePic" : "assets/img/watermelon.jpg",
-            "rate" : "30/kg"
+            "rate" : "Rs 30 per Kg"
         }
     ]
 }
