@@ -11,12 +11,14 @@
                 {
                     "product" : "apple",
                     "description" : "Rs 30 per Kg",
-                    "rate" : 30
+                    "rate" : 30,
+                    "quantity" : 2
                 }, 
                 {
                     "product" : "banana",
                     "description" : "Rs 30 per Kg",
-                    "rate" : 30
+                    "rate" : 30,
+                    "quantity" : 2
                 }
             ],
             "OrderStatus" : "Delivered",
@@ -31,7 +33,8 @@
                 {
                     "product" : "kela",
                     "description" : "Rs 30 per Kg",
-                    "rate" : 30
+                    "rate" : 30,
+                    "quantity" : 2
                 }
             ],
             "OrderStatus" : "Pending",
@@ -45,7 +48,8 @@
                 {
                     "product" : "kela",
                     "description" : "Rs 30 per Kg",
-                    "rate" : 30
+                    "rate" : 30,
+                    "quantity" : 2
                 }
             ],
             "OrderStatus" : "Processing",
@@ -59,7 +63,8 @@
                 {
                     "product" : "kela",
                     "description" : "Rs 30 per Kg",
-                    "rate" : 30
+                    "rate" : 30,
+                    "quantity" : 2
                 }
             ],
             "OrderStatus" : "Cancelled",
