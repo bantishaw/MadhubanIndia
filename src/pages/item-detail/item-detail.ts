@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Items } from '../../providers/providers';
+import { Api } from '../../providers/providers';
+import { Http } from '@angular/http';
+import { LoginPage } from '../login/login'
 
 @IonicPage()
 @Component({
@@ -13,7 +15,9 @@ export class ItemDetailPage {
   keyValue: any;
   numberOfItemsOrdered: number;
   totalAmount: number;
-  constructor(public navCtrl: NavController, navParams: NavParams, items: Items) {
+  databaseCartResult: any;
+  constructor(public navCtrl: NavController, navParams: NavParams, items: Items, public apiProvider: Api,
+    public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.item = navParams.get('item') || items.defaultItem;
     this.keyValue = Object.keys(this.item)[0];
 
@@ -22,6 +26,7 @@ export class ItemDetailPage {
   ionViewDidLoad() {
     this.numberOfItemsOrdered = 0;
     this.totalAmount = 0;
+    console.log(this.item)
   }
 
   decreaseQuantity(decreaseNumber) {
@@ -36,6 +41,51 @@ export class ItemDetailPage {
       this.numberOfItemsOrdered = this.numberOfItemsOrdered + 1;
       this.totalAmount = this.totalAmount + this.item.rate;
     }
+  }
+
+  addToCart() {
+    var itemsToBeAdded = {
+      "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
+      "order_descriptiion": [
+        {
+          "product": this.item.product,
+          "quantity": this.numberOfItemsOrdered,
+          "rate": this.item.rate,
+          "description": this.item.description
+        }
+      ],
+      "total_amount": this.totalAmount
+    }
+    let loading = this.loadingCtrl.create({
+      spinner: 'crescent',
+      cssClass: "wrapper"
+    });
+    loading.present();
+    this.apiProvider.addToCart(itemsToBeAdded).then((data) => {
+      this.databaseCartResult = data;
+      if (this.databaseCartResult.response === "success") {
+        loading.dismiss();
+        setTimeout(() => {
+          this.toastMessage(this.databaseCartResult.data)
+          this.ionViewDidLoad();
+        }, 0);
+      } else {
+        loading.dismiss();
+        setTimeout(() => {
+          this.toastMessage(this.databaseCartResult.data)
+        }, 0);
+      }
+    })
+  }
+
+  toastMessage(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'middle',
+      cssClass: 'showToast'
+    });
+    toast.present();
   }
 }
 

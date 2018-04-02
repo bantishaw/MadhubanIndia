@@ -319,5 +319,52 @@ app.post('/getSubMenuCollection', function (request, response) {
     })
 })
 
+app.post('/addToCart', function (request, response) {
+    databaseConnectivity.collection('addToCart').find({ reference_email: request.body.reference_email }).toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length) {
+                // updating the exisitng object
+                // Making the new order_description array
+                let orderArray = [];
+                // let newAmount = 0;
+                orderArray = result[0].order_descriptiion;
+                request.body.order_descriptiion.forEach((object) => {
+                    orderArray.push(object)
+                })
+                let newAmount = result[0].total_amount + request.body.total_amount
+                // making the new Object to be pushed in Database
+                var addToExistingObject = {
+                    "reference_email": request.body.reference_email,
+                    "order_descriptiion": orderArray,
+                    "total_amount": newAmount
+                }
+                databaseConnectivity.collection('addToCart').findOneAndReplace({ reference_email: request.body.reference_email }, addToExistingObject, { returnOriginal: false }, function (error, updatedResult) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        response.json({ "response": "success", "data": "Items added to cart" })
+                    }
+                })
+            } else {
+                console.log("add to cart is empty")
+                databaseConnectivity.collection('addToCart').insert(request.body, function (error, newResult) {
+                    if (error) {
+                        console.log(error)
+                        response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+                    } else {
+                        response.json({ "response": "success", "data": "Items added to cart" })
+                    }
+                })
+            }
+
+        }
+
+    })
+})
+
+
 app.listen(8080)
 console.log("Running on port 8080") 
