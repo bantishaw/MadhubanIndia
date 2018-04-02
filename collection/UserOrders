@@ -7,16 +7,16 @@
             "order_id" : "#1234567890",
             "date_of_order" : "24th march,2018",
             "total_amount" : "1800",
-            "fruits_order_descriptiion" : [ 
+            "order_descriptiion" : [ 
                 {
-                    "fruit_name" : "apple",
-                    "number_of_kg_bought" : "20",
-                    "price_per_kg" : "60"
+                    "product" : "apple",
+                    "description" : "Rs 30 per Kg",
+                    "rate" : 30
                 }, 
                 {
-                    "fruit_name" : "banana",
-                    "number_of_kg_bought" : "10",
-                    "price_per_kg" : "60"
+                    "product" : "banana",
+                    "description" : "Rs 30 per Kg",
+                    "rate" : 30
                 }
             ],
             "OrderStatus" : "Delivered",
@@ -29,9 +29,9 @@
             "total_amount" : "1800",
             "fruits_order_descriptiion" : [ 
                 {
-                    "fruit_name" : "kela",
-                    "number_of_kg_bought" : "20",
-                    "price_per_kg" : "60"
+                    "product" : "kela",
+                    "description" : "Rs 30 per Kg",
+                    "rate" : 30
                 }
             ],
             "OrderStatus" : "Pending",
@@ -43,9 +43,9 @@
             "total_amount" : "1800",
             "fruits_order_descriptiion" : [ 
                 {
-                    "fruit_name" : "kela",
-                    "number_of_kg_bought" : "20",
-                    "price_per_kg" : "60"
+                    "product" : "kela",
+                    "description" : "Rs 30 per Kg",
+                    "rate" : 30
                 }
             ],
             "OrderStatus" : "Processing",
@@ -57,9 +57,9 @@
             "total_amount" : "1800",
             "fruits_order_descriptiion" : [ 
                 {
-                    "fruit_name" : "kela",
-                    "number_of_kg_bought" : "20",
-                    "price_per_kg" : "60"
+                    "product" : "kela",
+                    "description" : "Rs 30 per Kg",
+                    "rate" : 30
                 }
             ],
             "OrderStatus" : "Cancelled",
