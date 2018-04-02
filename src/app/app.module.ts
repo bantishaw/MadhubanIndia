@@ -1,3 +1,4 @@
+
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -28,7 +29,7 @@ import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 import {ShowContentPage} from '../pages/show-content/show-content';
-
+import { SocialSharing } from '@ionic-native/social-sharing';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -97,6 +98,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
+    SocialSharing ,
     Geolocation,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
