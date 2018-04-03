@@ -72,3 +72,25 @@
   background-color: #488aff;
   color: white;
 }
+
+.refresher-refreshing .spinner-ios line,
+.refresher-refreshing .spinner-ios-small line,
+.refresher-refreshing .spinner-crescent circle {
+  stroke: #488aff;
+}
+
+.refresher-pulling-text,
+.refresher-refreshing-text {
+  text-align: center;
+  font-size: 16px;
+  color: #488aff;
+}
+
+.refresher-pulling-icon,
+.refresher-refreshing-icon {
+  text-align: center;
+  transform-origin: center center 0px;
+  font-size: 30px;
+  color: #488aff;
+  transition: 200ms;
+}

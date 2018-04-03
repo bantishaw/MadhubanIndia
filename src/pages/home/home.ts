@@ -42,4 +42,13 @@ export class HomePage {
     console.log('in processRequest ', serviceDetails);
     this.navCtrl.push(ListMasterPage, { menuDetails: serviceDetails });
   }
+
+  doRefresh(refresher) {
+    this.ionViewDidLoad();
+    setTimeout(() => {
+      console.log('Async operation has ended');
+      refresher.complete();
+    }, 2000);
+  }
+
 }

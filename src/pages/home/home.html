@@ -14,7 +14,7 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <ion-refresher (ionRefresh)="ionViewDidLoad()">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
     <ion-refresher-content pullingText="Pull to refresh" refreshingText="Refreshing...">
     </ion-refresher-content>
   </ion-refresher>
