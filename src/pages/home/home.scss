@@ -1,11 +1,23 @@
-page-home {
-  .BookServicePlacement {
-    width: auto;
-    display: block;
-    margin: 0 auto;
-    font-size: .9em;
-  }
+.itemNumberPostion{
+  font-size: 14px;
+  border-radius: 49%;
+  background-color: #ff6161;
+  border: solid 0px #fff;
+  line-height: 17px;
+  width: 29px;
+  height: 16px;
+  left: 290px;
+  bottom: 37px;
+  position: absolute;
 }
+
+.cartPostion{
+  margin-top: 7px;
+  font-size: 17px;
+  margin-right: 9px;
+  
+}
+
 
 .card-background-page {
   ion-card {
@@ -51,4 +63,5 @@ page-home {
   .swiper-pagination {
     bottom: 1% !important;
   }
+
 }

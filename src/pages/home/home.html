@@ -6,9 +6,12 @@
     <ion-title class="titleStyleAll">Home</ion-title>
     <ion-buttons right>
       <button ion-button icon-only>
-        <ion-icon name="cart"></ion-icon>
+        <div class="cartPostion">
+          <ion-icon name="cart"></ion-icon>
+        </div>
       </button>
     </ion-buttons>
+    <a style="color: white;" class="itemNumberPostion">{{addToCartLength}}</a>
   </ion-navbar>
 
 </ion-header>
