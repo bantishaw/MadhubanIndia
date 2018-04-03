@@ -11,7 +11,8 @@ import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
 export class Api {
   url: string = 'http://localhost:8080/userRegistration';
   data: any;
-  settingsInformation : any;
+  settingsInformation: any;
+  shoppingCartData: any;
   constructor(public http: Http) {
     this.data = null;
   }
@@ -33,8 +34,8 @@ export class Api {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/getLogin', userObject, { headers: headers })
-      .subscribe(res => {
-        this.settingsInformation = res.json();
+        .subscribe(res => {
+          this.settingsInformation = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err);
@@ -42,8 +43,8 @@ export class Api {
     });
   }
 
-  newUserSignUp(account){
-    console.log("provider page for sign up",account)
+  newUserSignUp(account) {
+    console.log("provider page for sign up", account)
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -70,7 +71,7 @@ export class Api {
     })
   }
 
-  saveNewSettingsPassword(credentials){
+  saveNewSettingsPassword(credentials) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -83,7 +84,7 @@ export class Api {
     })
   }
 
-  submitFeedback(userFeedback){
+  submitFeedback(userFeedback) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -96,7 +97,7 @@ export class Api {
     })
   }
 
-  contactUs(queryDoc){
+  contactUs(queryDoc) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -109,7 +110,7 @@ export class Api {
     })
   }
 
-  getMyOrders(queryDoc){
+  getMyOrders(queryDoc) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
@@ -182,13 +183,14 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/queryCartLength', cartLengthObject, { headers: headers })
         .subscribe(res => {
+          this.shoppingCartData = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err)
         });
     });
   }
-  
+
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
@@ -203,9 +205,9 @@ export class Api {
         reqOpts.params.set(k, params[k]);
       }
     }
-    console.log("this is url "+this.url);
+    console.log("this is url " + this.url);
 
-    return this.http.get(this.url,reqOpts);
+    return this.http.get(this.url, reqOpts);
 
     // return this.http.get(this.url + '/' + endpoint, reqOpts);
   }

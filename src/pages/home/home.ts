@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ListMasterPage } from '../list-master/list-master';
+import { ShoppingCartPage } from '../shopping-cart/shopping-cart'
 import { Http, Headers } from '@angular/http';
 import { Api } from '../../providers/providers';
 
@@ -14,6 +15,7 @@ export class HomePage {
   homeMenuService: any;
   addToCartLength: any;
   cartResult: any;
+  cartData: any;
   slideData = [{ image: "assets/img/fruits.jpg" }, { image: "assets/img/Carslide.jpg" },
   { image: "assets/img/MehndiSlide.jpg" }];
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
@@ -53,6 +55,11 @@ export class HomePage {
     }, 2000);
   }
 
+  goToShopping() {
+    console.log("hi")
+    this.navCtrl.push(ShoppingCartPage)
+  }
+
   ionViewDidEnter() {
     let queryCartObject = {
       "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email
@@ -61,7 +68,7 @@ export class HomePage {
       this.cartResult = data;
       if (this.cartResult.response === "success") {
         this.addToCartLength = this.cartResult.length;
-        console.log(this.addToCartLength)
+        this.cartData = this.cartResult.data;
       }
     })
   }

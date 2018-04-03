@@ -28,8 +28,9 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
-import {ShowContentPage} from '../pages/show-content/show-content';
+import { ShowContentPage } from '../pages/show-content/show-content';
 import { SocialSharing } from '@ionic-native/social-sharing';
+import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -58,11 +59,12 @@ export function provideSettings(storage: Storage) {
     InboxPage,
     SendFeedbackPage,
     TutorialPage,
-    LoginPage, 
-    SignupPage, 
+    LoginPage,
+    SignupPage,
     ListMasterPage,
-    ShowContentPage
-    
+    ShowContentPage,
+    ShoppingCartPage
+
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,7 @@ export function provideSettings(storage: Storage) {
       }
     }),
     IonicModule.forRoot(MyApp, { scrollAssist: false, autoFocusAssist: false }),
-    IonicStorageModule.forRoot()  ],
+    IonicStorageModule.forRoot()],
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
@@ -86,10 +88,12 @@ export function provideSettings(storage: Storage) {
     InboxPage,
     SendFeedbackPage,
     TutorialPage,
-    LoginPage, 
-    SignupPage, 
+    LoginPage,
+    SignupPage,
     ListMasterPage,
-    ShowContentPage
+    ShowContentPage,
+    ShoppingCartPage
+
   ],
   providers: [
     Api,
@@ -98,7 +102,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
-    SocialSharing ,
+    SocialSharing,
     Geolocation,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
