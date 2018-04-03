@@ -365,6 +365,22 @@ app.post('/addToCart', function (request, response) {
     })
 })
 
+app.post('/queryCartLength', function (request, response) {
+    databaseConnectivity.collection('addToCart').find(request.body).toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length) {
+                response.json({
+                    "response": "success", "length": result[0].order_descriptiion.length,
+                    "data": result
+                })
+            } else {
+                response.json({ "response": "success", "data": "Your Shopping Cart is empty" })
+            }
+        }
+    })
+})
 
 app.listen(8080)
 console.log("Running on port 8080") 
