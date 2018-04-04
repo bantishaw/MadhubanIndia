@@ -16,8 +16,9 @@ export class HomePage {
   addToCartLength: any;
   cartResult: any;
   cartData: any;
-  slideData = [{ image: "assets/img/fruits.jpg" }, { image: "assets/img/Carslide.jpg" },
-  { image: "assets/img/MehndiSlide.jpg" }];
+  slideDataResult: any;
+  slideData: any;
+  CurrentlySerivesOffered: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public http: Http,
     public loadingCtrl: LoadingController) {
@@ -31,13 +32,20 @@ export class HomePage {
       cssClass: "wrapper"
     });
     loading.present();
-    this.apiProvider.getHomeMenuService().then((data) => {
-      this.homeMenuService = data;
-      if (this.homeMenuService.response === "success") {
-        loading.dismiss();
-        setTimeout(() => {
-          this.homeItemsDecorations = this.homeMenuService.data[0].HomeMenuService
-        }, 500);
+    this.apiProvider.getHomePageSlidingImages().then((result) => {
+      this.slideDataResult = result;
+      if (this.slideDataResult.response === "success") {
+        this.apiProvider.getHomeMenuService().then((data) => {
+          this.homeMenuService = data;
+          if (this.homeMenuService.response === "success") {
+            loading.dismiss();
+            setTimeout(() => {
+              this.homeItemsDecorations = this.homeMenuService.data[0].HomeMenuService
+              this.slideData = this.slideDataResult.data[0].HomePageSlidingImages
+              this.CurrentlySerivesOffered = this.slideDataResult.data[0].CurrentlySerivesOffered
+            }, 0);
+          }
+        })
       }
     })
   }

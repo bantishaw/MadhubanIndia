@@ -22,14 +22,14 @@
     </ion-refresher-content>
   </ion-refresher>
 
-  <ion-slides pager class="slideImagesSize" autoplay="2000" loop="true" speed="1000">
+  <ion-slides pager *ngIf="slideData && slideData.length" class="slideImagesSize" autoplay="5000" pager="true" loop="true"
+    speed="300">
     <ion-slide *ngFor="let slide of slideData">
-      <img src="{{slide.image}}" />
+      <img src="{{slide.img_path}}" />
     </ion-slide>
   </ion-slides>
   <ion-item class="noteHeading">
-    <ion-label style="font-size:11px;color:white;white-space: normal;">Note : Only Fruits section is availbale for Electronics City. Others services are not started yet. We regret the inconvenience
-      caused
+    <ion-label style="font-size:11px;color:white;white-space: normal;">{{CurrentlySerivesOffered}}
     </ion-label>
   </ion-item>
 

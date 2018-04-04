@@ -303,6 +303,22 @@ app.get('/getHomePageServiceMenu', function (request, response) {
     })
 })
 
+//get path of images stored in mongoDB
+app.get('/getHomePageSlidingImages', function (request, response) {
+    databaseConnectivity.collection('HomePageSlidingImages').find().toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "success", "data": result })
+            } else {
+                response.json({ "response": "failure", "data": "Database is inaccessable. Please try later" })
+            }
+        }
+    })
+})
+
 //method to get the Fruits data from FruitsCollecton
 app.post('/getSubMenuCollection', function (request, response) {
     databaseConnectivity.collection(request.body.collectionName).find().toArray(function (error, result) {

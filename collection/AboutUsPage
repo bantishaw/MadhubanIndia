@@ -2,8 +2,12 @@
     "_id" : ObjectId("5abbe485a985a99d06980f18"),
     "aboutUsContents" : [ 
         {
-            "keyField" : "About FreshPool",
+            "keyField" : "About FreshPool Company",
             "content" : "\nFreshPool aim is to find suitable professional to provide unorganized services like Car decoration,Water Cane delivery or Mehndi deoration at your door step with the use of advanced technology.Currently we provide following services: \n\n1.Mehndi decoration\n2.Car decoration\n3.Water cane\n4.Fruits delivery\n5.Vehicle service"
+        }, 
+        {
+            "keyField" : "Our Mission",
+            "content" : "Local service in india are needed to be organised in proper way , for that we connect our customer directly to the professional who provide them service at there door step"
         }, 
         {
             "keyField" : "Privacy policy",
