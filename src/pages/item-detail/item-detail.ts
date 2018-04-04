@@ -56,26 +56,30 @@ export class ItemDetailPage {
       ],
       "total_amount": this.totalAmount
     }
-    let loading = this.loadingCtrl.create({
-      spinner: 'crescent',
-      cssClass: "wrapper"
-    });
-    loading.present();
-    this.apiProvider.addToCart(itemsToBeAdded).then((data) => {
-      this.databaseCartResult = data;
-      if (this.databaseCartResult.response === "success") {
-        loading.dismiss();
-        setTimeout(() => {
-          this.toastMessage(this.databaseCartResult.data)
-          this.ionViewDidLoad();
-        }, 0);
-      } else {
-        loading.dismiss();
-        setTimeout(() => {
-          this.toastMessage(this.databaseCartResult.data)
-        }, 0);
-      }
-    })
+    if (this.numberOfItemsOrdered && this.totalAmount) {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
+      this.apiProvider.addToCart(itemsToBeAdded).then((data) => {
+        this.databaseCartResult = data;
+        if (this.databaseCartResult.response === "success") {
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.databaseCartResult.data)
+            this.ionViewDidLoad();
+          }, 0);
+        } else {
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.databaseCartResult.data)
+          }, 0);
+        }
+      })
+    } else {
+      this.toastMessage("Please select quantity and proceed to checkout")
+    }
   }
 
   toastMessage(message: string) {
