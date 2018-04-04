@@ -9,8 +9,9 @@ import { Api } from '../../providers/providers';
   templateUrl: 'shopping-cart.html',
 })
 export class ShoppingCartPage {
-
+  shoppingCartSegment : any;
   constructor(public navCtrl: NavController, public navParams: NavParams,public apiProvider: Api) {
+    this.shoppingCartSegment = "product";
   }
 
   ionViewDidLoad() {

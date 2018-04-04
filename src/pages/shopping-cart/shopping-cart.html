@@ -1,12 +1,35 @@
 <ion-header>
-
   <ion-navbar>
-    <ion-title>shoppingCart</ion-title>
+    <ion-title class="titleStyleAll">Shopping Cart</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-segment [(ngModel)]="shoppingCartSegment" class="segmentDisplay">
+    <ion-segment-button value="product" class="fontdisplay">
+      Product
+    </ion-segment-button>
+    <ion-segment-button value="address" class="fontdisplay">
+      Address
+    </ion-segment-button>
+    <ion-segment-button value="payment" class="fontdisplay">
+      Payment
+    </ion-segment-button>
+  </ion-segment>
+
+  <div [ngSwitch]="shoppingCartSegment">
+      <ion-list *ngSwitchCase="'product'" style="display: inline">
+        <ion-item >
+          <h2>Ruby</h2>
+        </ion-item>
+      </ion-list>
+      <ion-list *ngSwitchCase="'address'" style="display: inline">
+          <ion-item >
+            <h2>Aman</h2>
+          </ion-item>
+        </ion-list>
+    </div>
 
 </ion-content>
