@@ -51,7 +51,8 @@ export class ItemDetailPage {
           "product": this.item.product,
           "quantity": this.numberOfItemsOrdered,
           "rate": this.item.rate,
-          "description": this.item.description
+          "description": this.item.description,
+          "productPic" : this.item.profilePic
         }
       ],
       "total_amount": this.totalAmount
