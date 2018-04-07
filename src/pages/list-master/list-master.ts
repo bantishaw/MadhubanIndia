@@ -11,11 +11,15 @@ import { Api } from '../../providers/providers';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  currentItems: Item[];
+  isSearchbarOperand = false;
+  currentItemsDuplicate: any;
+  currentItemsThatUserTypeForSearch: any;
+  currentItems: any;
   fetchCollection: any;
   result: any;
   showDataFailureText: any;
-  constructor(public navCtrl: NavController, public items: Items, public modalCtrl: ModalController,
+
+  constructor(public navCtrl: NavController, public modalCtrl: ModalController,
     public apiProvider: Api, public http: Http, public loadingCtrl: LoadingController,
     public navParams: NavParams) {
     this.fetchCollection = navParams.get('menuDetails');
@@ -35,7 +39,8 @@ export class ListMasterPage {
       if (this.result.response === "success") {
         loading.dismiss();
         setTimeout(() => {
-          this.currentItems = this.result.data[0].FruitsNameAndPrices
+          this.currentItems = this.result.data[0].FruitsNameAndPrices;
+          this.currentItemsThatUserTypeForSearch = this.currentItems;
         }, 0);
       } else {
         loading.dismiss();
@@ -46,25 +51,28 @@ export class ListMasterPage {
     })
   }
 
-  /**
-   * Prompt the user to add a new item. This shows our ItemCreatePage in a
-   * modal and then adds the new item to our data source if the user created one.
-   */
-  addItem() {
-    let addModal = this.modalCtrl.create('ItemCreatePage');
-    addModal.onDidDismiss(item => {
-      if (item) {
-        this.items.add(item);
+  onSearch(event) {
+    this.isSearchbarOperand = true;
+    var FruitListarray = [];
+    let valuethatUserTypeToSearch = event.target.value;
+    if (!valuethatUserTypeToSearch) {
+      this.onCancel();
+    }
+    else {
+      for (var i = 0; i < this.currentItems.length; i++) {
+        FruitListarray.push(this.currentItems[i].product);
       }
-    })
-    addModal.present();
+      if (valuethatUserTypeToSearch.trim()) {
+        this.currentItems = this.currentItems.filter((topic) => {
+          return ((topic.product.toLowerCase()).indexOf(valuethatUserTypeToSearch.toLowerCase()) !== -1);
+        })
+      }
+    }
   }
 
-  /**
-   * Delete an item from the list of items.
-   */
-  deleteItem(item) {
-    this.items.delete(item);
+  onCancel() {
+    this.isSearchbarOperand = false;
+    this.currentItems = this.currentItemsThatUserTypeForSearch;
   }
 
   /**
@@ -77,10 +85,7 @@ export class ListMasterPage {
   }
 
   doRefresh(refresher) {
-    console.log('Begin async operation', refresher);
-
     setTimeout(() => {
-      console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
   }
