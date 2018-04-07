@@ -30,13 +30,13 @@ page-shopping-cart {}
   line-height: 5rem;
 }
 
-.buttonPosition{
-  right : -15%;
+.buttonPosition {
+  right: -15%;
   width: 40%;
   margin-right: -20px;
 }
 
-.amountPlacement{
+.amountPlacement {
   font-weight: 600;
   color: #488aff;
   position: fixed;
@@ -54,3 +54,19 @@ page-shopping-cart {}
   text-align: center;
   height: 50px;
 }
+
+.price-details {
+  font-size: 12px;
+  color: #999;
+  border-bottom: 1px solid #e0e0e0;
+  height: 25px;
+  padding-left: 15px;
+}
+
+.priceHeadingBox {
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-top: 10px;
+  border: 1px solid #e0e0e0;
+}
+
