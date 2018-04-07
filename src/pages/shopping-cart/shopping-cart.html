@@ -24,12 +24,24 @@
       <div class="rectangularBox">
         <p class="orderSummary">Your order summary</p>
       </div>
+
+      <ion-list *ngFor="let item of productDisplay" class="productBoundaries">
+        <ion-item>
+          <ion-thumbnail item-start>
+            <img src="{{item.productPic}}">
+          </ion-thumbnail>
+          <h2>{{item.product}}</h2>
+          <p>{{item.quantity}}</p>
+          <p>Amount : ₹{{item.rate * item.quantity}}</p>
+          <button ion-button clear item-end>View</button>
+        </ion-item>
+      </ion-list>
       
       <div class="priceHeadingBox">
         <p class="price-details"> PRICE DETAILS</p>
 
-        <p class="borderRemoval"> Price (1 item)
-          <ion-note class="positionPrice"> ₹4000</ion-note>
+        <p class="borderRemoval"> Price ({{cartlength}} item)
+          <ion-note class="positionPrice"> ₹{{priceDisplay}}</ion-note>
         </p>
         <p class="price-details"> Delivery
           <ion-note class="positionPrice">
@@ -38,7 +50,7 @@
         </p>
         <p class="price-details"> Amount Payable
           <ion-note class="positionPrice">
-            ₹4000
+            ₹{{priceDisplay}}
           </ion-note>
         </p>
       </div>
@@ -59,7 +71,7 @@
   <ion-toolbar>
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
       style="background-color:white;"></div>
-    <p class="amountPlacement">₹ 4000</p>
+    <p class="amountPlacement">₹{{priceDisplay}}</p>
     <button ion-button color="danger" class="buttonPosition">CONTINUE</button>
   </ion-toolbar>
 </ion-footer>

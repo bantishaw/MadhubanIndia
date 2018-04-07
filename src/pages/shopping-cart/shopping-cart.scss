@@ -18,6 +18,7 @@ page-shopping-cart {}
   margin-top: 5px;
   height: 40px;
   border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
 }
 
 .orderSummary {
@@ -43,16 +44,6 @@ page-shopping-cart {}
   font-size: 27px;
   margin-top: 5px;
   margin-left: 14px;
-}
-
-.myCartfooter {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: white;
-  text-align: center;
-  height: 50px;
 }
 
 .price-details {
@@ -114,4 +105,11 @@ page-shopping-cart {}
   color: grey;
   margin-left: 40px;
   margin-top: 20px;
+}
+
+.productBoundaries {
+  margin-left: -18px;
+  border: 1px solid #e0e0e0;
+  margin-right: -18px;
+  margin-bottom: 5px;
 }
