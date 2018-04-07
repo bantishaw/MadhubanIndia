@@ -64,9 +64,20 @@ page-shopping-cart {}
 }
 
 .priceHeadingBox {
-  margin-right: -20px;
-  margin-left: -20px;
+  margin-right: -18px;
+  margin-left: -18px;
   margin-top: 10px;
   border: 1px solid #e0e0e0;
 }
 
+.borderRemoval {
+  font-size: 12px;
+  color: #999;
+  height: 25px;
+  padding-left: 15px;
+}
+
+.positionPrice {
+  margin-right: 20px;
+  float: right;
+}
