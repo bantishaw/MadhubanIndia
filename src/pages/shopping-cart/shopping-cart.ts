@@ -10,6 +10,7 @@ import { Api } from '../../providers/providers';
 })
 export class ShoppingCartPage {
   shoppingCartSegment : any;
+  disableTab : Boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,public apiProvider: Api) {
     this.shoppingCartSegment = "product";
   }
@@ -17,6 +18,7 @@ export class ShoppingCartPage {
   ionViewDidLoad() {
     console.log('ionViewDidLoad ShoppingCartPage');
     console.log(this.apiProvider.shoppingCartData.data[0])
+    this.disableTab = true;
   }
 
 }

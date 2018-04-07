@@ -4,6 +4,7 @@ import { ListMasterPage } from '../list-master/list-master';
 import { ShoppingCartPage } from '../shopping-cart/shopping-cart'
 import { Http, Headers } from '@angular/http';
 import { Api } from '../../providers/providers';
+import { App } from 'ionic-angular';
 
 @IonicPage()
 @Component({
@@ -20,8 +21,7 @@ export class HomePage {
   slideData: any;
   CurrentlySerivesOffered: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public http: Http,
-    public loadingCtrl: LoadingController) {
+    public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, ) {
   }
 
   ionViewDidLoad() {
@@ -58,14 +58,12 @@ export class HomePage {
   doRefresh(refresher) {
     this.ionViewDidLoad();
     setTimeout(() => {
-      console.log('Async operation has ended');
       refresher.complete();
     }, 2000);
   }
 
   goToShopping() {
-    console.log("hi")
-    this.navCtrl.push(ShoppingCartPage)
+    this.appCtrl.getRootNav().push(ShoppingCartPage)
   }
 
   ionViewDidEnter() {

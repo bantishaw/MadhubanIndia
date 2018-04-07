@@ -11,10 +11,10 @@
     <ion-segment-button value="product" class="fontdisplay">
       Product
     </ion-segment-button>
-    <ion-segment-button value="address" class="fontdisplay">
+    <ion-segment-button value="address" disabled={{disableTab}} class="fontdisplay">
       Address
     </ion-segment-button>
-    <ion-segment-button value="payment" class="fontdisplay">
+    <ion-segment-button value="payment" disabled="true" class="fontdisplay">
       Payment
     </ion-segment-button>
   </ion-segment>
@@ -23,6 +23,8 @@
       <ion-list *ngSwitchCase="'product'" style="display: inline">
         <ion-item >
           <h2>Ruby</h2>
+          <button ion-button color="primary" block (click)="doLogin()">GET STARTED</button>
+
         </ion-item>
       </ion-list>
       <ion-list *ngSwitchCase="'address'" style="display: inline">
