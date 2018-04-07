@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar>
-    <ion-title class="titleStyleAll">Shopping Cart</ion-title>
+    <ion-title class="titleStyleAll">My Cart</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -11,8 +11,8 @@
     <ion-segment-button value="product" class="fontdisplay">
       Product
     </ion-segment-button>
-    <ion-segment-button value="address" disabled={{disableTab}} class="fontdisplay">
-      Address
+    <ion-segment-button value="delivery" disabled={{disableTab}} class="fontdisplay">
+      Delivery
     </ion-segment-button>
     <ion-segment-button value="payment" disabled="true" class="fontdisplay">
       Payment
@@ -20,17 +20,23 @@
   </ion-segment>
 
   <div [ngSwitch]="shoppingCartSegment">
-      <ion-list *ngSwitchCase="'product'" style="display: inline">
-        <ion-item >
-          <h2>Ruby</h2>
+    <ion-list *ngSwitchCase="'product'" style="display: inline">
+      <div class="rectangularBox">
+        <p class="orderSummary">Your order summary</p>
+      </div>
+      
+      <div class="myCartfooter">
+        <p class="amountPlacement">₹ 4000</p>
+        <button ion-button color="danger" class="buttonPosition">CONTINUE</button>
+      </div>
 
-        </ion-item>
-      </ion-list>
-      <ion-list *ngSwitchCase="'address'" style="display: inline">
-          <ion-item >
-            <h2>Aman</h2>
-          </ion-item>
-        </ion-list>
-    </div>
+
+    </ion-list>
+    <ion-list *ngSwitchCase="'delivery'" style="display: inline">
+      <ion-item>
+        <h2>Aman</h2>
+      </ion-item>
+    </ion-list>
+  </div>
 
 </ion-content>
