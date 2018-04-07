@@ -24,7 +24,7 @@
       <div class="rectangularBox">
         <p class="orderSummary">Your order summary</p>
       </div>
-
+      
       <div class="priceHeadingBox">
         <p class="price-details"> PRICE DETAILS</p>
 
@@ -46,14 +46,6 @@
         <i class="material-icons">&#xe8e8;</i>
         <p class="shieldTheory">Safe Payments.100% Authentic products</p>
       </div>
-
-
-      <div class="myCartfooter">
-        <p class="amountPlacement">₹ 4000</p>
-        <button ion-button color="danger" class="buttonPosition">CONTINUE</button>
-      </div>
-
-
     </ion-list>
     <ion-list *ngSwitchCase="'delivery'" style="display: inline">
       <ion-item>
@@ -63,3 +55,11 @@
   </div>
 
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
+      style="background-color:white;"></div>
+    <p class="amountPlacement">₹ 4000</p>
+    <button ion-button color="danger" class="buttonPosition">CONTINUE</button>
+  </ion-toolbar>
+</ion-footer>
