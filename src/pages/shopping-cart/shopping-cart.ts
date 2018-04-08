@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 
 
@@ -17,7 +17,7 @@ export class ShoppingCartPage {
   result: any;
   updatedResult: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public loadingCtrl: LoadingController) {
+    public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
     this.shoppingCartSegment = "product";
   }
 
@@ -34,22 +34,41 @@ export class ShoppingCartPage {
       "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
       "order_descriptiion": removeItem
     }
-    let loading = this.loadingCtrl.create({
-      spinner: 'crescent',
-      cssClass: "wrapper"
+    let alert = this.alertCtrl.create({
+      title: 'Remove item',
+      message: 'Are you sure you want to remove this item?',
+      buttons: [
+        {
+          text: 'CANCEL',
+          role: 'cancel',
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'REMOVE',
+          handler: () => {
+            let loading = this.loadingCtrl.create({
+              spinner: 'crescent',
+              cssClass: "wrapper"
+            });
+            loading.present();
+            this.apiProvider.removeItemFromCart(removeObject).then((data) => {
+              this.result = data;
+              if (this.result.response === "success") {
+                loading.dismiss();
+                setTimeout(() => {
+                  this.updatedResult = this.result.updatedCart
+                  this.priceDisplay = this.updatedResult.total_amount
+                  this.productDisplay = this.updatedResult.order_descriptiion
+                  this.cartlength = this.updatedResult.order_descriptiion.length
+                }, 0);
+              }
+            })
+          }
+        }
+      ]
     });
-    loading.present();
-    this.apiProvider.removeItemFromCart(removeObject).then((data) => {
-      this.result = data;
-      if (this.result.response === "success") {
-        loading.dismiss();
-        setTimeout(() => {
-          this.updatedResult = this.result.updatedCart
-          this.priceDisplay = this.updatedResult.total_amount
-          this.productDisplay = this.updatedResult.order_descriptiion
-          this.cartlength = this.updatedResult.order_descriptiion.length
-        }, 0);
-      }
-    })
+    alert.present();
   }
 }

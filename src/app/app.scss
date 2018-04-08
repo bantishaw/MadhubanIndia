@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Raleway:300,700');
 @import url('https://fonts.googleapis.com/icon?family=Material+Icons');
-
 .catergory {
   text-align: center;
   color: #fff;
@@ -95,4 +94,41 @@
   font-size: 30px;
   color: #488aff;
   transition: 200ms;
+}
+
+.alert-md .alert-wrapper {
+  border-radius: 13px;
+  overflow: hidden;
+  max-width: 270px;
+  background-color: #f8f8f8;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.alert-md .alert-message {
+  max-height: 240px;
+}
+
+.alert-md .alert-message,
+.alert-md .alert-input-group {
+  text-align: center;
+  font-size: 13px;
+  color: inherit;
+  padding: 0 16px 15px;
+}
+
+.alert-md .alert-head {
+  text-align: center;
+  padding: 12px 16px 7px;
+}
+
+.alert-md .alert-title {
+  margin-top: 8px;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.alert-title {
+  margin: 0;
+  padding: 0;
 }
