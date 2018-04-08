@@ -30,13 +30,16 @@
           <ion-thumbnail item-start>
             <img src="{{item.productPic}}">
           </ion-thumbnail>
-          <h2>{{item.product}}</h2>
-          <p>{{item.quantity}}</p>
-          <p>Amount : ₹{{item.rate * item.quantity}}</p>
-          <button ion-button clear item-end>View</button>
+          <div>
+            <h2 style="margin-bottom: 5px;">{{item.product}}</h2>
+            <p style="font-size: 12px;">{{item.description}}</p>
+            <p style="font-size: 12px;">Qty : {{item.quantity}} | <button ion-button clear class="changeClass">Change</button></p>
+            <button ion-button clear class="removeClass">Remove</button>
+          </div>
+          <p item-end class="individualPrice"> ₹ {{item.rate * item.quantity}}</p>
         </ion-item>
       </ion-list>
-      
+
       <div class="priceHeadingBox">
         <p class="price-details"> PRICE DETAILS</p>
 
@@ -71,7 +74,7 @@
   <ion-toolbar>
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
       style="background-color:white;"></div>
-    <p class="amountPlacement">₹{{priceDisplay}}</p>
+    <p class="amountPlacement">₹ {{priceDisplay}}</p>
     <button ion-button color="danger" class="buttonPosition">CONTINUE</button>
   </ion-toolbar>
 </ion-footer>
