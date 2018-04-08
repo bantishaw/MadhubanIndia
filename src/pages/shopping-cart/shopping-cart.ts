@@ -137,4 +137,9 @@ export class ShoppingCartPage {
     toast.present();
   }
 
+  contine() {
+    this.disableTab = false;
+    this.shoppingCartSegment = "delivery";
+  }
+
 }
