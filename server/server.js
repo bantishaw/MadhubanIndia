@@ -382,7 +382,7 @@ app.post('/addToCart', function (request, response) {
 })
 
 app.post('/queryCartLength', function (request, response) {
-    databaseConnectivity.collection('addToCart').find(request.body).toArray(function (error, result) {
+    databaseConnectivity.collection('addToCart').find({ reference_email: request.body.reference_email }).toArray(function (error, result) {
         if (error) {
             throw error;
         } else {
@@ -397,6 +397,33 @@ app.post('/queryCartLength', function (request, response) {
         }
     })
 })
+
+app.post('/removeItemFromCart', function (request, response) {
+    databaseConnectivity.collection('addToCart').find(request.body).toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length) {
+                let removeIndex = result[0].order_descriptiion.map(function (item) { return item.product; }).indexOf(request.body.order_descriptiion.product);
+                result[0].order_descriptiion.splice(removeIndex, 1);
+                let updatedAmount = result[0].total_amount - (request.body.order_descriptiion.quantity * request.body.order_descriptiion.rate);
+                let updateCartObject = {
+                    "reference_email": request.body.reference_email,
+                    "order_descriptiion": result[0].order_descriptiion,
+                    "total_amount": updatedAmount
+                }
+                databaseConnectivity.collection('addToCart').findOneAndReplace({ reference_email: request.body.reference_email }, updateCartObject, { returnOriginal: false }, function (error, updatedResult) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        response.json({ "response": "success", "updatedCart": updatedResult.value, "data": "Your Shopping cart has been updated" })
+                    }
+                })
+            }
+        }
+    })
+})
+
 
 app.listen(8080)
 console.log("Running on port 8080") 
