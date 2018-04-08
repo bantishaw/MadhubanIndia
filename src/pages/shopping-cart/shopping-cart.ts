@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ItemOptions } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 
 
@@ -71,4 +71,57 @@ export class ShoppingCartPage {
     });
     alert.present();
   }
+
+  changeQuantity(item) {
+    let alert = this.alertCtrl.create({
+      title: 'Change quantity',
+      inputs: [
+        {
+          name: 'quantity',
+          placeholder: 'Quantity',
+          type: 'number'
+
+        }
+      ],
+      buttons: [
+        {
+          text: 'CANCEL',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'SAVE',
+          handler: data => {
+            item.quantity = data.quantity
+            let updateQuuantityObject = {
+              "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
+              "order_descriptiion": item
+            }
+            console.log(updateQuuantityObject)
+            let loading = this.loadingCtrl.create({
+              spinner: 'crescent',
+              cssClass: "wrapper"
+            });
+            loading.present();
+            this.apiProvider.changeQuantityItemCart(updateQuuantityObject).then((data) => {
+              this.result = data;
+              if (this.result.response === "success") {
+                loading.dismiss();
+                setTimeout(() => {
+                  this.updatedResult = this.result.updatedCart
+                  this.priceDisplay = this.updatedResult.total_amount
+                  this.productDisplay = this.updatedResult.order_descriptiion
+                  this.cartlength = this.updatedResult.order_descriptiion.length
+                }, 0);
+              }
+            })
+          }
+        }
+      ]
+    });
+    alert.present();
+  }
+
 }

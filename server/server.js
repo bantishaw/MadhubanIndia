@@ -399,7 +399,7 @@ app.post('/queryCartLength', function (request, response) {
 })
 
 app.post('/removeItemFromCart', function (request, response) {
-    databaseConnectivity.collection('addToCart').find(request.body).toArray(function (error, result) {
+    databaseConnectivity.collection('addToCart').find({ reference_email: request.body.reference_email }).toArray(function (error, result) {
         if (error) {
             throw error;
         } else {
@@ -416,7 +416,7 @@ app.post('/removeItemFromCart', function (request, response) {
                     if (error) {
                         throw error;
                     } else {
-                        response.json({ "response": "success", "updatedCart": updatedResult.value, "data": "Your Shopping cart has been updated" })
+                        response.json({ "response": "success", "updatedCart": updatedResult.value, "data": `Successfully removed ${request.body.order_descriptiion.product} from your cart` })
                     }
                 })
             }
@@ -424,6 +424,36 @@ app.post('/removeItemFromCart', function (request, response) {
     })
 })
 
+app.post('/changeQuantityItemCart', function (request, response) {
+    databaseConnectivity.collection('addToCart').find({ reference_email: request.body.reference_email }).toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length) {
+                let getPosition = result[0].order_descriptiion.map(function (item) { return item.product; }).indexOf(request.body.order_descriptiion.product);
+                let OldItemAmount  = (result[0].order_descriptiion[getPosition].quantity * result[0].order_descriptiion[getPosition].rate)
+                let OldTotalAmount = result[0].total_amount - OldItemAmount;
+
+                // Replacing the old item with the new one from request
+                result[0].order_descriptiion[getPosition] = request.body.order_descriptiion
+                let newItemAmount = (request.body.order_descriptiion.quantity * request.body.order_descriptiion.rate)
+                let updatedAmount = OldTotalAmount + newItemAmount
+                let updateCartObject = {
+                    "reference_email": request.body.reference_email,
+                    "order_descriptiion": result[0].order_descriptiion,
+                    "total_amount": updatedAmount
+                }
+                databaseConnectivity.collection('addToCart').findOneAndReplace({ reference_email: request.body.reference_email }, updateCartObject, { returnOriginal: false }, function (error, updatedResult) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        response.json({ "response": "success", "updatedCart": updatedResult.value, "data": `You've changed ${request.body.order_descriptiion.product} quantity to ${request.body.order_descriptiion.quantity}` })
+                    }
+                })
+            }
+        }
+    })
+})
 
 app.listen(8080)
 console.log("Running on port 8080") 

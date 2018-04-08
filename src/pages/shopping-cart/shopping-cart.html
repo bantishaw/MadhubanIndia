@@ -33,7 +33,7 @@
           <div>
             <h2 style="margin-bottom: 5px;">{{item.product}}</h2>
             <p style="font-size: 12px;">{{item.description}}</p>
-            <p style="font-size: 12px;">Qty : {{item.quantity}} | <button ion-button clear class="changeClass">Change</button></p>
+            <p style="font-size: 12px;">Qty : {{item.quantity}} | <button ion-button clear class="changeClass" (click)="changeQuantity(item)">Change</button></p>
             <button ion-button clear class="removeClass" (click)="removeItemFromCart(item)">Remove</button>
           </div>
           <p item-end class="individualPrice"> ₹ {{item.rate * item.quantity}}</p>
