@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, ItemOptions } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ItemOptions, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 
 
@@ -17,7 +17,7 @@ export class ShoppingCartPage {
   result: any;
   updatedResult: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public loadingCtrl: LoadingController, private alertCtrl: AlertController) {
+    public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController, ) {
     this.shoppingCartSegment = "product";
   }
 
@@ -94,34 +94,47 @@ export class ShoppingCartPage {
         {
           text: 'SAVE',
           handler: data => {
-            item.quantity = data.quantity
-            let updateQuuantityObject = {
-              "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
-              "order_descriptiion": item
-            }
-            console.log(updateQuuantityObject)
-            let loading = this.loadingCtrl.create({
-              spinner: 'crescent',
-              cssClass: "wrapper"
-            });
-            loading.present();
-            this.apiProvider.changeQuantityItemCart(updateQuuantityObject).then((data) => {
-              this.result = data;
-              if (this.result.response === "success") {
-                loading.dismiss();
-                setTimeout(() => {
-                  this.updatedResult = this.result.updatedCart
-                  this.priceDisplay = this.updatedResult.total_amount
-                  this.productDisplay = this.updatedResult.order_descriptiion
-                  this.cartlength = this.updatedResult.order_descriptiion.length
-                }, 0);
+            if (data.quantity >= 1) {
+              item.quantity = data.quantity
+              let updateQuuantityObject = {
+                "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
+                "order_descriptiion": item
               }
-            })
+              let loading = this.loadingCtrl.create({
+                spinner: 'crescent',
+                cssClass: "wrapper"
+              });
+              loading.present();
+              this.apiProvider.changeQuantityItemCart(updateQuuantityObject).then((data) => {
+                this.result = data;
+                if (this.result.response === "success") {
+                  loading.dismiss();
+                  setTimeout(() => {
+                    this.updatedResult = this.result.updatedCart
+                    this.priceDisplay = this.updatedResult.total_amount
+                    this.productDisplay = this.updatedResult.order_descriptiion
+                    this.cartlength = this.updatedResult.order_descriptiion.length
+                  }, 0);
+                }
+              })
+            } else {
+              this.toastMessage("Quantity cannot be less than 1")
+            }
           }
         }
       ]
     });
     alert.present();
+  }
+
+  toastMessage(message: string) {
+    let toast = this.toastCtrl.create({
+      message: message,
+      duration: 3000,
+      position: 'middle',
+      cssClass: 'showToast'
+    });
+    toast.present();
   }
 
 }

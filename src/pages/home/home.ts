@@ -20,8 +20,10 @@ export class HomePage {
   slideDataResult: any;
   slideData: any;
   CurrentlySerivesOffered: any;
+  email: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, ) {
+    this.email = this.apiProvider.settingsInformation.settingsInformation[0].email
   }
 
   ionViewDidLoad() {
@@ -68,13 +70,14 @@ export class HomePage {
 
   ionViewDidEnter() {
     let queryCartObject = {
-      "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email
+      "reference_email": this.email
     }
     this.apiProvider.queryCartlength(queryCartObject).then((data) => {
       this.cartResult = data;
       if (this.cartResult.response === "success") {
         this.addToCartLength = this.cartResult.length;
         this.cartData = this.cartResult.data;
+        console.log("this.addToCartLength", this.addToCartLength)
       }
     })
   }
