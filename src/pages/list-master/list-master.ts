@@ -11,7 +11,7 @@ import { Api } from '../../providers/providers';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
-  isSearchbarOperand = false;
+  isSearchbarOperandToBeShowen = false;
   currentItemsDuplicate: any;
   currentItemsThatUserTypeForSearch: any;
   currentItems: any;
@@ -52,17 +52,17 @@ export class ListMasterPage {
   }
 
   onSearch(event) {
-    this.isSearchbarOperand = true;
     var FruitListarray = [];
     let valuethatUserTypeToSearch = event.target.value;
     if (!valuethatUserTypeToSearch) {
-      this.onCancel();
+      this.WhenuserSearchItemAndDeleteIt();
     }
     else {
       for (var i = 0; i < this.currentItems.length; i++) {
         FruitListarray.push(this.currentItems[i].product);
       }
       if (valuethatUserTypeToSearch.trim()) {
+        this.currentItems=this.currentItemsThatUserTypeForSearch;
         this.currentItems = this.currentItems.filter((topic) => {
           return ((topic.product.toLowerCase()).indexOf(valuethatUserTypeToSearch.toLowerCase()) !== -1);
         })
@@ -71,9 +71,18 @@ export class ListMasterPage {
   }
 
   onCancel() {
-    this.isSearchbarOperand = false;
+     this.isSearchbarOperandToBeShowen = false;
     this.currentItems = this.currentItemsThatUserTypeForSearch;
   }
+
+  /*
+  Used when user will typr for some text and then erase it,
+  this function will will still make serachBar visible with all CurrentItems avaliable
+  */
+  WhenuserSearchItemAndDeleteIt() {
+    this.isSearchbarOperandToBeShowen = true;
+   this.currentItems = this.currentItemsThatUserTypeForSearch;
+ }
 
   /**
    * Navigate to the detail page for this item.

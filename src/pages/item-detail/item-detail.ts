@@ -18,7 +18,7 @@ export class ItemDetailPage {
   databaseCartResult: any;
   constructor(public navCtrl: NavController, navParams: NavParams, items: Items, public apiProvider: Api,
     public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
-    this.item = navParams.get('item') || items.defaultItem;
+    this.item = navParams.get('item')
     this.keyValue = Object.keys(this.item)[0];
 
   }

@@ -17,7 +17,7 @@ export class StartUpPage {
     console.log('ionViewDidLoad StartUp');
     setTimeout(() => {
       this.navCtrl.push(TutorialPage);
-    }, 3000);
+    }, 1000);
 
   }
 
