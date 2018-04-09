@@ -447,7 +447,7 @@ app.post('/changeQuantityItemCart', function (request, response) {
                     if (error) {
                         throw error;
                     } else {
-                        response.json({ "response": "success", "updatedCart": updatedResult.value, "data": `You've changed ${request.body.order_descriptiion.product} quantity to ${request.body.order_descriptiion.quantity}` })
+                        response.json({ "response": "success", "data": [updatedResult.value], "status": `You've changed ${request.body.order_descriptiion.product} quantity to ${request.body.order_descriptiion.quantity}` })
                     }
                 })
             }

@@ -118,12 +118,12 @@ export class ShoppingCartPage {
                 cssClass: "wrapper"
               });
               loading.present();
-              this.apiProvider.changeQuantityItemCart(updateQuuantityObject).then((data) => {
-                this.result = data;
+              this.apiProvider.changeQuantityItemCart(updateQuuantityObject).then((finalResult) => {
+                this.result = finalResult;
                 if (this.result.response === "success") {
                   loading.dismiss();
                   setTimeout(() => {
-                    this.updatedResult = this.result.updatedCart
+                    this.updatedResult = this.result.data[0]
                     this.priceDisplay = this.updatedResult.total_amount
                     this.productDisplay = this.updatedResult.order_descriptiion
                     this.cartlength = this.updatedResult.order_descriptiion.length
