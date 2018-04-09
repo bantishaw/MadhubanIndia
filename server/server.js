@@ -416,7 +416,7 @@ app.post('/removeItemFromCart', function (request, response) {
                     if (error) {
                         throw error;
                     } else {
-                        response.json({ "response": "success", "updatedCart": updatedResult.value, "data": `Successfully removed ${request.body.order_descriptiion.product} from your cart` })
+                        response.json({ "response": "success", "data": [updatedResult.value], "status": `Successfully removed ${request.body.order_descriptiion.product} from your cart` })
                     }
                 })
             }

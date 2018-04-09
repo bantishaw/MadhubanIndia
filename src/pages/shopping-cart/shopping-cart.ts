@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, AlertController, ItemOptions, ToastController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 
 
@@ -66,12 +66,12 @@ export class ShoppingCartPage {
               cssClass: "wrapper"
             });
             loading.present();
-            this.apiProvider.removeItemFromCart(removeObject).then((data) => {
-              this.result = data;
+            this.apiProvider.removeItemFromCart(removeObject).then((finalResult) => {
+              this.result = finalResult;
               if (this.result.response === "success") {
                 loading.dismiss();
                 setTimeout(() => {
-                  this.updatedResult = this.result.updatedCart
+                  this.updatedResult = this.result.data[0];
                   this.priceDisplay = this.updatedResult.total_amount
                   this.productDisplay = this.updatedResult.order_descriptiion
                   this.cartlength = this.updatedResult.order_descriptiion.length
