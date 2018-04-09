@@ -33,7 +33,9 @@
           <div>
             <h2 style="margin-bottom: 5px;">{{item.product}}</h2>
             <p style="font-size: 12px;">{{item.description}}</p>
-            <p style="font-size: 12px;">Qty : {{item.quantity}} | <button ion-button clear class="changeClass" (click)="changeQuantity(item)">Change</button></p>
+            <p style="font-size: 12px;">Qty : {{item.quantity}} |
+              <button ion-button clear class="changeClass" (click)="changeQuantity(item)">Change</button>
+            </p>
             <button ion-button clear class="removeClass" (click)="removeItemFromCart(item)">Remove</button>
           </div>
           <p item-end class="individualPrice"> ₹ {{item.rate * item.quantity}}</p>
@@ -63,9 +65,13 @@
       </div>
     </ion-list>
     <ion-list *ngSwitchCase="'delivery'" style="display: inline">
-      <ion-item>
-        <h2>Aman</h2>
-      </ion-item>
+      <div class="deliveryBox">
+        <p class="deliveryAddresss">Delivery Address</p>
+      </div>
+      <p class="address">11/B Arabindra Sarani Kolkata-700005.</p>
+      <div class="boundary">
+        <p class="address" class="change">Change</p>
+      </div>
     </ion-list>
   </div>
 
