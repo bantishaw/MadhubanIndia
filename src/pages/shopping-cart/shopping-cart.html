@@ -20,11 +20,11 @@
   </ion-segment>
 
   <div [ngSwitch]="shoppingCartSegment">
+
     <ion-list *ngSwitchCase="'product'" style="display: inline">
       <div class="rectangularBox">
         <p class="orderSummary">Your order summary</p>
       </div>
-
       <ion-list *ngFor="let item of productDisplay" class="productBoundaries">
         <ion-item>
           <ion-thumbnail item-start>
@@ -41,10 +41,8 @@
           <p item-end class="individualPrice"> ₹ {{item.rate * item.quantity}}</p>
         </ion-item>
       </ion-list>
-
       <div class="priceHeadingBox">
         <p class="price-details"> PRICE DETAILS</p>
-
         <p class="borderRemoval"> Price ({{cartlength}} item)
           <ion-note class="positionPrice"> ₹{{priceDisplay}}</ion-note>
         </p>
@@ -64,14 +62,34 @@
         <p class="shieldTheory">Safe Payments.100% Authentic products</p>
       </div>
     </ion-list>
+
     <ion-list *ngSwitchCase="'delivery'" style="display: inline">
       <div class="deliveryBox">
         <p class="deliveryAddresss">Delivery Address</p>
       </div>
-      <p class="address">11/B Arabindra Sarani Kolkata-700005.</p>
-      <div class="boundary">
-        <button ion-button clear class="change">Change</button>
+      <div>
+        <p class="address">{{userName}}</p>
+        <p class="address">11/B Arabindra Sarani Kolkata-700005.</p>
+        <p class="address">{{userPhoneNumber}}</p>
+        <div class="boundary">
+          <button ion-button clear class="change">Change</button>
+        </div>
       </div>
+      <div>
+        <div class="deliveryBox">
+          <p class="deliveryAddresss">Add a new address</p>
+        </div>
+        <button ion-button clear icon-start class="gpsBox">
+          <ion-icon name="locate" style="font-size: 30px;" (click)="seeLOcation()"></ion-icon>
+          Use my current location
+        </button>
+        <div class="boundary">
+          <p class="autofill">Tap to auto fill the address fields</p>
+        </div>
+
+      </div>
+
+
     </ion-list>
   </div>
 

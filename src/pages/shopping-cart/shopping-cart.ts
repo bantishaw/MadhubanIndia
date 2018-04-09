@@ -16,6 +16,8 @@ export class ShoppingCartPage {
   cartlength: any;
   result: any;
   updatedResult: any;
+  userName: any;
+  userPhoneNumber: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController, ) {
     this.shoppingCartSegment = "product";
@@ -27,6 +29,8 @@ export class ShoppingCartPage {
     this.priceDisplay = this.apiProvider.shoppingCartData.data[0].total_amount
     this.productDisplay = this.apiProvider.shoppingCartData.data[0].order_descriptiion
     this.cartlength = this.apiProvider.shoppingCartData.data[0].order_descriptiion.length
+    this.userName = this.apiProvider.settingsInformation.settingsInformation[0].name
+    this.userPhoneNumber = this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
   }
 
   removeItemFromCart(removeItem) {
