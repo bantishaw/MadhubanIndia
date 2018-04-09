@@ -18,6 +18,8 @@ export class ShoppingCartPage {
   updatedResult: any;
   userName: any;
   userPhoneNumber: any;
+  databaseAddressBox: any;
+  gpsAddressBox: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController, ) {
     this.shoppingCartSegment = "product";
@@ -31,6 +33,13 @@ export class ShoppingCartPage {
     this.cartlength = this.apiProvider.shoppingCartData.data[0].order_descriptiion.length
     this.userName = this.apiProvider.settingsInformation.settingsInformation[0].name
     this.userPhoneNumber = this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
+    if (this.apiProvider.settingsInformation.settingsInformation[0].address) {
+      this.databaseAddressBox = true;
+      this.gpsAddressBox = false;
+    } else {
+      this.databaseAddressBox = false;
+      this.gpsAddressBox = true;
+    }
   }
 
   removeItemFromCart(removeItem) {
@@ -144,6 +153,11 @@ export class ShoppingCartPage {
   continue() {
     this.disableTab = false;
     this.shoppingCartSegment = "delivery";
+  }
+
+  changeAddress() {
+    this.databaseAddressBox = false;
+    this.gpsAddressBox = true
   }
 
 }
