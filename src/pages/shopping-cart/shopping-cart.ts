@@ -141,7 +141,7 @@ export class ShoppingCartPage {
     toast.present();
   }
 
-  contine() {
+  continue() {
     this.disableTab = false;
     this.shoppingCartSegment = "delivery";
   }
