@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
+import { Geolocation } from '@ionic-native/geolocation';
 
-
+declare var google;
 @IonicPage()
 @Component({
   selector: 'page-shopping-cart',
@@ -21,7 +22,8 @@ export class ShoppingCartPage {
   databaseAddressBox: any;
   gpsAddressBox: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController, ) {
+    public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
+    public geolocation: Geolocation) {
     this.shoppingCartSegment = "product";
   }
 
@@ -158,6 +160,33 @@ export class ShoppingCartPage {
   changeAddress() {
     this.databaseAddressBox = false;
     this.gpsAddressBox = true
+  }
+
+  seeLOcation() {
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0
+    };
+    this.geolocation.getCurrentPosition(options).then((position) => {
+      console.log("position", position)
+      var geocoder = new google.maps.Geocoder();
+      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+      var request = {
+        latLng: latLng
+      };
+      geocoder.geocode(request, function (data, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+          if (data[0] != null) {
+            console.log("address is : ", data[0].formatted_address)
+          } else {
+            console.log("No address available");
+          }
+        }
+      })
+    }, (err) => {
+      console.log(err);
+    });
   }
 
 }
