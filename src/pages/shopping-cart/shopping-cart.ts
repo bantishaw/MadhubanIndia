@@ -165,7 +165,7 @@ export class ShoppingCartPage {
   seeLOcation() {
     var options = {
       enableHighAccuracy: true,
-      timeout: 5000,
+      timeout: Infinity,
       maximumAge: 0
     };
     this.geolocation.getCurrentPosition(options).then((position) => {
