@@ -176,6 +176,7 @@ export class ShoppingCartPage {
       maximumAge: 0
     };
     this.showLoading = true;
+    this.UserCityName = "", this.UserPinCode = "", this.UserState = "", this.UserStreetName = "";
     this.geolocation.getCurrentPosition(options).then((position) => {
       let positionObject = {
         latitude: position.coords.latitude,
@@ -189,9 +190,8 @@ export class ShoppingCartPage {
           this.UserCityName = this.realTimeAddress.googleResponse[0].city;
           this.UserPinCode = this.realTimeAddress.googleResponse[0].zipcode;
           this.UserState = this.realTimeAddress.googleResponse[0].administrativeLevels.level1long;
-          this.UserStreetName = this.realTimeAddress.googleResponse[0].streetName
-          this.userNeighborhood = this.realTimeAddress.googleResponse[0].extra.neighborhood
-          console.log(this.UserCityName, this.UserPinCode, this.UserState, this.UserStreetName, this.userNeighborhood)
+          this.UserStreetName = this.realTimeAddress.googleResponse[0].streetName + " " + this.realTimeAddress.googleResponse[0].extra.neighborhood
+          console.log(this.UserCityName, this.UserPinCode, this.UserState, this.UserStreetName)
         }
       })
     }, (err) => {

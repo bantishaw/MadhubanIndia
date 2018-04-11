@@ -91,6 +91,42 @@
         <div *ngIf="showLoading">
           <div class="loader"></div>
         </div>
+        <ion-list style="margin: 5px;">
+          <ion-item class="itemPlacement">
+            <ion-label color="primary" floating>City*</ion-label>
+            <ion-input value="{{UserCityName}}"></ion-input>
+          </ion-item>
+          <ion-item class="itemPlacement">
+            <ion-label color="primary" floating>Locality, area or Street*</ion-label>
+            <ion-input value="{{UserStreetName}}"></ion-input>
+          </ion-item>
+          <ion-item class="itemPlacement">
+            <ion-label color="primary" floating>Flat no. Building name*</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+          <ion-grid style="padding:0;margin-left: -2px;">
+            <ion-row>
+              <ion-col width-50>
+                <ion-item class="itemPlacement" style="border-bottom:none">
+                  <ion-label color="primary" floating>Pincode*</ion-label>
+                  <ion-input type="number" value="{{UserPinCode}}"></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col width-50>
+                <ion-item class="itemPlacement" style="border-bottom:none">
+                  <ion-label color="primary" floating>State*</ion-label>
+                  <ion-input value="{{UserState}}"></ion-input>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+          <ion-item class="itemPlacement">
+            <ion-label color="primary" floating>Landmark (Optional)</ion-label>
+            <ion-input></ion-input>
+          </ion-item>
+        </ion-list>
+        <button ion-button block style="margin-top: 25px;">SAVE</button>
 
       </div>
 
