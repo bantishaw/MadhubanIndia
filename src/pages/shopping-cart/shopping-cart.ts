@@ -27,6 +27,7 @@ export class ShoppingCartPage {
   UserState: any;
   UserStreetName: any;
   userNeighborhood: any;
+  showLoading: any = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
     public geolocation: Geolocation) {
@@ -174,6 +175,7 @@ export class ShoppingCartPage {
       timeout: Infinity,
       maximumAge: 0
     };
+    this.showLoading = true;
     this.geolocation.getCurrentPosition(options).then((position) => {
       let positionObject = {
         latitude: position.coords.latitude,
@@ -182,6 +184,7 @@ export class ShoppingCartPage {
       this.apiProvider.getRealTimeUserAddress(positionObject).then((data) => {
         this.realTimeAddress = data;
         if (this.realTimeAddress.response === "success") {
+          this.showLoading = false;
           console.log(this.realTimeAddress.googleResponse[0])
           this.UserCityName = this.realTimeAddress.googleResponse[0].city;
           this.UserPinCode = this.realTimeAddress.googleResponse[0].zipcode;
