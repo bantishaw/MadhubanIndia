@@ -21,6 +21,12 @@ export class ShoppingCartPage {
   userPhoneNumber: any;
   databaseAddressBox: any;
   gpsAddressBox: any;
+  realTimeAddress: any;
+  UserCityName: any;
+  UserPinCode: any;
+  UserState: any;
+  UserStreetName: any;
+  userNeighborhood: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
     public geolocation: Geolocation) {
@@ -169,19 +175,20 @@ export class ShoppingCartPage {
       maximumAge: 0
     };
     this.geolocation.getCurrentPosition(options).then((position) => {
-      console.log("position", position)
-      var geocoder = new google.maps.Geocoder();
-      let latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-      var request = {
-        latLng: latLng
-      };
-      geocoder.geocode(request, function (data, status) {
-        if (status == google.maps.GeocoderStatus.OK) {
-          if (data[0] != null) {
-            console.log("address is : ", data[0].formatted_address)
-          } else {
-            console.log("No address available");
-          }
+      let positionObject = {
+        latitude: position.coords.latitude,
+        longitude: position.coords.longitude
+      }
+      this.apiProvider.getRealTimeUserAddress(positionObject).then((data) => {
+        this.realTimeAddress = data;
+        if (this.realTimeAddress.response === "success") {
+          console.log(this.realTimeAddress.googleResponse[0])
+          this.UserCityName = this.realTimeAddress.googleResponse[0].city;
+          this.UserPinCode = this.realTimeAddress.googleResponse[0].zipcode;
+          this.UserState = this.realTimeAddress.googleResponse[0].administrativeLevels.level1long;
+          this.UserStreetName = this.realTimeAddress.googleResponse[0].streetName
+          this.userNeighborhood = this.realTimeAddress.googleResponse[0].extra.neighborhood
+          console.log(this.UserCityName, this.UserPinCode, this.UserState, this.UserStreetName, this.userNeighborhood)
         }
       })
     }, (err) => {

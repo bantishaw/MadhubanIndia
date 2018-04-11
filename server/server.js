@@ -8,7 +8,7 @@ var express = require('express'),
 
 const nodemailer = require('nodemailer'),
     fs = require('fs');
-    //busboyBodyParser = require('busboy-body-parser');
+//busboyBodyParser = require('busboy-body-parser');
 
 app.use(cors())
 app.use(bodyParser.urlencoded({ extended: false }))
@@ -26,12 +26,24 @@ app.use((req, res, next) => {
 var databaseConnectivity = mongoose.connection;
 var mongoDbUrl = 'mongodb://localhost/Catering';
 mongoose.Promise = global.Promise;
-var mongoConnectivity = mongoose.connect(mongoDbUrl, { useMongoClient: true ,})
+var mongoConnectivity = mongoose.connect(mongoDbUrl, { useMongoClient: true, })
     .then(() => {
         console.log(`MongoDB is connected to URL ${mongoDbUrl}`)
-    }).catch((error) =>{
+    }).catch((error) => {
         throw error;
     });
+
+
+//Google API settings to get realtime User Address
+    var NodeGeocoder = require('node-geocoder');
+    var options = {
+        provider: 'google', 
+        // Optional depending on the providers
+        httpAdapter: 'https', // Default
+        apiKey: 'AIzaSyD_HZNpovLkkJ5ZBuo55hWkQhSw97TSb8Q', // for Mapquest, OpenCage, Google Premier
+        formatter: null         // 'gpx', 'string', ...
+    };
+    var geocoder = NodeGeocoder(options);
 
 app.get("/", function (request, response) {
     response.send('Hello User. come back later');
@@ -54,7 +66,7 @@ app.post('/getLogin', function (request, response) {
             throw error;
         } else {
             if (result.length > 0) {
-                response.json({ "response": "success", "data": "User is authenticated", "settingsInformation":result })
+                response.json({ "response": "success", "data": "User is authenticated", "settingsInformation": result })
             } else {
                 response.json({ "response": "failure", "data": "Please enter correct Username or Password" })
             }
@@ -79,12 +91,12 @@ app.post('/newUserSignUp', function (request, response) {
                         let message = {
                             to: request.body.name + '<' + request.body.email + '>',
                             subject: 'Welcome to FreshPool India',
-                             html:
-                                 '<p>We are looking forward to assist you to find the best Catering. To avail our best services , Please login now with your credentials. <br/></p>',
+                            html:
+                                '<p>We are looking forward to assist you to find the best Catering. To avail our best services , Please login now with your credentials. <br/></p>',
                         };
                         // Activating send mail function to send mail to new users
                         sendmail(message);
-                        response.json({ "response": "success", "data": "User added successfully","settingsInformation":[request.body]})
+                        response.json({ "response": "success", "data": "User added successfully", "settingsInformation": [request.body] })
                     }
                 })
             }
@@ -431,7 +443,7 @@ app.post('/changeQuantityItemCart', function (request, response) {
         } else {
             if (result.length) {
                 let getPosition = result[0].order_descriptiion.map(function (item) { return item.product; }).indexOf(request.body.order_descriptiion.product);
-                let OldItemAmount  = (result[0].order_descriptiion[getPosition].quantity * result[0].order_descriptiion[getPosition].rate)
+                let OldItemAmount = (result[0].order_descriptiion[getPosition].quantity * result[0].order_descriptiion[getPosition].rate)
                 let OldTotalAmount = result[0].total_amount - OldItemAmount;
 
                 // Replacing the old item with the new one from request
@@ -453,6 +465,13 @@ app.post('/changeQuantityItemCart', function (request, response) {
             }
         }
     })
+})
+
+
+app.post('/getRealTimeUserAddress', function (request, response) {
+    geocoder.reverse({ lat: request.body.latitude, lon: request.body.longitude }, function (error, result) {
+        response.json({ "response": "success", "googleResponse": result })
+    });
 })
 
 app.listen(8080)
