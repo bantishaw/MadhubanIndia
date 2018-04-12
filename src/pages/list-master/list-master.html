@@ -24,19 +24,19 @@
     cancelButtonText="Cancel" placeholder="Search  item here... ">
   </ion-searchbar>
 
-  <ion-grid>
+
+  <ion-grid style="padding: 0px">
     <ion-row wrap>
-      <ion-col *ngFor="let item of currentItems" class="cardNewStyle">
-        <ion-card (click)="openItem(item)" class="cardHeight">
-          <img [src]="item.profilePic" />
-          <ion-card-content class="cardContentTitle">
-            <ion-card-title class="cardTitle">{{item.product}}</ion-card-title>
-            <p class="printText">{{item.description}}</p>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+      <ion-col col-6 *ngFor="let item of currentItems" (click)="openItem(item)" class={{issearchClasshtml}}>
+        <img [src]="item.profilePic" style="width: 121px;height: 81px;" />
+        <p class="cardTitle">{{item.product}}</p>
+        <p class="printText">{{item.description}}</p>
+         </ion-col>
     </ion-row>
   </ion-grid>
+
+  
+
 
   <div *ngIf="showDataFailureText" style="height: 400px;display: inline-flex;">
     <div class="showDatabaseFailure">{{showDataFailureText}}</div>

@@ -11,6 +11,7 @@ import { Api } from '../../providers/providers';
   templateUrl: 'list-master.html'
 })
 export class ListMasterPage {
+  issearchClasshtml: any;
   isSearchbarOperandToBeShowen = false;
   currentItemsDuplicate: any;
   currentItemsThatUserTypeForSearch: any;
@@ -35,6 +36,7 @@ export class ListMasterPage {
     });
     loading.present();
     this.apiProvider.getSubMenuItems(this.fetchCollection).then((data) => {
+      this.issearchClasshtml="WithoutSearchionColProperty";
       this.result = data;
       if (this.result.response === "success") {
         loading.dismiss();
@@ -52,6 +54,7 @@ export class ListMasterPage {
   }
 
   onSearch(event) {
+    this.issearchClasshtml="WithSearchionColProperty";
     var FruitListarray = [];
     let valuethatUserTypeToSearch = event.target.value;
     if (!valuethatUserTypeToSearch) {
@@ -71,10 +74,10 @@ export class ListMasterPage {
   }
 
   onCancel() {
+    this.issearchClasshtml="WithoutSearchionColProperty";
      this.isSearchbarOperandToBeShowen = false;
     this.currentItems = this.currentItemsThatUserTypeForSearch;
   }
-
   /*
   Used when user will typr for some text and then erase it,
   this function will will still make serachBar visible with all CurrentItems avaliable
