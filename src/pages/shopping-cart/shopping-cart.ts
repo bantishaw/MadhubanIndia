@@ -28,6 +28,8 @@ export class ShoppingCartPage {
   UserStreetName: any;
   userNeighborhood: any;
   showLoading: any = false;
+  showPriceAndContinue: any = false;
+  showAddresSaveButton: any = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
     public geolocation: Geolocation) {
@@ -42,12 +44,25 @@ export class ShoppingCartPage {
     this.cartlength = this.apiProvider.shoppingCartData.data[0].order_descriptiion.length
     this.userName = this.apiProvider.settingsInformation.settingsInformation[0].name
     this.userPhoneNumber = this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
+    this.productSegment();
+  }
+
+  productSegment() {
+    this.showPriceAndContinue = true;
+    this.showAddresSaveButton = false
+  }
+
+  deliverySegment() {
     if (this.apiProvider.settingsInformation.settingsInformation[0].address) {
       this.databaseAddressBox = true;
       this.gpsAddressBox = false;
+      this.showPriceAndContinue = true;
+      this.showAddresSaveButton = false
     } else {
       this.databaseAddressBox = false;
       this.gpsAddressBox = true;
+      this.showPriceAndContinue = false;
+      this.showAddresSaveButton = true
     }
   }
 
@@ -162,11 +177,14 @@ export class ShoppingCartPage {
   continue() {
     this.disableTab = false;
     this.shoppingCartSegment = "delivery";
+    this.deliverySegment()
   }
 
   changeAddress() {
     this.databaseAddressBox = false;
-    this.gpsAddressBox = true
+    this.gpsAddressBox = true;
+    this.showAddresSaveButton = true;
+    this.showPriceAndContinue = false;
   }
 
   seeLOcation() {

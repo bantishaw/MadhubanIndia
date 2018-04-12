@@ -8,10 +8,10 @@
 
 <ion-content padding>
   <ion-segment [(ngModel)]="shoppingCartSegment" class="segmentDisplay">
-    <ion-segment-button value="product" class="fontdisplay">
+    <ion-segment-button value="product" (click)="productSegment()" class="fontdisplay">
       Product
     </ion-segment-button>
-    <ion-segment-button value="delivery" disabled={{disableTab}} class="fontdisplay">
+    <ion-segment-button value="delivery" disabled={{disableTab}} (click)="deliverySegment()" class="fontdisplay">
       Delivery
     </ion-segment-button>
     <ion-segment-button value="payment" disabled="true" class="fontdisplay">
@@ -94,28 +94,28 @@
         <ion-list style="margin: 5px;">
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>City*</ion-label>
-            <ion-input value="{{UserCityName}}"></ion-input>
+            <ion-input value="{{UserCityName}}" style="font-family: sans-serif;"></ion-input>
           </ion-item>
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>Locality, area or Street*</ion-label>
-            <ion-input value="{{UserStreetName}}"></ion-input>
+            <ion-input value="{{UserStreetName}}" style="font-family: sans-serif;"></ion-input>
           </ion-item>
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>Flat no. Building name*</ion-label>
-            <ion-input></ion-input>
+            <ion-input style="font-family: sans-serif;"></ion-input>
           </ion-item>
           <ion-grid style="padding:0;margin-left: -2px;">
             <ion-row>
               <ion-col width-50>
                 <ion-item class="itemPlacement" style="border-bottom:none">
                   <ion-label color="primary" floating>Pincode*</ion-label>
-                  <ion-input type="number" value="{{UserPinCode}}"></ion-input>
+                  <ion-input type="number" value="{{UserPinCode}}" style="font-family: sans-serif;"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col width-50>
                 <ion-item class="itemPlacement" style="border-bottom:none">
                   <ion-label color="primary" floating>State*</ion-label>
-                  <ion-input value="{{UserState}}"></ion-input>
+                  <ion-input value="{{UserState}}" style="font-family: sans-serif;"></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -123,23 +123,25 @@
 
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>Landmark (Optional)</ion-label>
-            <ion-input></ion-input>
+            <ion-input style="font-family: sans-serif;"></ion-input>
           </ion-item>
         </ion-list>
-        <button ion-button block style="margin-top: 25px;">SAVE</button>
-
       </div>
-
 
     </ion-list>
   </div>
 
 </ion-content>
 <ion-footer>
-  <ion-toolbar>
+  <ion-toolbar *ngIf="showPriceAndContinue">
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
       style="background-color:white;"></div>
     <p class="amountPlacement">₹ {{priceDisplay}}</p>
     <button ion-button color="danger" class="buttonPosition" (click)="continue()">CONTINUE</button>
+  </ion-toolbar>
+  <ion-toolbar *ngIf="showAddresSaveButton">
+    <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
+      style="background-color:white;"></div>
+    <button ion-button block style="width: 85%;margin-left: 15px;">SAVE</button>
   </ion-toolbar>
 </ion-footer>
