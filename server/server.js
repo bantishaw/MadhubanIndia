@@ -35,15 +35,15 @@ var mongoConnectivity = mongoose.connect(mongoDbUrl, { useMongoClient: true, })
 
 
 //Google API settings to get realtime User Address
-    var NodeGeocoder = require('node-geocoder');
-    var options = {
-        provider: 'google', 
-        // Optional depending on the providers
-        httpAdapter: 'https', // Default
-        apiKey: 'AIzaSyD_HZNpovLkkJ5ZBuo55hWkQhSw97TSb8Q', // for Mapquest, OpenCage, Google Premier
-        formatter: null         // 'gpx', 'string', ...
-    };
-    var geocoder = NodeGeocoder(options);
+var NodeGeocoder = require('node-geocoder');
+var options = {
+    provider: 'google',
+    // Optional depending on the providers
+    httpAdapter: 'https', // Default
+    apiKey: 'AIzaSyD_HZNpovLkkJ5ZBuo55hWkQhSw97TSb8Q', // for Mapquest, OpenCage, Google Premier
+    formatter: null         // 'gpx', 'string', ...
+};
+var geocoder = NodeGeocoder(options);
 
 app.get("/", function (request, response) {
     response.send('Hello User. come back later');
@@ -472,6 +472,25 @@ app.post('/getRealTimeUserAddress', function (request, response) {
     geocoder.reverse({ lat: request.body.latitude, lon: request.body.longitude }, function (error, result) {
         response.json({ "response": "success", "googleResponse": result })
     });
+})
+
+app.post('/updateAddress', function (request, response) {
+    console.log(request.body)
+    databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, seeUserResult) {
+        if (error) {
+            throw error;
+        } else {
+            if (seeUserResult.length > 0) {
+                databaseConnectivity.collection('UserRegistrations').findOneAndReplace({ email: request.body.email }, { $set: { address: request.body.address } }, { returnOriginal: false }, function (error, updatedAddressResult) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        response.json({ "response": "success", "data": updatedAddressResult.value })
+                    }
+                })
+            }
+        }
+    })
 })
 
 app.listen(8080)

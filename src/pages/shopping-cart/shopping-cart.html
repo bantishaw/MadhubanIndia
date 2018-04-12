@@ -70,7 +70,7 @@
         </div>
         <div>
           <p class="address">{{userName}}</p>
-          <p class="address">11/B Arabindra Sarani Kolkata-700005.</p>
+          <p class="address">{{userAddress}}</p>
           <p class="address">{{userPhoneNumber}}</p>
           <div class="boundary">
             <button ion-button clear class="change" (click)="changeAddress()">Change</button>
@@ -94,28 +94,28 @@
         <ion-list style="margin: 5px;">
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>City*</ion-label>
-            <ion-input value="{{UserCityName}}" style="font-family: sans-serif;"></ion-input>
+            <ion-input value="{{UserCityName}}" [(ngModel)]="UserCityName" style="font-family: sans-serif;"></ion-input>
           </ion-item>
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>Locality, area or Street*</ion-label>
-            <ion-input value="{{UserStreetName}}" style="font-family: sans-serif;"></ion-input>
+            <ion-input value="{{UserStreetName}}" [(ngModel)]="UserStreetName" style="font-family: sans-serif;"></ion-input>
           </ion-item>
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>Flat no. Building name*</ion-label>
-            <ion-input style="font-family: sans-serif;"></ion-input>
+            <ion-input style="font-family: sans-serif;" [(ngModel)]="flatNoBuildingNoModel"></ion-input>
           </ion-item>
           <ion-grid style="padding:0;margin-left: -2px;">
             <ion-row>
               <ion-col width-50>
                 <ion-item class="itemPlacement" style="border-bottom:none">
                   <ion-label color="primary" floating>Pincode*</ion-label>
-                  <ion-input type="number" value="{{UserPinCode}}" style="font-family: sans-serif;"></ion-input>
+                  <ion-input type="number" value="{{UserPinCode}}"  [(ngModel)]="UserPinCode" style="font-family: sans-serif;"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col width-50>
                 <ion-item class="itemPlacement" style="border-bottom:none">
                   <ion-label color="primary" floating>State*</ion-label>
-                  <ion-input value="{{UserState}}" style="font-family: sans-serif;"></ion-input>
+                  <ion-input value="{{UserState}}" [(ngModel)]="UserState" style="font-family: sans-serif;"></ion-input>
                 </ion-item>
               </ion-col>
             </ion-row>
@@ -123,7 +123,7 @@
 
           <ion-item class="itemPlacement">
             <ion-label color="primary" floating>Landmark (Optional)</ion-label>
-            <ion-input style="font-family: sans-serif;"></ion-input>
+            <ion-input style="font-family: sans-serif;" [(ngModel)]="landmarkModel"></ion-input>
           </ion-item>
         </ion-list>
       </div>
@@ -142,6 +142,6 @@
   <ion-toolbar *ngIf="showAddresSaveButton">
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
       style="background-color:white;"></div>
-    <button ion-button block style="width: 85%;margin-left: 15px;">SAVE</button>
+    <button ion-button block style="width: 85%;margin-left: 15px;" (click)="saveAddress()">SAVE</button>
   </ion-toolbar>
 </ion-footer>
