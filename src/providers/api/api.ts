@@ -238,7 +238,6 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/getRealTimeUserAddress', addressObject, { headers: headers })
         .subscribe(res => {
-          this.shoppingCartData = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err)
@@ -252,7 +251,6 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.post('http://localhost:8080/updateAddress', addressObject, { headers: headers })
         .subscribe(res => {
-          this.shoppingCartData = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err)
