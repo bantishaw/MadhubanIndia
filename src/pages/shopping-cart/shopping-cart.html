@@ -14,7 +14,7 @@
     <ion-segment-button value="delivery" disabled={{disableTab}} (click)="deliverySegment()" class="fontdisplay">
       Delivery
     </ion-segment-button>
-    <ion-segment-button value="payment" disabled="true" class="fontdisplay">
+    <ion-segment-button value="payment" disabled={{disableTab}} class="fontdisplay">
       Payment
     </ion-segment-button>
   </ion-segment>
@@ -109,7 +109,7 @@
               <ion-col width-50>
                 <ion-item class="itemPlacement" style="border-bottom:none">
                   <ion-label color="primary" floating>Pincode*</ion-label>
-                  <ion-input type="number" value="{{UserPinCode}}"  [(ngModel)]="UserPinCode" style="font-family: sans-serif;"></ion-input>
+                  <ion-input type="number" value="{{UserPinCode}}" [(ngModel)]="UserPinCode" style="font-family: sans-serif;"></ion-input>
                 </ion-item>
               </ion-col>
               <ion-col width-50>
@@ -128,6 +128,26 @@
         </ion-list>
       </div>
 
+    </ion-list>
+    <ion-list *ngSwitchCase="'payment'" style="display: inline">
+      <div class="rectangularBox">
+        <p class="orderSummary">Payment Methods</p>
+      </div>
+      <div>
+        <div style="margin-top: 15%;">
+          <input id="card" type="radio" name="payment">
+          <p class="cashDelivery"> Cash on Delivery </p>
+          <img src="assets/img/cash.svg" class="cashImage" />
+        </div>
+        <div style="margin-top: 15%;">
+          <input id="paypal" type="radio" name="payment" style="margin-top: 4px;">
+          <p class="paytmHeading"> Paytm</p>
+          <img src="assets/img/paytm.svg" class="paytmImage" />
+        </div>
+      </div>
+      <div class="noteHeading">
+        <p class="noteContent"> Note : After placing order, Go to My Orders Page to track your order.</p>
+      </div>
     </ion-list>
   </div>
 
