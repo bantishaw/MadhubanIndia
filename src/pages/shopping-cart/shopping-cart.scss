@@ -254,10 +254,6 @@ page-shopping-cart {
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-input[type='radio'] {
-  display: inline-block;
-}
-
 .cashDelivery {
   margin-top: -18px;
   margin-left: 30px;
@@ -281,7 +277,7 @@ input[type='radio'] {
   margin-top: -60px;
 }
 
-.noteHeading {
+.note {
   margin-top: 60px;
   border: 1px solid #c8c7cc;
   margin-left: -20px;
