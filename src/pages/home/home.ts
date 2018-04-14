@@ -65,7 +65,7 @@ export class HomePage {
   }
 
   goToShopping() {
-    this.appCtrl.getRootNav().push(ShoppingCartPage)
+    this.navCtrl.push(ShoppingCartPage)
   }
 
   ionViewDidEnter() {

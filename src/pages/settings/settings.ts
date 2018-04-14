@@ -58,7 +58,7 @@ export class SettingsPage {
         {
           text: 'Yes',
           handler: () => {
-            this.appCtrl.getRootNav().push(LoginPage)
+            this.navCtrl.push(LoginPage)
           }
         },
         {
