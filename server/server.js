@@ -357,11 +357,17 @@ app.post('/addToCart', function (request, response) {
                 // updating the exisitng object
                 // Making the new order_description array
                 let orderArray = [];
-                // let newAmount = 0;
                 orderArray = result[0].order_descriptiion;
-                request.body.order_descriptiion.forEach((object) => {
-                    orderArray.push(object)
-                })
+                if (orderArray.length !== 0) {
+                    var checkProduct = orderArray.map(function (item) { return item.product; }).indexOf(request.body.order_descriptiion[0].product)
+                    if (checkProduct !== -1) {
+                        orderArray[checkProduct].quantity = parseInt(orderArray[checkProduct].quantity) + request.body.order_descriptiion[0].quantity
+                    } else {
+                        orderArray.push(request.body.order_descriptiion[0])
+                    }
+                } else {
+                    orderArray.push(request.body.order_descriptiion[0])
+                }
                 let newAmount = result[0].total_amount + request.body.total_amount
                 // making the new Object to be pushed in Database
                 var addToExistingObject = {

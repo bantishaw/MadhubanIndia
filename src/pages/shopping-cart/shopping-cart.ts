@@ -143,7 +143,7 @@ export class ShoppingCartPage {
           text: 'SAVE',
           handler: data => {
             if (data.quantity >= 1) {
-              item.quantity = data.quantity
+              item.quantity = parseInt(data.quantity)
               let updateQuuantityObject = {
                 "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
                 "order_descriptiion": item
