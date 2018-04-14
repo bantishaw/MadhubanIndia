@@ -33,11 +33,12 @@
       <h5 class="amountRuler">₹{{totalAmount}}</h5>
     </div>
   </ion-row>
-
-  <div style="text-align: center;margin-top: 33px;">
-    <button ion-button icon-start (click)="addToCart()">
-      ADD TO CART
-      <ion-icon md="ios-cart-outline" style="margin-left: 15px;"></ion-icon>
-    </button>
-  </div>
 </ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
+      style="background-color:white;"></div>
+    <p class="amountPlacement">₹ {{totalAmount}}</p>
+    <button ion-button color="danger" class="itemButtonPosition" (click)="addToCart()">ADD TO CART</button>
+  </ion-toolbar>
+</ion-footer>
