@@ -47,11 +47,19 @@ export class ShoppingCartPage {
   }
 
   ionViewDidLoad() {
-    console.log(this.apiProvider.shoppingCartData.data[0])
+    //console.log(this.apiProvider.shoppingCartData.data[0])
     this.disableTab = true;
-    this.priceDisplay = this.apiProvider.shoppingCartData.data[0].total_amount
-    this.productDisplay = this.apiProvider.shoppingCartData.data[0].order_descriptiion
-    this.cartlength = this.apiProvider.shoppingCartData.data[0].order_descriptiion.length
+    if (this.apiProvider.shoppingCartData.data) {
+      console.log(this.apiProvider.shoppingCartData.data[0])
+      this.priceDisplay = this.apiProvider.shoppingCartData.data[0].total_amount
+      this.productDisplay = this.apiProvider.shoppingCartData.data[0].order_descriptiion
+      this.cartlength = this.apiProvider.shoppingCartData.data[0].order_descriptiion.length
+    } else {
+      // If first time user is opening cart then making all values to 0. this condition will
+      // happen only 1st time
+      this.priceDisplay = 0;
+      this.cartlength = 0;
+    }
     this.userName = this.apiProvider.settingsInformation.settingsInformation[0].name
     this.userPhoneNumber = this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
     this.userAddress = this.apiProvider.settingsInformation.settingsInformation[0].address

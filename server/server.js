@@ -410,7 +410,7 @@ app.post('/queryCartLength', function (request, response) {
                     "data": result
                 })
             } else {
-                response.json({ "response": "success", "data": "Your Shopping Cart is empty" })
+                response.json({ "response": "failure", "message": "Your Shopping Cart is empty" })
             }
         }
     })
