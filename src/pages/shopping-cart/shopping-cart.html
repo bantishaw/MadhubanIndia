@@ -14,7 +14,7 @@
     <ion-segment-button value="delivery" disabled={{disableTab}} (click)="deliverySegment()" class="fontdisplay">
       Delivery
     </ion-segment-button>
-    <ion-segment-button value="payment" disabled={{disableTab}} class="fontdisplay">
+    <ion-segment-button value="payment" disabled={{paymentTab}} class="fontdisplay">
       Payment
     </ion-segment-button>
   </ion-segment>
@@ -153,15 +153,32 @@
 
 </ion-content>
 <ion-footer>
+
   <ion-toolbar *ngIf="showPriceAndContinue">
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
       style="background-color:white;"></div>
     <p class="amountPlacement">₹ {{priceDisplay}}</p>
     <button ion-button color="danger" class="buttonPosition" (click)="continue()">CONTINUE</button>
   </ion-toolbar>
+
+  <ion-toolbar *ngIf="showAddressAndContinue">
+    <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
+      style="background-color:white;"></div>
+    <p class="amountPlacement">₹ {{priceDisplay}}</p>
+    <button ion-button color="danger" class="buttonPosition" (click)="continueAddress()">CONTINUE</button>
+  </ion-toolbar>
+
   <ion-toolbar *ngIf="showAddresSaveButton">
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
       style="background-color:white;"></div>
     <button ion-button block style="width: 85%;margin-left: 15px;" (click)="saveAddress()">SAVE</button>
   </ion-toolbar>
+
+  <ion-toolbar *ngIf="showPlaceOrder">
+    <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
+      style="background-color:white;"></div>
+    <p class="amountPlacement">₹ {{priceDisplay}}</p>
+    <button ion-button color="danger" class="buttonPosition" (click)="placeOrder()">PLACE ORDER</button>
+  </ion-toolbar>
+
 </ion-footer>

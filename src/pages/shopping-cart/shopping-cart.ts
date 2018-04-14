@@ -40,6 +40,9 @@ export class ShoppingCartPage {
   formatAddress: any;
   updateAddressResult: any;
   userAddress: any;
+  showPlaceOrder: any = false;
+  showAddressAndContinue: any = false;
+  paymentTab: Boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
     public geolocation: Geolocation) {
@@ -49,6 +52,7 @@ export class ShoppingCartPage {
   ionViewDidLoad() {
     //console.log(this.apiProvider.shoppingCartData.data[0])
     this.disableTab = true;
+    this.paymentTab = true;
     if (this.apiProvider.shoppingCartData.data) {
       console.log(this.apiProvider.shoppingCartData.data[0])
       this.priceDisplay = this.apiProvider.shoppingCartData.data[0].total_amount
@@ -68,21 +72,41 @@ export class ShoppingCartPage {
 
   productSegment() {
     this.showPriceAndContinue = true;
-    this.showAddresSaveButton = false
+    this.showAddresSaveButton = false;
+    this.showPlaceOrder = false;
+    this.showAddressAndContinue = false;
   }
 
   deliverySegment() {
     if (this.apiProvider.settingsInformation.settingsInformation[0].address) {
       this.databaseAddressBox = true;
       this.gpsAddressBox = false;
-      this.showPriceAndContinue = true;
-      this.showAddresSaveButton = false
+      this.showPriceAndContinue = false;
+      this.showAddresSaveButton = false;
+      this.showAddressAndContinue = true;
     } else {
       this.databaseAddressBox = false;
       this.gpsAddressBox = true;
       this.showPriceAndContinue = false;
       this.showAddresSaveButton = true
     }
+  }
+
+  continue() {
+    this.disableTab = false;
+    this.paymentTab = true;
+    this.shoppingCartSegment = "delivery";
+    this.deliverySegment()
+  }
+
+  continueAddress() {
+    this.disableTab = false;
+    this.shoppingCartSegment = "payment";
+    this.paymentTab = false;
+    this.showPlaceOrder = true;
+    this.showAddressAndContinue = false;
+    this.showPriceAndContinue = false;
+    this.showAddresSaveButton = false;
   }
 
   removeItemFromCart(removeItem) {
@@ -193,17 +217,13 @@ export class ShoppingCartPage {
     toast.present();
   }
 
-  continue() {
-    this.disableTab = false;
-    this.shoppingCartSegment = "delivery";
-    this.deliverySegment()
-  }
 
   changeAddress() {
     this.databaseAddressBox = false;
     this.gpsAddressBox = true;
     this.showAddresSaveButton = true;
     this.showPriceAndContinue = false;
+    this.showAddressAndContinue = false;
     this.UserCityName = "", this.UserPinCode = "", this.UserState = "";
     this.UserStreetName = "", this.formatAddress = "", this.landmarkModel = "", this.flatNoBuildingNoModel = "";
   }
@@ -266,25 +286,28 @@ export class ShoppingCartPage {
         "email": this.apiProvider.settingsInformation.settingsInformation[0].email,
         "address": this.flatNoBuildingNoModel + ", " + this.formatAddress + ", Landmark : " + this.landmarkModel
       }
-      console.log("addressObject", addressObject)
     } else {
       addressObject = {
         "email": this.apiProvider.settingsInformation.settingsInformation[0].email,
         "address": this.flatNoBuildingNoModel + ", " + this.UserStreetName + ", " + this.UserCityName + ", " + this.UserState + ", " + this.UserPinCode + ", Landmark : " + this.landmarkModel
       }
-      console.log("else addressObject", addressObject)
     }
     this.apiProvider.updateAddress(addressObject).then((data) => {
       this.updateAddressResult = data;
       if (this.updateAddressResult.response === "success") {
         this.gpsAddressBox = false
         this.databaseAddressBox = true;
-        this.showPriceAndContinue = true;
-        this.showAddresSaveButton = false
+        this.showPriceAndContinue = false;
+        this.showAddresSaveButton = false;
+        this.showAddressAndContinue = true;
         this.userName = this.updateAddressResult.data.name
         this.userPhoneNumber = this.updateAddressResult.data.phoneNumber
         this.userAddress = this.updateAddressResult.data.address
       }
     })
+  }
+
+  placeOrder() {
+    console.log("place order function starts from here")
   }
 }
