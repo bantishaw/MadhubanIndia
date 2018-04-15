@@ -7,7 +7,15 @@
 
 
 <ion-content padding>
-  <ion-segment [(ngModel)]="shoppingCartSegment" class="segmentDisplay">
+  <div *ngIf="cartlength === 0" style="display: flex;height: 300px;">
+    <img src="assets/img/emptyShoppingCart.svg" />
+    <div class="emptyCart">
+      <p style="font-family: sans-serif;">Your Shopping Cart is empty !</p>
+      <button ion-button color="primary" (click)="shopNow()">SHOP NOW</button>
+    </div>
+  </div>
+
+  <ion-segment [(ngModel)]="shoppingCartSegment" class="segmentDisplay" *ngIf="cartlength">
     <ion-segment-button value="product" (click)="productSegment()" class="fontdisplay">
       Product
     </ion-segment-button>
@@ -19,7 +27,7 @@
     </ion-segment-button>
   </ion-segment>
 
-  <div [ngSwitch]="shoppingCartSegment">
+  <div [ngSwitch]="shoppingCartSegment" *ngIf="cartlength">
 
     <ion-list *ngSwitchCase="'product'" style="display: inline">
       <div class="rectangularBox">
@@ -152,7 +160,8 @@
   </div>
 
 </ion-content>
-<ion-footer>
+
+<ion-footer *ngIf="cartlength">
 
   <ion-toolbar *ngIf="showPriceAndContinue">
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"
