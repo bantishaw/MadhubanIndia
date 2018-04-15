@@ -48,7 +48,6 @@ export class AboutUsPage {
 
         });
     }
-
     else {
       console.log(getPageInfo.content)
       this.navCtrl.push(ShowContentPage, { content: getPageInfo });

@@ -4,19 +4,17 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title class="titleStyleAll">About Us</ion-title>
-    <ion-buttons right>
-      <button ion-button icon-only>
-        <ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 
 <ion-content>
-  <ion-list>
-    <button style="margin-left: 13px;" class="buttonDisplay" ion-item *ngFor="let item of displayAboutUs" (click)="showContent(item)">
+  <ion-list style="margin-left: -15px;margin-top: 10px;">
+    <button class="buttonDisplay" ion-item *ngFor="let item of displayAboutUs" (click)="showContent(item)">
       {{ item.keyField}}
+      <ion-note class="newNote">
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </ion-note>
     </button>
   </ion-list>
 
