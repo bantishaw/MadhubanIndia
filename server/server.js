@@ -341,7 +341,7 @@ app.post('/getSubMenuCollection', function (request, response) {
             if (result.length > 0) {
                 response.json({ "response": "success", "data": result })
             } else {
-                response.json({ "response": "failure", "data": "Database is inaccessable. Please try later" })
+                response.json({ "response": "failure", "data": "This service is not started yet" })
             }
         }
     })
