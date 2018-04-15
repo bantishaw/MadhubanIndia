@@ -293,26 +293,30 @@ export class ShoppingCartPage {
         "address": this.flatNoBuildingNoModel + ", " + this.UserStreetName + ", " + this.UserCityName + ", " + this.UserState + ", " + this.UserPinCode + ", Landmark : " + this.landmarkModel
       }
     }
-    this.apiProvider.updateAddress(addressObject).then((data) => {
-      this.updateAddressResult = data;
-      if (this.updateAddressResult.response === "success") {
-        this.gpsAddressBox = false
-        this.databaseAddressBox = true;
-        this.showPriceAndContinue = false;
-        this.showAddresSaveButton = false;
-        this.showAddressAndContinue = true;
-        this.userName = this.updateAddressResult.data.name
-        this.userPhoneNumber = this.updateAddressResult.data.phoneNumber
-        this.userAddress = this.updateAddressResult.data.address
-      }
-    })
+    if (!this.UserCityName || !this.UserStreetName || !this.flatNoBuildingNoModel || !this.UserPinCode || !this.landmarkModel || !this.UserState) {
+      this.toastMessage("Please fill all the fields")
+    } else {
+      this.apiProvider.updateAddress(addressObject).then((data) => {
+        this.updateAddressResult = data;
+        if (this.updateAddressResult.response === "success") {
+          this.gpsAddressBox = false
+          this.databaseAddressBox = true;
+          this.showPriceAndContinue = false;
+          this.showAddresSaveButton = false;
+          this.showAddressAndContinue = true;
+          this.userName = this.updateAddressResult.data.name
+          this.userPhoneNumber = this.updateAddressResult.data.phoneNumber
+          this.userAddress = this.updateAddressResult.data.address
+        }
+      })
+    }
   }
 
   placeOrder() {
     console.log("place order function starts from here")
   }
 
-  shopNow(){
+  shopNow() {
     this.navCtrl.push(MainPage)
   }
 }
