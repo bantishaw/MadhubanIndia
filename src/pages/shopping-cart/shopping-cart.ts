@@ -44,6 +44,7 @@ export class ShoppingCartPage {
   showPlaceOrder: any = false;
   showAddressAndContinue: any = false;
   paymentTab: Boolean = true;
+  retriveUserData: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
     public geolocation: Geolocation) {
@@ -65,10 +66,20 @@ export class ShoppingCartPage {
       this.priceDisplay = 0;
       this.cartlength = 0;
     }
-    this.userName = this.apiProvider.settingsInformation.settingsInformation[0].name
-    this.userPhoneNumber = this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
-    this.userAddress = this.apiProvider.settingsInformation.settingsInformation[0].address
     this.productSegment();
+    let addressInfo = {
+      email: this.apiProvider.settingsInformation.settingsInformation[0].email
+    }
+    this.apiProvider.reteiveaddressfromDatabase(addressInfo).then((data) => {
+      this.retriveUserData = data;
+      if (this.retriveUserData.response === "success") {
+        this.userName = this.retriveUserData.data[0].name
+        this.userPhoneNumber = this.retriveUserData.data[0].phoneNumber
+        this.userAddress = this.retriveUserData.data[0].address
+      } else {
+        this.toastMessage(this.retriveUserData.data)
+      }
+    })
   }
 
   productSegment() {
@@ -79,7 +90,7 @@ export class ShoppingCartPage {
   }
 
   deliverySegment() {
-    if (this.apiProvider.settingsInformation.settingsInformation[0].address) {
+    if (this.userAddress) {
       this.databaseAddressBox = true;
       this.gpsAddressBox = false;
       this.showPriceAndContinue = false;

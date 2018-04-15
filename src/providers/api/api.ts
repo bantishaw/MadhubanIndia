@@ -257,6 +257,19 @@ export class Api {
         });
     });
   }
+
+  reteiveaddressfromDatabase(addressInfo) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post('http://localhost:8080/reteiveaddressfromDatabase', addressInfo, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err)
+        });
+    });
+  }
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {

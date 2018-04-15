@@ -499,5 +499,19 @@ app.post('/updateAddress', function (request, response) {
     })
 })
 
+app.post('/reteiveaddressfromDatabase', function (request, response) {
+    databaseConnectivity.collection('UserRegistrations').find({ email: request.body.email }).toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "success", "data": result })
+            } else {
+                response.json({ "response": "failure", "data": "No user exits with this email" })
+            }
+        }
+    })
+})
+
 app.listen(8080)
 console.log("Running on port 8080") 
