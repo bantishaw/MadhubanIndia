@@ -9,30 +9,33 @@
   <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
   </div>
 
-  <div class="item-detail">
-    <h5 class="itemColor">{{keyValue}} : {{item.product}}</h5>
-    <h6 class="itemColor">Price : {{item.description}}</h6>
+  <div class="productHeadingBox">
+    <p class="priceDescription-details">{{keyValue}} : {{item.product}}</p>
+    <p class="borderRemovalOfDescription"> Price Description
+      <ion-note class="positionPriceOfDescription"> {{item.description}}</ion-note>
+    </p>
+    <p class="priceDescription-details"> Select Quantity
+      <ion-note class="positionPriceOfDescription">
+        <ion-row style="margin-top: -20px;">
+          <div class="leftIconDiv">
+            <ion-icon name="remove-circle" class="leftIcon" (click)="decreaseQuantity(numberOfItemsOrdered)"></ion-icon>
+          </div>
+          <div>
+            <h5 class="quantity">{{numberOfItemsOrdered}}</h5>
+          </div>
+          <div class="rightIconDiv">
+            <ion-icon name="add-circle" class="rightIcon" (click)="increaseQuantity(numberOfItemsOrdered)"></ion-icon>
+          </div>
+        </ion-row>
+      </ion-note>
+    </p>
+    <p class="priceDescription-details"> Toal Amount Payable
+      <ion-note class="positionPriceOfDescription">
+        ₹{{totalAmount}}
+      </ion-note>
+    </p>
   </div>
 
-  <ion-row>
-    <h5 class="selectQuantityHeading">Select Quantity</h5>
-    <div class="leftIconDiv">
-      <ion-icon md="md-arrow-dropleft" class="leftIcon" (click)="decreaseQuantity(numberOfItemsOrdered)"></ion-icon>
-    </div>
-    <div style="margin-left: 5%;">
-      <h5 class="quantity">{{numberOfItemsOrdered}}</h5>
-    </div>
-    <div class="rightIconDiv">
-      <ion-icon md="md-arrow-dropright" class="rightIcon" (click)="increaseQuantity(numberOfItemsOrdered)"></ion-icon>
-    </div>
-  </ion-row>
-
-  <ion-row>
-    <h5 class="selectQuantityHeading">Total Amount</h5>
-    <div style="margin-left: 16%;">
-      <h5 class="amountRuler">₹{{totalAmount}}</h5>
-    </div>
-  </ion-row>
 </ion-content>
 <ion-footer>
   <ion-toolbar>

@@ -12,19 +12,14 @@ page-item-detail {}
   border-bottom: 1px solid #dedede;
 }
 
-.itemColor {
-  color: #424242;
-  text-transform: capitalize;
-}
-
 .rightIconDiv {
-  margin-left: 10%;
-  margin-top: 5px;
+  margin-left: 60%;
+  margin-top: -30px;
 }
 
 .rightIcon {
-  color: #424242;
-  font-size: 40px
+  color: #488aff;
+  font-size: 18px
 }
 
 .quantity {
@@ -33,28 +28,49 @@ page-item-detail {}
 }
 
 .leftIconDiv {
-  margin-left: 15%;
-  margin-top: 5px;
+  margin-left: -37px;
+  margin-top: 16px;
 }
 
 .leftIcon {
-  color: #424242;
-  font-size: 40px
+  color: #488aff;
+  font-size: 18px
 }
 
-.selectQuantityHeading {
-  color: #424242;
-  margin-left: 15px;
-}
-
-.amountRuler {
-  color: #424242;
-  margin-left: 40px;
-}
 
 .itemButtonPosition {
   right: -45%;
   width: 50%;
   margin-right: -20px;
   height: 40px;
+}
+
+.productHeadingBox {
+  margin-right: -5px;
+  margin-top: 10px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.priceDescription-details {
+  font-size: 12px;
+  color: #666;
+  border-bottom: 1px solid #e0e0e0;
+  height: 25px;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.borderRemovalOfDescription {
+  font-size: 12px;
+  color: #666;
+  height: 25px;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.positionPriceOfDescription {
+  margin-right: 20px;
+  float: right;
+  color: #666;
+  font-weight: 600;
 }
