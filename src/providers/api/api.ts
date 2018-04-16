@@ -9,7 +9,7 @@ import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
  */
 @Injectable()
 export class Api {
-  url: string = 'http://localhost:8080/userRegistration';
+  url: string = window.location.protocol + "//" + window.location.hostname + ":8080" + "/userRegistration";
   data: any;
   settingsInformation: any;
   shoppingCartData: any;
@@ -20,7 +20,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get('http://localhost:8080/userRegistration', { headers: headers })
+      this.http.get(window.location.protocol + "//" + window.location.hostname + ":8080" + "/userRegistration", { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -33,7 +33,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/getLogin', userObject, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getLogin", userObject, { headers: headers })
         .subscribe(res => {
           this.settingsInformation = res.json();
           resolve(res.json());
@@ -48,7 +48,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/newUserSignUp', account, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/newUserSignUp", account, { headers: headers })
         .subscribe(res => {
           this.settingsInformation = res.json();
           resolve(res.json());
@@ -62,7 +62,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/forgotPassword', credentials, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/forgotPassword", credentials, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -75,7 +75,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/saveNewSettingsPassword', credentials, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/saveNewSettingsPassword", credentials, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -88,7 +88,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/submitFeedback', userFeedback, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/submitFeedback", userFeedback, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -101,7 +101,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/contactUs', queryDoc, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/contactUs", queryDoc, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -114,7 +114,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/getMyOrders', queryDoc, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getMyOrders", queryDoc, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -128,7 +128,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get('http://localhost:8080/getAboutUsMethod', { headers: headers })
+      this.http.get(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getAboutUsMethod", { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -142,7 +142,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get('http://localhost:8080/getHomePageServiceMenu', { headers: headers })
+      this.http.get(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getHomePageServiceMenu", { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -155,7 +155,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/getSubMenuCollection', subMenuObject, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getSubMenuCollection", subMenuObject, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -168,7 +168,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/addToCart', cartObject, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/addToCart", cartObject, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -181,7 +181,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/queryCartLength', cartLengthObject, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/queryCartLength", cartLengthObject, { headers: headers })
         .subscribe(res => {
           this.shoppingCartData = res.json();
           resolve(res.json());
@@ -195,7 +195,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get('http://localhost:8080/getHomePageSlidingImages', { headers: headers })
+      this.http.get(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getHomePageSlidingImages", { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -208,7 +208,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/removeItemFromCart', removeItem, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/removeItemFromCart", removeItem, { headers: headers })
         .subscribe(res => {
           this.shoppingCartData = res.json();
           resolve(res.json());
@@ -222,7 +222,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/changeQuantityItemCart', updateQuantity, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/changeQuantityItemCart", updateQuantity, { headers: headers })
         .subscribe(res => {
           this.shoppingCartData = res.json();
           resolve(res.json());
@@ -236,7 +236,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/getRealTimeUserAddress', addressObject, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/getRealTimeUserAddress", addressObject, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -249,7 +249,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/updateAddress', addressObject, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/updateAddress", addressObject, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
@@ -262,7 +262,7 @@ export class Api {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.post('http://localhost:8080/reteiveaddressfromDatabase', addressInfo, { headers: headers })
+      this.http.post(window.location.protocol + "//" + window.location.hostname + ":8080" + "/reteiveaddressfromDatabase", addressInfo, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {

@@ -24,7 +24,7 @@ app.use((req, res, next) => {
 
 //Connect to mongoose
 var databaseConnectivity = mongoose.connection;
-var mongoDbUrl = 'mongodb://localhost/Catering';
+var mongoDbUrl = 'mongodb://freshpoolIndia:Richman123@cluster0-shard-00-00-ahbez.mongodb.net:27017,cluster0-shard-00-01-ahbez.mongodb.net:27017,cluster0-shard-00-02-ahbez.mongodb.net:27017/freshPool?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin';
 mongoose.Promise = global.Promise;
 var mongoConnectivity = mongoose.connect(mongoDbUrl, { useMongoClient: true, })
     .then(() => {
@@ -33,7 +33,7 @@ var mongoConnectivity = mongoose.connect(mongoDbUrl, { useMongoClient: true, })
         throw error;
     });
 
-
+    
 //Google API settings to get realtime User Address
 var NodeGeocoder = require('node-geocoder');
 var options = {
