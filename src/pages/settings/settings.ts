@@ -4,7 +4,7 @@ import { Settings } from '../../providers/providers';
 import { Api } from '../../providers/providers';
 import { MainPage } from '../pages';
 import { App } from 'ionic-angular';
-import {LoginPage} from '../login/login'
+import { LoginPage } from '../login/login'
 
 @IonicPage()
 @Component({
@@ -64,7 +64,7 @@ export class SettingsPage {
         {
           text: 'No',
           handler: () => {
-            this.navCtrl.push(SettingsPage);
+            console.log("User don't want to logout")
           }
         }
       ]

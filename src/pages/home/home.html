@@ -7,11 +7,10 @@
     <ion-buttons right>
       <button ion-button icon-only (click)="goToShopping()" >
         <div style="font-size: 20px;">
-          <ion-icon name="cart" class="cartPostion"></ion-icon>
+          <ion-icon name="cart" class="cartPostion"><p class="itemNumberPostion" *ngIf="addToCartLength">{{addToCartLength}}</p></ion-icon>
         </div>
       </button>
     </ion-buttons>
-    <p class="itemNumberPostion" *ngIf="addToCartLength">{{addToCartLength}}</p>
   </ion-navbar>
 
 </ion-header>
