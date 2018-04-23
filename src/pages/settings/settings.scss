@@ -1,6 +1,5 @@
-page-settings {
+page-settings {}
 
-}
 .toolbarImage {
   display: block;
   width: 60px;
@@ -9,11 +8,62 @@ page-settings {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin-left : 15px;
-  margin-top : 7px;
+  margin-left: 15px;
+  margin-top: 7px;
 }
 
-.showTitle{
-  margin-top:-43px;
+.showTitle {
+  margin-top: -43px;
   margin-bottom: 19px;
 }
+
+.accountPrint {
+  margin-top: 9px;
+  font-weight: 450;
+  color: #488aff;
+  height: 8.2rem;
+  margin-left: 35px;
+  font-size: 13px;
+}
+
+.accountBox {
+  background-color: whitesmoke;
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-top: 10px;
+  height: 35px;
+  border: 1px solid #e0e0e0;
+}
+
+.itemBox {
+  margin-left: 15px;
+  margin-top: 15px;
+  font-size: 23px;
+  color: #488aff;
+}
+
+.itemName {
+  margin-top: -20px;
+  margin-left: 20%;
+  font-size: 14px;
+  font-family: sans-serif;
+}
+
+.borderBox {
+  height: 45px;
+  margin-top: 5px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+ion-fab[bottom] {
+  bottom: 30%;
+  right: 25px;
+}
+
+.logoutPlacement {
+  position: absolute;
+  bottom: 0;
+  left: 30px;
+  width: 80%;
+}
+
