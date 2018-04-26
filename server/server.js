@@ -4,7 +4,9 @@ var express = require('express'),
     mongoose = require('mongoose'),
     cors = require('cors'),
     UserRegistration = require('./models/userRegistration'),
-    bodyParser = require('body-parser');
+    bodyParser = require('body-parser'),
+    dateFormat = require('dateformat'),
+    generator = require('generate-serial-number');
 
 const nodemailer = require('nodemailer'),
     fs = require('fs');
@@ -508,6 +510,96 @@ app.post('/reteiveaddressfromDatabase', function (request, response) {
                 response.json({ "response": "success", "data": result })
             } else {
                 response.json({ "response": "failure", "data": "No user exits with this email" })
+            }
+        }
+    })
+})
+
+// Function Called when user clicks on Place order
+app.post('/getAddtoCartData', function (request, response) {
+    databaseConnectivity.collection('addToCart').find({ reference_email: request.body.reference_email }).toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length > 0) {
+                var order = [];
+                var product = {};
+                result[0].order_descriptiion.map((object) => {
+                    let product = {
+                        "order_id": "#" + generator.generate(15),
+                        "date_of_order_received": "",
+                        "product": object.product,
+                        "description": object.description,
+                        "rate": object.rate,
+                        "quantity": object.quantity,
+                        "particularProductPrice": object.rate * object.quantity,
+                        "productPic": object.productPic,
+                        "payment_mode": request.body.payment_mode,
+                        "itemStatus": "Pending",
+                        "UserAddress": request.body.UserAddress,
+                        "payment_status": "Unpaid"
+                    }
+                    order.push(product)
+                })
+                var now = new Date();
+                let myCartObject = {
+                    "date_of_order_placing": dateFormat(now, " mmmm dS, yyyy"),
+                    "total_amount": result[0].total_amount,
+                    "order_descriptiion": order
+                };
+                databaseConnectivity.collection('UserOrders').find({ reference_email: request.body.reference_email }).toArray(function (error, userOrderResult) {
+                    if (error) {
+                        throw error;
+                    } else {
+                        if (userOrderResult.length > 0) {
+                            // Add to existing document
+                            let filter = {
+                                $push: {
+                                    myOrders: {
+                                        $each: [myCartObject]
+                                    }
+                                }
+                            }
+                            databaseConnectivity.collection('UserOrders').findOneAndReplace({ reference_email: request.body.reference_email }, filter, { returnOriginal: false }, function (error, result) {
+                                if (error) {
+                                    throw error;
+                                } else {
+                                    databaseConnectivity.collection('addToCart').remove({ reference_email: request.body.reference_email }, function (error, deleteUserCart) {
+                                        if (error) {
+                                            throw error;
+                                        } else {
+                                            console.log("Deleted document from Add to Cart Collection")
+                                            response.json({ "response": "success", "data": "Your order is successfully placed" })
+                                        }
+                                    })
+                                }
+                            })
+                        } else {
+                            // Create a new document
+                            let insertObject = {
+                                "reference_email": request.body.reference_email,
+                                "myOrders": [myCartObject]
+                            }
+                            databaseConnectivity.collection('UserOrders').insert(insertObject, function (error, newResult) {
+                                if (error) {
+                                    throw error
+                                } else {
+                                    databaseConnectivity.collection('addToCart').remove({ reference_email: request.body.reference_email }, function (error, deleteUserCart) {
+                                        if (error) {
+                                            throw error;
+                                        } else {
+                                            console.log("Deleted document from Add to Cart Collection")
+                                            response.json({ "response": "success", "data": "Your order is successfully placed" })
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    }
+                })
+            } else {
+                response.json({ "response": "failure", "data": "Your Shopping cart is empty" })
             }
         }
     })
