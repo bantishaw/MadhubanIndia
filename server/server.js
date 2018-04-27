@@ -543,7 +543,7 @@ app.post('/getAddtoCartData', function (request, response) {
                     order.push(product)
                 })
                 let myCartObject = {
-                    "date_of_order_placing": dateFormat(request.body.timeStamp, " mmmm dS, yyyy"),
+                    "date_of_order_placing": dateFormat(request.body.timeStamp, " dS mmmm, yyyy"),
                     "total_amount": result[0].total_amount,
                     "order_descriptiion": order
                 };
@@ -603,6 +603,5 @@ app.post('/getAddtoCartData', function (request, response) {
         }
     })
 })
-console.log(dateFormat(1524857917740, " mmmm dS, yyyy"))
 app.listen(8080)
 console.log("Running on port 8080") 
