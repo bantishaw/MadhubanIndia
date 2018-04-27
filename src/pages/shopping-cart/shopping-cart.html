@@ -22,7 +22,7 @@
     <ion-segment-button value="delivery" disabled={{disableTab}} (click)="deliverySegment()" class="fontdisplay">
       Delivery
     </ion-segment-button>
-    <ion-segment-button value="payment" disabled={{paymentTab}} class="fontdisplay">
+    <ion-segment-button value="payment" disabled={{paymentTab}} (click)="paymentSegment()" class="fontdisplay">
       Payment
     </ion-segment-button>
   </ion-segment>
@@ -143,12 +143,12 @@
       </div>
       <div>
         <div style="margin-top: 15%;">
-          <input id="card" type="radio" name="payment">
+          <input type="radio" [(ngModel)]="paymentMethod" value="Cash on Delivery">
           <p class="cashDelivery"> Cash on Delivery </p>
           <img src="assets/img/cash.svg" class="cashImage" />
         </div>
         <div style="margin-top: 15%;">
-          <input id="paypal" type="radio" name="payment" style="margin-top: 4px;">
+          <input type="radio" [(ngModel)]="paymentMethod" value="Paytm" style="margin-top: 4px;">
           <p class="paytmHeading"> Paytm</p>
           <img src="assets/img/paytm.svg" class="paytmImage" />
         </div>
@@ -158,10 +158,22 @@
       </div>
     </ion-list>
   </div>
+  <div>
+    <div *ngIf="showCircle" class="rollingCircleText">
+      <img src="assets/img/rolling.svg" style="width:60px;margin-top: 50%;" />
+      <p class="rollingMessage">Your order in progress</p>
+    </div>
+    <div *ngIf="orderConfirmed" class="rollingCircleText">
+      <img src="assets/img/orderConfirm.svg" style="width:100px;margin-top: 50%;" />
+      <p class="rollingMessage" style="margin-top: -15px;">Your order is successfully placed</p>
+      <button ion-button color="danger" (click)="shopNow()">HOME</button>
+    </div>
+  </div>
+  
+  
+  </ion-content>
 
-</ion-content>
-
-<ion-footer *ngIf="cartlength">
+<ion-footer *ngIf="cartlength && showRolling">
 
   <ion-toolbar *ngIf="showPriceAndContinue">
     <div class="toolbar-background toolbar-background-md" ng-reflect-klass="toolbar-background" ng-reflect-ng-class="toolbar-background-md"

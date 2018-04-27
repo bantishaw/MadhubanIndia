@@ -45,6 +45,11 @@ export class ShoppingCartPage {
   showAddressAndContinue: any = false;
   paymentTab: Boolean = true;
   retriveUserData: any;
+  showRolling: Boolean = true;
+  showCircle: Boolean = false;
+  orderConfirmed: Boolean = false;
+  paymentMethod : any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
     public geolocation: Geolocation) {
@@ -55,6 +60,7 @@ export class ShoppingCartPage {
     //console.log(this.apiProvider.shoppingCartData.data[0])
     this.disableTab = true;
     this.paymentTab = true;
+    this.showRolling = true;
     if (this.apiProvider.shoppingCartData.data) {
       console.log(this.apiProvider.shoppingCartData.data[0])
       this.priceDisplay = this.apiProvider.shoppingCartData.data[0].total_amount
@@ -96,11 +102,13 @@ export class ShoppingCartPage {
       this.showPriceAndContinue = false;
       this.showAddresSaveButton = false;
       this.showAddressAndContinue = true;
+      this.showPlaceOrder = false;
     } else {
       this.databaseAddressBox = false;
       this.gpsAddressBox = true;
       this.showPriceAndContinue = false;
-      this.showAddresSaveButton = true
+      this.showAddresSaveButton = true;
+      this.showPlaceOrder = false;
     }
   }
 
@@ -323,8 +331,37 @@ export class ShoppingCartPage {
     }
   }
 
+  paymentSegment(){
+    this.showPlaceOrder = true;
+    this.showPriceAndContinue = false;
+    this.showAddressAndContinue = false;
+    this.showAddresSaveButton = false;
+  }
+
   placeOrder() {
-    console.log("place order function starts from here")
+    let placeOrderObject = {
+      "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
+      "payment_mode": this.paymentMethod,
+      "UserAddress": this.userAddress,
+      "timeStamp" : Date.now()
+    }
+    let userServerResponse;
+    if (this.paymentMethod) {
+      this.showRolling = false;
+      this.showCircle = true;
+      this.orderConfirmed = false;
+      this.apiProvider.placeOrderNow(placeOrderObject).then((data) => {
+        userServerResponse = data;
+        if (userServerResponse.response === "success") {
+          this.showCircle = false;
+          this.orderConfirmed = true;
+        } else {
+          this.toastMessage(userServerResponse.data)
+        }
+      })
+    } else {
+      this.toastMessage("Payment type is not selected")
+    }
   }
 
   shopNow() {
