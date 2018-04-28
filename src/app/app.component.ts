@@ -10,7 +10,6 @@ import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { HomePage } from '../pages/home/home';
-import { InboxPage } from '../pages/inbox/inbox';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 
 @Component({
@@ -31,8 +30,7 @@ export class MyApp {
     });
     this.pages = [
       { title: 'Home', component: MainPage },
-      { title: 'Inbox', component: InboxPage },
-      { title: 'Your Orders', component: YourOrdersPage },
+      { title: 'My Orders', component: YourOrdersPage },
       { title: 'Send Feedback', component: SendFeedbackPage },
       { title: 'About FreshPool', component: AboutUsPage },
       { title: 'Contact Us', component: ContactUsPage }

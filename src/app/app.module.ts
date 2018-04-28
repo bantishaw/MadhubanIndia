@@ -19,7 +19,6 @@ import { AboutUsPage } from '../pages/about-us/about-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { HomePage } from '../pages/home/home';
-import { InboxPage } from '../pages/inbox/inbox';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { TabsPage } from '../pages/tabs/tabs';
@@ -56,7 +55,6 @@ export function provideSettings(storage: Storage) {
     AboutUsPage,
     YourOrdersPage,
     ContactUsPage,
-    InboxPage,
     SendFeedbackPage,
     TutorialPage,
     LoginPage,
@@ -85,7 +83,6 @@ export function provideSettings(storage: Storage) {
     AboutUsPage,
     YourOrdersPage,
     ContactUsPage,
-    InboxPage,
     SendFeedbackPage,
     TutorialPage,
     LoginPage,
