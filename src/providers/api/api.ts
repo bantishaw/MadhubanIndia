@@ -283,6 +283,19 @@ export class Api {
         });
     });
   }
+
+  deleteUser(deleteObject) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post("https://immense-river-69583.herokuapp.com/deactivateUserAccount", deleteObject, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          reject(err)
+        });
+    });
+  }
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
