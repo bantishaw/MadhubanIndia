@@ -1,70 +1,96 @@
-page-individual-order-of-user {
+page-individual-order-of-user {}
 
-}
-.rectalgleShape{
-    // width: 296px;
-    width: 145%;
-    height: 139px;
-    border-radius: -49%;
-    font-size: 15px;
-    color: #0a0909;
-    line-height: 0px;
-    /* text-align: center; */
-    background: #f2f2f3;
-    margin-left: -16px;
-    margin-top: -17px;
-    padding: 5px;
-    border: 1px solid #e0e0e0;
-}
-.OrderDetails{
-    font-size: 22px;
-    margin-top: -4px;
-    font-weight: bold;
-    margin-left: -12px;
+.OrderDetails {
+  text-align: center;
+  margin-top: -8px;
+  font-weight: 600;
+  color: #488aff;
+  text-align: center;
+  height: 4.2rem;
+  line-height: 5rem;
 }
 
-.itemDetailsPostioning{
-    margin-left: 114px;
-    margin-top: -19px;
-    padding: 3px;
-}
-.ShipmentDetails{
-    font-size: 19px;
-    margin-top: 7px;
-    font-weight: bold;
-    margin-left: -12px;
+.descriptionShape {
+  margin-right: -20px;
+  margin-left: -20px;
+  margin-top: 10px;
 }
 
-.rectalgleShapeForDetailsOrderDescription{
-    width: 145%;
-    // width: 296px;
-    height: 169px;
-    border-radius: -49%;
-    font-size: 15px;
-    color: #0a0909;
-    line-height: 0px;
-    /* text-align: center; */
-    background: #f2f2f3;
-    margin-left: -16px;
-    margin-top: -17px;
-    padding: 5px;
-    border: 1px solid #e0e0e0;
-}
-.imgPosyioning{
-    width: 81px;
-    height: 83px;
+.imgPosyioning {
+  width: 80px;
+  height: 80px;
+  padding-left: 15px;
 }
 
-.itemDetailPostioningWithImage{
-    margin-top: -94px;
-    margin-left: 95px;
+.itemDetailPostioningWithImage {
+  margin-top: -28%;
+  margin-left: 35%;
 }
 
-.orderAndReceicedData{
-    background: #f2f2f3;
+.orderBoxShape {
+  background-color: whitesmoke;
+  margin-right: -20px;
+  margin-left: -20px;
+  height: 35px;
+  border: 1px solid #e0e0e0;
+  margin-bottom: 10px;
 }
-.arrow{
-    margin-left: 270px;
-    margin-top: -16px;
-    font-size: 25px;
+
+.order-details {
+  font-size: 13px;
+  color: #666;
+  border-bottom: 1px solid #e0e0e0;
+  height: 25px;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.orderHeadingBox {
+  margin-right: -18px;
+  margin-left: -18px;
+  margin-top: 10px;
+}
+
+.orderBorderRemoval {
+  font-size: 13px;
+  color: #666;
+  height: 25px;
+  padding-left: 15px;
+  font-weight: 600;
+}
+
+.orderPositionPrice {
+  margin-right: 20px;
+  float: right;
+  color: #666;
+  font-weight: 600;
+}
+
+.deliveryStatus {
+  font-size: 15px;
+  font-weight: bold;
+  color: #666;
+  padding-left: 15px;
+}
+
+.orderdeliverDate {
+  color: #666;
+  font-weight: 500;
+  padding-left: 15px;
+}
+
+.individualPricePerItem {
+  margin-left: 75%;
+  margin-top: -28%;
+  margin-bottom: 25%;
+  color: #666;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.individualChats {
+  color: #666;
+  font-weight: 500;
+  margin-top: -10px;
+  margin-left: 2px;
 }

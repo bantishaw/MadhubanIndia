@@ -1,48 +1,57 @@
 <ion-header>
-
   <ion-navbar>
     <ion-title>Your Order</ion-title>
   </ion-navbar>
-
 </ion-header>
 
 <ion-content padding>
-  <p class="OrderDetails">Order Details</p>
-  <ion-list class="rectalgleShape">
-    <p>Order Date </p>
-    <p class="itemDetailsPostioning">{{OrderedindiVidualItemDetails.date_of_order_placing}}</p>
-    <p>Oreder Id </p>
-    <p class="itemDetailsPostioning"> {{OrderedindiVidualItemDetails.order_id}}</p>
-    <p>Order total </p>
-    <p class="itemDetailsPostioning">{{OrderedindiVidualItemDetails.particularProductPrice}}</p>
+  <div class="orderBoxShape">
+    <p class="OrderDetails">Order Details</p>
+  </div>
+  <div class="orderHeadingBox">
+    <p class="orderBorderRemoval"> Order Date
+      <ion-note class="orderPositionPrice"> {{OrderedindiVidualItemDetails.date_of_order_placing}}</ion-note>
+    </p>
+    <p class="order-details"> Order ID
+      <ion-note class="positionPrice">
+        {{OrderedindiVidualItemDetails.order_id}}
+      </ion-note>
+    </p>
+    <p class="order-details"> Amount Payable
+      <ion-note class="positionPrice">
+        ₹{{OrderedindiVidualItemDetails.particularProductPrice}}
+      </ion-note>
+    </p>
+  </div>
 
-  </ion-list>
-  <p class="ShipmentDetails">Shipment Details</p>
+  <div class="orderBoxShape">
+    <p class="OrderDetails">Shipment Details</p>
+  </div>
 
-  <ion-list class="rectalgleShapeForDetailsOrderDescription">
-    <p style="font-size:  16px;font-weight:  bolder;">{{OrderedindiVidualItemDetails.itemStatus}}
-      <p>
-        <p style="color:  teal;font-weight: 500;" class="orderAndReceicedData">{{OrderedindiVidualItemDetails.date_of_order_placing}} - {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
-        <ion-thumbnail item-start class="imgPosyioning">
-          <img style="height: 92px;" src="{{OrderedindiVidualItemDetails.productPic}}">
-        </ion-thumbnail>
-        <div class="itemDetailPostioningWithImage">
-          <p style="font-weight:  bold; margin-top: 19px;">{{OrderedindiVidualItemDetails.product}}</p>
-          <p style="margin-top: 21px;">Qty:{{OrderedindiVidualItemDetails.quantity}} </p>
-          <p style=" margin-left: 108px; margin-top:-29px;">{{OrderedindiVidualItemDetails.particularProductPrice}}</p>
-        </div>
-  </ion-list>
+  <div class="descriptionShape">
+    <p class="deliveryStatus">Status : {{OrderedindiVidualItemDetails.itemStatus}}</p>
+    <p class="orderdeliverDate">Ordered on : {{OrderedindiVidualItemDetails.date_of_order_placing}}</p>
+    <p class="orderdeliverDate" *ngIf="OrderedindiVidualItemDetails.date_of_order_received">Delivered on : {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
+    <ion-thumbnail item-start class="imgPosyioning">
+      <img style="height:75px;width:75px;" src="{{OrderedindiVidualItemDetails.productPic}}">
+    </ion-thumbnail>
+    <div class="itemDetailPostioningWithImage">
+      <p style="color:#666;font-weight: 500;">{{OrderedindiVidualItemDetails.description}}</p>
+      <p class="individualChats">{{OrderedindiVidualItemDetails.product}}</p>
+      <p class="individualChats">Qty : {{OrderedindiVidualItemDetails.quantity}} </p>
+      <p class="individualPricePerItem">₹{{OrderedindiVidualItemDetails.particularProductPrice}}</p>
+    </div>
+  </div>
 
-  <p class="ShipmentDetails">Payment Information</p>
-  <ion-list style="height: 86px;" class="rectalgleShapeForDetailsOrderDescription">
-    <p style="margin-top:  12px;font-weight:  500;">Payment Method</p>
-    <br>
-    <p style="margin-top:  7px;">{{OrderedindiVidualItemDetails.payment_mode}}</p>
-  </ion-list>
-  <ion-list class="rectalgleShapeForDetailsOrderDescription">
-    <p style="margin-top:  12px;font-weight:  500;">Shipping Address</p>
-    <br>
-    <p> {{OrderedindiVidualItemDetails.UserAddress}} </p>
-  </ion-list>
-
+  <div class="orderBoxShape">
+    <p class="OrderDetails">Payment Information</p>
+  </div>
+  <div class="descriptionShape">
+    <p class="deliveryStatus">Payment Method : {{OrderedindiVidualItemDetails.payment_mode}}</p>
+  </div>
+  <div class="orderBoxShape">
+    <p class="OrderDetails">Shipping Address</p>
+  </div>
+  <p class="deliveryStatus" style="padding-left: 0px">Delivery Address :</p>
+  <p class="orderBorderRemoval" style="padding-left: 0px">{{OrderedindiVidualItemDetails.UserAddress}} </p>
 </ion-content>
