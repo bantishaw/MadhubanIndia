@@ -1,74 +1,55 @@
+/* 1 */
 {
-    "_id" : ObjectId("5ab767bb64ac4a669dd7a899"),
-    "reference_id" : ObjectId("5a79ffd78c3094c0ae74673a"),
-    "reference_email" : "bf",
+    "_id" : ObjectId("5ae21cd55aca7405d0cc67e2"),
+    "reference_email" : "ban",
     "myOrders" : [ 
         {
-            "order_id" : "#1234567890",
-            "date_of_order" : "24th march,2018",
-            "total_amount" : "1800",
+            "date_of_order_placing" : " April 27th, 2018",
+            "total_amount" : 60,
             "order_descriptiion" : [ 
                 {
-                    "product" : "apple",
-                    "description" : "Rs 30 per Kg",
+                    "order_id" : "#907833974936476",
+                    "date_of_order_received" : "",
+                    "product" : "Apple",
+                    "description" : "₹ 30 per Kg",
                     "rate" : 30,
-                    "quantity" : 2
-                }, 
-                {
-                    "product" : "banana",
-                    "description" : "Rs 30 per Kg",
-                    "rate" : 30,
-                    "quantity" : 2
+                    "quantity" : 2,
+                    "particularProductPrice" : 60,
+                    "productPic" : "assets/img/apple.jpg",
+                    "payment_mode" : "Paytm",
+                    "itemStatus" : "Pending",
+                    "UserAddress" : "Estate,Off.Saki Vihar Road, Chandivali, Andheri (Ea)",
+                    "payment_status" : "Unpaid"
                 }
-            ],
-            "OrderStatus" : "Delivered",
-            "OrderStatusDescription" : "Your order is succssfully delivered",
-            "amount_status" : "Paid"
-        }, 
+            ]
+        }
+    ]
+}
+
+/* 2 */
+{
+    "_id" : ObjectId("5ae38bb962b4180014761086"),
+    "reference_email" : "b",
+    "myOrders" : [ 
         {
-            "order_id" : "#9234567890",
-            "date_of_order" : "27th march,2018",
-            "total_amount" : "1800",
-            "fruits_order_descriptiion" : [ 
+            "date_of_order_placing" : " 27th April, 2018",
+            "total_amount" : 60,
+            "order_descriptiion" : [ 
                 {
-                    "product" : "kela",
-                    "description" : "Rs 30 per Kg",
+                    "order_id" : "#019253208064075",
+                    "date_of_order_received" : "",
+                    "product" : "Orange",
+                    "description" : "₹ 30 per Kg",
                     "rate" : 30,
-                    "quantity" : 2
+                    "quantity" : 2,
+                    "particularProductPrice" : 60,
+                    "productPic" : "assets/img/orange.jpg",
+                    "payment_mode" : "Paytm",
+                    "itemStatus" : "Pending",
+                    "UserAddress" : "Ground floor 4, 1st Main Rd, Silicon Town, Electronic City, Bengaluru, Karnataka 560100, India, Landmark : Dhosa dukan",
+                    "payment_status" : "Unpaid"
                 }
-            ],
-            "OrderStatus" : "Pending",
-            "OrderStatusDescription" : "Your order is pending for approval"
-        }, 
-        {
-            "order_id" : "#788234567890",
-            "date_of_order" : "27th march,2018",
-            "total_amount" : "1800",
-            "fruits_order_descriptiion" : [ 
-                {
-                    "product" : "kela",
-                    "description" : "Rs 30 per Kg",
-                    "rate" : 30,
-                    "quantity" : 2
-                }
-            ],
-            "OrderStatus" : "Processing",
-            "OrderStatusDescription" : "Your order is processing"
-        }, 
-        {
-            "order_id" : "#108234567890",
-            "date_of_order" : "27th march,2018",
-            "total_amount" : "1800",
-            "fruits_order_descriptiion" : [ 
-                {
-                    "product" : "kela",
-                    "description" : "Rs 30 per Kg",
-                    "rate" : 30,
-                    "quantity" : 2
-                }
-            ],
-            "OrderStatus" : "Cancelled",
-            "OrderStatusDescription" : "Your have cancelled your order"
+            ]
         }
     ]
 }

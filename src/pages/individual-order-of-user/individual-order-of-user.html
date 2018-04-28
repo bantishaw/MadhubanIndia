@@ -1,0 +1,48 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Your Order</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <p class="OrderDetails">Order Details</p>
+  <ion-list class="rectalgleShape">
+    <p>Order Date </p>
+    <p class="itemDetailsPostioning">{{OrderedindiVidualItemDetails.date_of_order_placing}}</p>
+    <p>Oreder Id </p>
+    <p class="itemDetailsPostioning"> {{OrderedindiVidualItemDetails.order_id}}</p>
+    <p>Order total </p>
+    <p class="itemDetailsPostioning">{{OrderedindiVidualItemDetails.particularProductPrice}}</p>
+
+  </ion-list>
+  <p class="ShipmentDetails">Shipment Details</p>
+
+  <ion-list class="rectalgleShapeForDetailsOrderDescription">
+    <p style="font-size:  16px;font-weight:  bolder;">{{OrderedindiVidualItemDetails.itemStatus}}
+      <p>
+        <p style="color:  teal;font-weight: 500;" class="orderAndReceicedData">{{OrderedindiVidualItemDetails.date_of_order_placing}} - {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
+        <ion-thumbnail item-start class="imgPosyioning">
+          <img style="height: 92px;" src="{{OrderedindiVidualItemDetails.productPic}}">
+        </ion-thumbnail>
+        <div class="itemDetailPostioningWithImage">
+          <p style="font-weight:  bold; margin-top: 19px;">{{OrderedindiVidualItemDetails.product}}</p>
+          <p style="margin-top: 21px;">Qty:{{OrderedindiVidualItemDetails.quantity}} </p>
+          <p style=" margin-left: 108px; margin-top:-29px;">{{OrderedindiVidualItemDetails.particularProductPrice}}</p>
+        </div>
+  </ion-list>
+
+  <p class="ShipmentDetails">Payment Information</p>
+  <ion-list style="height: 86px;" class="rectalgleShapeForDetailsOrderDescription">
+    <p style="margin-top:  12px;font-weight:  500;">Payment Method</p>
+    <br>
+    <p style="margin-top:  7px;">{{OrderedindiVidualItemDetails.payment_mode}}</p>
+  </ion-list>
+  <ion-list class="rectalgleShapeForDetailsOrderDescription">
+    <p>Shipping Address</p>
+    <br>
+    <p> {{OrderedindiVidualItemDetails.UserAddress}} </p>
+  </ion-list>
+
+</ion-content>

@@ -29,7 +29,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 import { ShowContentPage } from '../pages/show-content/show-content';
 import { SocialSharing } from '@ionic-native/social-sharing';
-import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart'
+import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart';
+import {FilterUserOrderPage} from '../pages/filter-user-order/filter-user-order';
+import {IndividualOrderOfUserPage} from '../pages/individual-order-of-user/individual-order-of-user';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -61,8 +63,9 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     ListMasterPage,
     ShowContentPage,
-    ShoppingCartPage
-
+    ShoppingCartPage,
+    IndividualOrderOfUserPage,
+    FilterUserOrderPage
   ],
   imports: [
     BrowserModule,
@@ -89,7 +92,9 @@ export function provideSettings(storage: Storage) {
     SignupPage,
     ListMasterPage,
     ShowContentPage,
-    ShoppingCartPage
+    ShoppingCartPage,
+    IndividualOrderOfUserPage,
+    FilterUserOrderPage
 
   ],
   providers: [
