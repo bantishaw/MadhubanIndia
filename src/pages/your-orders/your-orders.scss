@@ -1,118 +1,62 @@
 page-your-orders {
-  .orderStyle {
-    font-size: 14px;
-    color: #999;
-    font-weight: 600;
-  }
-
-  .dateStyle{
-    font-weight: normal;
-    font-size: 12px;
-    color: #999;
-  }
-  
-  .showMoreStyle{
-    text-align: center;
-    line-height: 30px !important;
-    color: grey;
-    font-family: cursive;
-  }
-
-  .fontStyle{
-    margin:auto 85px;
-    margin: auto 60px;
-    font-family: sans-serif;
-    font-size: 20px;
-    color: #999;
-  }
-
-
-
-
-  /*
-  New start from here
-  */
-
-  .YourOrderText{
+  .YourOrderText {
     font-size: 18px;
     font-family: inherit;
     margin-left: 11px;
     font-weight: bold;
-}
-
-
-.SearchIcon{
-  font-size: 16px;
-  margin-left: 74px;
-}
-
-.rectangularBox1 {
-  background-color: whitesmoke;
-  /* margin-right: -57px; */
-  margin-left: -2px;
-  /* height: 24px; */
-  /* border: 0px solid #e0e0e0; */
-  margin-top: -16px;
-  margin-left: 0px;
-
-}
-
-.orderSummary1 {
-  text-align: center;
-  margin-top: -5px;
-  font-weight: 600;
-  color: #8f8f8f;
-  text-align: center;
-  height: 4.2rem;
-  line-height: 5rem;
-  margin-right: 8px;
-
-}
-
-.newNote1 {
-  float: right;
-  margin-right: 10px;
-  font-size: 15px;
-}
-
-
-.orderSummary2 {
-  text-align: center;
-  margin-top: -56px;
-  font-weight: 600;
-  color: #8f8f8f;
- 
-  line-height: 5rem;
-  margin-right: -399px;
-
-}
-  
-.arrowSignSCSS{
-  margin-left: 174px;
-  margin-top: -28px;
-  font-size: 2.4rem;
-  color: #666;
-
-}
-
-.serachAllYourOrder{
-	margin-top: -61px;
+  }
+  .SearchIcon {
+    font-size: 16px;
+    margin-left: 74px;
+  }
+  .rectangularBox1 {
+    background-color: whitesmoke;
+    margin-left: -2px;
+    margin-top: -18px;
+    margin-left: 0px;
+  }
+  .orderSummary1 {
+    text-align: center;
+    margin-top: -5px;
+    font-weight: 600;
+    color: #8f8f8f;
+    text-align: center;
+    height: 4.2rem;
+    line-height: 5rem;
+    margin-right: 8px;
+  }
+  .newNote1 {
+    float: right;
+    margin-right: 10px;
+    font-size: 15px;
+    margin-top: -15%;
+  }
+  .orderSummary2 {
+    text-align: center;
+    margin-top: -56px;
+    font-weight: 600;
+    color: #8f8f8f;
+    line-height: 5rem;
+    margin-right: -399px;
+  }
+  .arrowSignSCSS {
+    margin-left: 174px;
+    margin-top: -28px;
+    font-size: 2.4rem;
+    color: #666;
+  }
+  .serachAllYourOrder {
+    margin-top: -61px;
     margin-left: 172px;
     font-weight: 400;
     color: cadetblue;
     font-size: 15px;
-	}
-}
-
-.productName{
-  margin-bottom: 5px;
+  }
+  .productName {
+    margin-bottom: 5px;
     font-family: inherit;
     color: black;
-    font-weight: 700;
+    font-weight: 500;
+    font-size: 14px;
+  }
 }
-
-  /*
-  New end from here
-  */
-
-
