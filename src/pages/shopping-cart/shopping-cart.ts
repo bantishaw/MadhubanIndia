@@ -48,7 +48,7 @@ export class ShoppingCartPage {
   showRolling: Boolean = true;
   showCircle: Boolean = false;
   orderConfirmed: Boolean = false;
-  paymentMethod : any;
+  paymentMethod: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public loadingCtrl: LoadingController, private alertCtrl: AlertController, public toastCtrl: ToastController,
@@ -331,7 +331,7 @@ export class ShoppingCartPage {
     }
   }
 
-  paymentSegment(){
+  paymentSegment() {
     this.showPlaceOrder = true;
     this.showPriceAndContinue = false;
     this.showAddressAndContinue = false;
@@ -343,7 +343,8 @@ export class ShoppingCartPage {
       "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email,
       "payment_mode": this.paymentMethod,
       "UserAddress": this.userAddress,
-      "timeStamp" : Date.now()
+      "timeStamp": Date.now(),
+      "customerName": this.apiProvider.settingsInformation.settingsInformation[0].name + " " + this.apiProvider.settingsInformation.settingsInformation[0].lastName
     }
     let userServerResponse;
     if (this.paymentMethod) {
