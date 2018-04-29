@@ -529,6 +529,7 @@ app.post('/getAddtoCartData', function (request, response) {
                     let product = {
                         "order_id": "#" + generator.generate(15),
                         "date_of_order_received": "",
+                        "date_of_order_placing": dateFormat(request.body.timeStamp, " dS mmmm, yyyy"),
                         "product": object.product,
                         "description": object.description,
                         "rate": object.rate,

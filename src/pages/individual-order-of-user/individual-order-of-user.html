@@ -28,7 +28,7 @@
     <p class="OrderDetails">Shipment Details</p>
   </div>
 
-  <div class="descriptionShape">
+  <div class="descriptionShape" style="height: auto;">
     <p class="deliveryStatus">Status : {{OrderedindiVidualItemDetails.itemStatus}}</p>
     <p class="orderdeliverDate">Ordered on : {{OrderedindiVidualItemDetails.date_of_order_placing}}</p>
     <p class="orderdeliverDate" *ngIf="OrderedindiVidualItemDetails.date_of_order_received">Delivered on : {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
@@ -53,7 +53,9 @@
     <p class="OrderDetails">Shipping Address</p>
   </div>
   <p class="deliveryStatus" style="padding-left: 0px;">Delivery Address :</p>
-  <p class="orderBorderRemoval" style="padding-left: 0px;height: 50px;">{{OrderedindiVidualItemDetails.UserAddress}} </p>
+  <div>
+    <p class="orderBorderRemoval" style="padding-left: 0px;height: auto">{{OrderedindiVidualItemDetails.UserAddress}} </p>
+  </div>
   <button ion-button full color="danger" class="buttonProperty">CANCEL THIS ORDER</button>
 
 </ion-content>
