@@ -51,6 +51,7 @@ export class IndividualOrderOfUserPage {
                 loading.dismiss();
                 this.toastMessage(this.dataObject.data)
                 this.showCancelledStamp = false;
+                this.OrderedindiVidualItemDetails.itemStatus = "Cancelled";
               }
             })
           }

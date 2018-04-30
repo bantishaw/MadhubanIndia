@@ -60,6 +60,25 @@ export class YourOrdersPage {
     this.navCtrl.push(IndividualOrderOfUserPage, { content: item, uniqueKey: uniqueKey });
   }
 
+  ionViewDidEnter(){
+    var queryDoc = {
+      reference_email: this.apiProvider.settingsInformation.settingsInformation[0].email
+    }
+    this.apiProvider.getMyOrders(queryDoc).then((result) => {
+      this.dataObject = result;
+      if (this.dataObject.response === "success") {
+        setTimeout(() => {
+          this.myordersObject = this.dataObject.data[0].myOrders;
+          this.currentOrderThatUserTypeForSearch = this.myordersObject;
+        }, 0)
+      } else {
+        setTimeout(() => {
+          this.firstUserStatus = this.dataObject.data;
+        }, 0)
+      }
+    })
+  }
+
 }
 
 
