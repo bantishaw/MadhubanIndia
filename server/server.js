@@ -1216,5 +1216,47 @@ app.post('/deactivateUserAccount', function (request, response) {
     })
 })
 
+//Cancel paticular order on basis of its email , Order Id (date of order placing::not using now in logic)
+app.post('/cancelOrder', function (request, response) {
+    let filter = { "myOrders": { $elemMatch: { "uniqueKey": request.body.uniqueKey } } }
+    databaseConnectivity.collection('UserOrders').find({ "reference_email": request.body.reference_email }, filter).toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length > 0) {
+                var checkProduct = result[0].myOrders[0].order_descriptiion.map(function (item) { return item.order_id; }).indexOf(request.body.order_id)
+                if (checkProduct !== -1) {
+                    result[0].myOrders[0].order_descriptiion[checkProduct].itemStatus = request.body.itemStatus
+                    var newUpdatedObject = {
+                        "uniqueKey": request.body.uniqueKey,
+                        "date_of_order_placing": result[0].myOrders[0].date_of_order_placing,
+                        "total_amount": result[0].myOrders[0].total_amount - request.body.particularProductPrice,
+                        "order_descriptiion": result[0].myOrders[0].order_descriptiion
+                    }
+                    databaseConnectivity.collection('UserOrders').find({ "reference_email": request.body.reference_email }).toArray(function (error, findResult) {
+                        if (error) {
+                            throw error;
+                        } else {
+                            var newMyOrderArray = [];
+                            var newCheckProduct = findResult[0].myOrders.map(function (item) { return item.uniqueKey; }).indexOf(request.body.uniqueKey)
+                            findResult[0].myOrders[newCheckProduct] = newUpdatedObject
+                            newMyOrderArray = findResult[0].myOrders
+                            databaseConnectivity.collection('UserOrders').findOneAndReplace({ "reference_email": request.body.reference_email }, { $set: { myOrders: newMyOrderArray } }, { returnOriginal: false }, function (error, updateResult) {
+                                if (error) {
+                                    throw error
+                                } else {
+                                    response.json({ "response": "success", "data": "Your Order has been cancelled" })
+                                }
+                            })
+                        }
+                    })
+                }
+            } else {
+                response.json({ "response": "failure", "data": "User Not found" })
+            }
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080") 
