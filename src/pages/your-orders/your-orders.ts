@@ -55,9 +55,9 @@ export class YourOrdersPage {
     })
   }
 
-  displayDetailsofThatOrderedItem(item) {
+  displayDetailsofThatOrderedItem(item, uniqueKey) {
     this.particularOrderItemisClicked = true;
-    this.navCtrl.push(IndividualOrderOfUserPage, { content: item });
+    this.navCtrl.push(IndividualOrderOfUserPage, { content: item, uniqueKey: uniqueKey });
   }
 
 }

@@ -56,6 +56,6 @@
   <div>
     <p class="orderBorderRemoval" style="padding-left: 0px;height: auto">{{OrderedindiVidualItemDetails.UserAddress}} </p>
   </div>
-  <button ion-button full color="danger" class="buttonProperty">CANCEL THIS ORDER</button>
+  <button ion-button full color="danger" class="buttonProperty" *ngIf= "showCancelledStamp && OrderedindiVidualItemDetails.itemStatus !== 'Cancelled'"(click)="cancelOrder(OrderedindiVidualItemDetails.order_id,OrderedindiVidualItemDetails.particularProductPrice)">CANCEL THIS ORDER</button>
 
 </ion-content>
