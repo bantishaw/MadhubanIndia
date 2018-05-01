@@ -19,8 +19,8 @@
           </ion-thumbnail>
           <div>
             <h2 class="productName">{{item.product}}</h2>
+            <p style="font-size: 12px;margin-top: 5px;" >Status : {{item.itemStatus}} </p>
             <p style="font-size: 12px;margin-top: 5px;" *ngIf="item.itemStatus === 'Delivered'"> Delivered on {{item.date_of_order_received}} </p>
-            <p style="font-size: 12px;margin-top: 5px;" *ngIf="item.itemStatus !== 'Delivered'"> Ordered On {{item.date_of_order_placing}} </p>
             <ion-note class="newNote1">
               <ion-icon name="arrow-dropright"></ion-icon>
             </ion-note>
