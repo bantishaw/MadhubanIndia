@@ -83,7 +83,7 @@ app.post('/newUserSignUp', function (request, response) {
             throw error;
         } else {
             if (result.length > 0) {
-                response.json({ "response": "failure", "data": result[0].name + " has already an account with us" })
+                response.json({ "response": "failure", "data": "An account already exists with this Email ID" })
             } else {
                 databaseConnectivity.collection('UserRegistrations').insert(request.body, function (error, newResult) {
                     if (error) {
