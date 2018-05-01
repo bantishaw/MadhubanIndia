@@ -13,13 +13,11 @@ export class IndividualOrderOfUserPage {
   OrderedindiVidualItemDetails: any;
   uniqueKey;
   dataObject: any;
-  showCancelledStamp: Boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public apiProvider: Api, public alertCtrl: AlertController,
     public toastCtrl: ToastController, public loadingCtrl: LoadingController, ) {
     this.OrderedindiVidualItemDetails = navParams.get('content');
     this.uniqueKey = navParams.get('uniqueKey');
-    console.log("MyUniquevalue " + this.uniqueKey);
   }
 
   ionViewDidLoad() {
@@ -50,7 +48,6 @@ export class IndividualOrderOfUserPage {
               if (this.dataObject.response === "success") {
                 loading.dismiss();
                 this.toastMessage(this.dataObject.data)
-                this.showCancelledStamp = false;
                 this.OrderedindiVidualItemDetails.itemStatus = "Cancelled";
               }
             })
