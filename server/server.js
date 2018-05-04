@@ -549,6 +549,15 @@ app.post('/getAddtoCartData', function (request, response) {
                     "total_amount": result[0].total_amount,
                     "order_descriptiion": order
                 };
+                var adminObject = {
+                  "reference_email": request.body.reference_email,
+                  "customerName": request.body.customerName,
+                  "date_of_order_placing": myCartObject.date_of_order_placing,
+                  "total_amount": myCartObject.total_amount,
+                  "UserAddress": request.body.UserAddress,
+                  "userPhoneNumber": request.body.userPhoneNumber,
+                  "order_descriptiion": order,
+                }
                 databaseConnectivity.collection('UserOrders').find({ reference_email: request.body.reference_email }).toArray(function (error, userOrderResult) {
                     if (error) {
                         throw error;
@@ -869,6 +878,7 @@ app.post('/getAddtoCartData', function (request, response) {
                                                 
                                                 </html>`
                                             };
+                                            insertIntoAdminCollection(adminObject)
                                             sendmail(message);
                                             response.json({ "response": "success", "data": "Your order is successfully placed" })
                                         }
@@ -1188,6 +1198,7 @@ app.post('/getAddtoCartData', function (request, response) {
                                                 
                                                 </html>`
                                             };
+                                            insertIntoAdminCollection(adminObject)
                                             sendmail(message);
                                             response.json({ "response": "success", "data": "Your order is successfully placed" })
                                         }
@@ -1204,6 +1215,15 @@ app.post('/getAddtoCartData', function (request, response) {
     })
 })
 
+var insertIntoAdminCollection = function(adminObject){
+    databaseConnectivity.collection('adminCollection').insert(adminObject, function (error, newResult) {
+        if(error){
+            throw error;
+        }else{
+            console.log({ "response": "success", "data": "Order sucessfully sent to Admin" })
+        }
+    })
+}
 // Function to deactivate the User account
 app.post('/deactivateUserAccount', function (request, response) {
     databaseConnectivity.collection('UserRegistrations').remove( request.body, function (error, deleteUserAccount) {
