@@ -344,7 +344,8 @@ export class ShoppingCartPage {
       "payment_mode": this.paymentMethod,
       "UserAddress": this.userAddress,
       "timeStamp": Date.now(),
-      "customerName": this.apiProvider.settingsInformation.settingsInformation[0].name + " " + this.apiProvider.settingsInformation.settingsInformation[0].lastName
+      "customerName": this.apiProvider.settingsInformation.settingsInformation[0].name + " " + this.apiProvider.settingsInformation.settingsInformation[0].lastName,
+      "userPhoneNumber": this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
     }
     let userServerResponse;
     if (this.paymentMethod) {
