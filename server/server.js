@@ -1278,5 +1278,21 @@ app.post('/cancelOrder', function (request, response) {
         }
     })
 })
+
+// Function to get newly orders placed to admin page 
+app.get('/getAdminNewOrders', function (request, response) {
+    databaseConnectivity.collection('adminCollection').find().toArray(function (error, result) {
+        if (error) {
+            console.log(error)
+            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+        } else {
+            if (result.length > 0) {
+                response.json({ "response": "success", "data": result })
+            } else {
+                response.json({ "response": "failure", "data": "Welcome Admin. No Orders placed yet" })
+            }
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080") 
