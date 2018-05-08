@@ -1317,5 +1317,85 @@ app.get('/getAdminNewOrders', function (request, response) {
         }
     })
 })
+
+// Function to manage the order from Admin Account
+app.post('/updateUserOrder', function (request, response) {
+    let filter = { "myOrders": { $elemMatch: { "uniqueKey": request.body.uniqueKey } } }
+    databaseConnectivity.collection('UserOrders').find({ "reference_email": request.body.emailToBeSearched }, filter).toArray(function (error, result) {
+        if (error) {
+            throw error;
+        } else {
+            if (result.length > 0) {
+                var checkProduct = result[0].myOrders[0].order_descriptiion.map(function (item) { return item.order_id; }).indexOf(request.body.orderID)
+                if (checkProduct !== -1) {
+                    result[0].myOrders[0].order_descriptiion[checkProduct].itemStatus = request.body.statusToBeUpdated
+                    if (request.body.statusToBeUpdated !== 'Cancelled' && request.body.statusToBeUpdated !== 'Delivered') {
+                        var newUpdatedObject = {
+                            "uniqueKey": request.body.uniqueKey,
+                            "date_of_order_placing": result[0].myOrders[0].date_of_order_placing,
+                            "total_amount": result[0].myOrders[0].total_amount,
+                            "order_descriptiion": result[0].myOrders[0].order_descriptiion
+                        }
+                    } else {
+                        result[0].myOrders[0].order_descriptiion[checkProduct].date_of_order_received = dateFormat(request.body.timeStamp, " dS mmmm, yyyy")
+                        var newUpdatedObject = {
+                            "uniqueKey": request.body.uniqueKey,
+                            "date_of_order_placing": result[0].myOrders[0].date_of_order_placing,
+                            "total_amount": result[0].myOrders[0].total_amount - request.body.particularProductPrice,
+                            "order_descriptiion": result[0].myOrders[0].order_descriptiion
+                        }
+                    }
+                    databaseConnectivity.collection('UserOrders').find({ "reference_email": request.body.emailToBeSearched }).toArray(function (error, findResult) {
+                        if (error) {
+                            throw error;
+                        } else {
+                            var newMyOrderArray = [];
+                            var newCheckProduct = findResult[0].myOrders.map(function (item) { return item.uniqueKey; }).indexOf(request.body.uniqueKey)
+                            findResult[0].myOrders[newCheckProduct] = newUpdatedObject
+                            newMyOrderArray = findResult[0].myOrders
+                            databaseConnectivity.collection('UserOrders').findOneAndReplace({ "reference_email": request.body.emailToBeSearched }, { $set: { myOrders: newMyOrderArray } }, { returnOriginal: false }, function (error, updateResult) {
+                                if (error) {
+                                    throw error
+                                } else {
+                                    databaseConnectivity.collection('adminCollection').find({ "uniqueKey": request.body.uniqueKey }).toArray(function (error, result) {
+                                        if (error) {
+                                            console.log(error)
+                                            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+                                        } else {
+                                            if (result.length > 0) {
+                                                var updateAdminOrderPointer = result[0].order_descriptiion.map(function (item) { return item.order_id; }).indexOf(request.body.orderID)
+                                                if (request.body.statusToBeUpdated !== 'Cancelled' && request.body.statusToBeUpdated !== 'Delivered') {
+                                                    result[0].order_descriptiion[updateAdminOrderPointer].itemStatus = request.body.statusToBeUpdated
+                                                } else {
+                                                    result[0].order_descriptiion[updateAdminOrderPointer].itemStatus = request.body.statusToBeUpdated
+                                                    result[0].total_amount = result[0].total_amount - request.body.particularProductPrice
+                                                    result[0].order_descriptiion[updateAdminOrderPointer].date_of_order_received = dateFormat(request.body.timeStamp, " dS mmmm, yyyy")
+                                                }
+                                                databaseConnectivity.collection('adminCollection').findOneAndReplace({ "uniqueKey": request.body.uniqueKey }, { $set: { total_amount: result[0].total_amount, order_descriptiion: result[0].order_descriptiion } }, { returnOriginal: false }, function (error, updateAdminResult) {
+                                                    if (error) {
+                                                        console.log(error)
+                                                        response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+                                                    } else {
+                                                        response.json({ "response": "success", "data": `Order is ${request.body.statusToBeUpdated}`, "dataTobeShown": updateAdminResult.value })
+                                                    }
+                                                })
+                                            } else {
+                                                response.json({ "response": "failure", "data": "Welcome Admin. No Orders placed yet" })
+                                            }
+                                        }
+                                    })
+                                }
+                            })
+                        }
+                    })
+                } else {
+                    response.json({ "response": "failure", "data": "Order Not found" })
+                }
+            } else {
+                response.json({ "response": "failure", "data": "User Not found" })
+            }
+        }
+    })
+})
 app.listen(8080)
 console.log("Running on port 8080") 
