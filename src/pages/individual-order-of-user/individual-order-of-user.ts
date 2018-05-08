@@ -29,7 +29,8 @@ export class IndividualOrderOfUserPage {
       "itemStatus": "Cancelled",
       "order_id": orderID,
       "uniqueKey": this.uniqueKey,
-      "particularProductPrice": individualPrice
+      "particularProductPrice": individualPrice,
+      "timeStamp": Date.now()
     }
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
@@ -49,6 +50,7 @@ export class IndividualOrderOfUserPage {
                 loading.dismiss();
                 this.toastMessage(this.dataObject.data)
                 this.OrderedindiVidualItemDetails.itemStatus = "Cancelled";
+                this.OrderedindiVidualItemDetails.date_of_order_received = this.dataObject.timeofCancel
               }
             })
           }

@@ -1248,6 +1248,7 @@ app.post('/cancelOrder', function (request, response) {
                 var checkProduct = result[0].myOrders[0].order_descriptiion.map(function (item) { return item.order_id; }).indexOf(request.body.order_id)
                 if (checkProduct !== -1) {
                     result[0].myOrders[0].order_descriptiion[checkProduct].itemStatus = request.body.itemStatus
+                    result[0].myOrders[0].order_descriptiion[checkProduct].date_of_order_received = dateFormat(request.body.timeStamp, " dS mmmm, yyyy")
                     var newUpdatedObject = {
                         "uniqueKey": request.body.uniqueKey,
                         "date_of_order_placing": result[0].myOrders[0].date_of_order_placing,
@@ -1266,7 +1267,29 @@ app.post('/cancelOrder', function (request, response) {
                                 if (error) {
                                     throw error
                                 } else {
-                                    response.json({ "response": "success", "data": "Your Order has been cancelled" })
+                                    databaseConnectivity.collection('adminCollection').find({ "uniqueKey": request.body.uniqueKey }).toArray(function (error, adminResult) {
+                                        if (error) {
+                                            console.log(error)
+                                            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+                                        } else {
+                                            if (adminResult.length > 0) {
+                                                var updateAdminOrderPointer = adminResult[0].order_descriptiion.map(function (item) { return item.order_id; }).indexOf(request.body.order_id)
+                                                adminResult[0].order_descriptiion[updateAdminOrderPointer].itemStatus = request.body.itemStatus
+                                                adminResult[0].total_amount = adminResult[0].total_amount - request.body.particularProductPrice
+                                                adminResult[0].order_descriptiion[updateAdminOrderPointer].date_of_order_received = dateFormat(request.body.timeStamp, " dS mmmm, yyyy")
+                                                databaseConnectivity.collection('adminCollection').findOneAndReplace({ "uniqueKey": request.body.uniqueKey }, { $set: { total_amount: adminResult[0].total_amount, order_descriptiion: adminResult[0].order_descriptiion } }, { returnOriginal: false }, function (error, updateAdminResult) {
+                                                    if (error) {
+                                                        console.log(error)
+                                                        response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
+                                                    } else {
+                                                        response.json({ "response": "success", "data": "Your Order has been cancelled", "timeofCancel": dateFormat(request.body.timeStamp, " dS mmmm, yyyy") })
+                                                    }
+                                                })
+                                            } else {
+                                                response.json({ "response": "failure", "data": "Your order is processed for cancellation" })
+                                            }
+                                        }
+                                    })                           
                                 }
                             })
                         }

@@ -31,7 +31,8 @@
   <div class="descriptionShape" style="height: auto;">
     <p class="deliveryStatus">Status : {{OrderedindiVidualItemDetails.itemStatus}}</p>
     <p class="orderdeliverDate">Ordered on : {{OrderedindiVidualItemDetails.date_of_order_placing}}</p>
-    <p class="orderdeliverDate" *ngIf="OrderedindiVidualItemDetails.date_of_order_received">Delivered on : {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
+    <p class="orderdeliverDate" *ngIf="OrderedindiVidualItemDetails.itemStatus === 'Delivered'">Delivered on : {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
+    <p class="orderdeliverDate" *ngIf="OrderedindiVidualItemDetails.itemStatus === 'Cancelled'">Cancelled on : {{OrderedindiVidualItemDetails.date_of_order_received}}</p>
     <ion-thumbnail item-start class="imgPosyioning">
       <img style="height:75px;width:75px;" src="{{OrderedindiVidualItemDetails.productPic}}">
     </ion-thumbnail>
