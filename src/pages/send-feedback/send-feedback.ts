@@ -23,7 +23,10 @@ export class SendFeedbackPage {
 
   submitFeedback() {
     var userFeed = {
-      feedback: this.feedback
+      feedback: this.feedback,
+      email: this.apiProvider.settingsInformation.settingsInformation[0].email,
+      customerName: this.apiProvider.settingsInformation.settingsInformation[0].name + " " + this.apiProvider.settingsInformation.settingsInformation[0].lastName,
+      phoneNumber: this.apiProvider.settingsInformation.settingsInformation[0].phoneNumber
     }
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
