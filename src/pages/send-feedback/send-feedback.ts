@@ -55,7 +55,7 @@ export class SendFeedbackPage {
   toastMessage(message: string) {
     let toast = this.toastCtrl.create({
       message: message,
-      duration: 3000,
+      duration: 1000,
       position: 'middle',
       cssClass: 'showToast'
     });

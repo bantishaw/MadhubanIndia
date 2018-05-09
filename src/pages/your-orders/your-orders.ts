@@ -79,6 +79,12 @@ export class YourOrdersPage {
     })
   }
 
+  doRefresh(refresher) {
+    this.ionViewDidLoad();
+    setTimeout(() => {
+      refresher.complete();
+    }, 2000);
+  }
 }
 
 

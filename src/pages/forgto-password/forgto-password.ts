@@ -87,7 +87,7 @@ export class ForgtoPasswordPage {
     if (!this.newPassword || !this.reNewPassword) {
       let toast = this.toastCtrl.create({
         message: 'Passwords cannot be empty',
-        duration: 3000,
+        duration: 1000,
         position: 'middle',
         cssClass: 'showToast'
       });
@@ -95,7 +95,7 @@ export class ForgtoPasswordPage {
     } else if (this.newPassword !== this.reNewPassword) {
       let toast = this.toastCtrl.create({
         message: 'Passwords are not matching',
-        duration: 3000,
+        duration: 1000,
         position: 'middle',
         cssClass: 'showToast'
       });
