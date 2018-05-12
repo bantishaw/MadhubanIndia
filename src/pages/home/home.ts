@@ -44,7 +44,7 @@ export class HomePage {
             setTimeout(() => {
               this.homeItemsDecorations = this.homeMenuService.data[0].HomeMenuService
               this.slideData = this.slideDataResult.data[0].HomePageSlidingImages
-              this.CurrentlySerivesOffered = this.slideDataResult.data[0].CurrentlySerivesOffered
+              this.CurrentlySerivesOffered = this.slideDataResult.data[0].userNotice
             }, 0);
           }
         })

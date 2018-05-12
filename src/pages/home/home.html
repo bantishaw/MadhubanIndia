@@ -5,13 +5,15 @@
     </button>
     <ion-title class="titleStyleAll">Home</ion-title>
     <ion-buttons right>
-      <button ion-button icon-only (click)="goToShopping()" >
+      <button ion-button icon-only (click)="goToShopping()">
         <div style="font-size: 20px;">
-          <ion-icon name="cart" class="cartPostion"><p class="itemNumberPostion" *ngIf="addToCartLength">{{addToCartLength}}</p></ion-icon>
+          <ion-icon name="cart" class="cartPostion">
+            <p class="itemNumberPostion" *ngIf="addToCartLength">{{addToCartLength}}</p>
+          </ion-icon>
         </div>
       </button>
     </ion-buttons>
-  </ion-navbar> 
+  </ion-navbar>
 
 </ion-header>
 
@@ -27,9 +29,8 @@
       <img src="{{slide.img_path}}" />
     </ion-slide>
   </ion-slides>
-  <ion-item class="noteHeading">
-    <ion-label style="font-size:11px;color:white;white-space: normal;">{{CurrentlySerivesOffered}}
-    </ion-label>
+  <ion-item class="noteHeading" *ngFor="let item of CurrentlySerivesOffered">
+    <ion-label style="font-size:11px;color:white;white-space: normal;">{{item.notice}}</ion-label>
   </ion-item>
 
   <div class="col col-50">
