@@ -1,23 +1,23 @@
 {
-    "_id" : ObjectId("5abfd66c6f2fde5332c2f4e9"),
+    "_id" : ObjectId("5ad4e08b938022096d3a9497"),
     "HomeMenuService" : [ 
         {
-            "img_path" : "assets/img/fruits.jpg",
+            "img_path" : "assets/img/fruits.svg",
             "service_name" : "Fruits",
             "collectionName" : "FruitsCollection"
         }, 
         {
-            "img_path" : "assets/img/WaterCan.jpg",
+            "img_path" : "assets/img/WaterCan.svg",
             "service_name" : "Water Can",
             "collectionName" : "waterCanCollection"
         }, 
         {
-            "img_path" : "assets/img/mehendi.jpg",
+            "img_path" : "assets/img/mehendi.svg",
             "service_name" : "Mehendi",
             "collectionName" : "MehendiCollection"
         }, 
         {
-            "img_path" : "assets/img/carDecoration.jpg",
+            "img_path" : "assets/img/carDecoration.svg",
             "service_name" : "Vehicle Decoration",
             "collectionName" : "VehicleDecorationCollection"
         }
