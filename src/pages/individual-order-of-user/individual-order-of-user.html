@@ -42,10 +42,10 @@
       <p class="individualChats">Qty : {{OrderedindiVidualItemDetails.quantity}} </p>
       <p class="individualPricePerItem">₹{{OrderedindiVidualItemDetails.particularProductPrice}}</p>
       <div>
-        <img src="assets/img/cancelled.png" style="margin: -50px;width: 90%;"  *ngIf="OrderedindiVidualItemDetails.itemStatus === 'Cancelled'" />
+        <img src="assets/img/cancelled.svg" style="margin: -50px;width: 90%;"  *ngIf="OrderedindiVidualItemDetails.itemStatus === 'Cancelled'" />
       </div>
       <div>
-        <img src="assets/img/Delivered.png" class="deliveredImage"  *ngIf="OrderedindiVidualItemDetails.itemStatus === 'Delivered'" />
+        <img src="assets/img/Delivered.svg" class="deliveredImage"  *ngIf="OrderedindiVidualItemDetails.itemStatus === 'Delivered'" />
       </div>
     </div>
   </div>
