@@ -5,6 +5,7 @@ import { ShoppingCartPage } from '../shopping-cart/shopping-cart'
 import { Http, Headers } from '@angular/http';
 import { Api } from '../../providers/providers';
 import { App } from 'ionic-angular';
+import { Geolocation } from '@ionic-native/geolocation';
 
 @IonicPage()
 @Component({
@@ -22,13 +23,17 @@ export class HomePage {
   CurrentlySerivesOffered: any;
   email: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, ) {
+    public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, public geolocation: Geolocation) {
     this.email = this.apiProvider.settingsInformation.settingsInformation[0].email
   }
 
   ionViewDidLoad() {
     let headers = new Headers();
-    headers.append('Content-Type', 'application/json');
+    var options = {
+      enableHighAccuracy: true,
+      timeout: Infinity,
+      maximumAge: 0
+    };
     let loading = this.loadingCtrl.create({
       spinner: 'crescent',
       cssClass: "wrapper"
@@ -37,16 +42,22 @@ export class HomePage {
     this.apiProvider.getHomePageSlidingImages().then((result) => {
       this.slideDataResult = result;
       if (this.slideDataResult.response === "success") {
-        this.apiProvider.getHomeMenuService().then((data) => {
-          this.homeMenuService = data;
-          if (this.homeMenuService.response === "success") {
-            loading.dismiss();
-            setTimeout(() => {
-              this.homeItemsDecorations = this.homeMenuService.data[0].HomeMenuService
-              this.slideData = this.slideDataResult.data[0].HomePageSlidingImages
-              this.CurrentlySerivesOffered = this.slideDataResult.data[0].userNotice
-            }, 0);
+        this.geolocation.getCurrentPosition(options).then((position) => {
+          let positionObject = {
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude
           }
+          this.apiProvider.getHomeMenuService(positionObject).then((data) => {
+            this.homeMenuService = data;
+            if (this.homeMenuService.response === "success") {
+              loading.dismiss();
+              setTimeout(() => {
+                this.homeItemsDecorations = this.homeMenuService.data
+                this.slideData = this.slideDataResult.data[0].HomePageSlidingImages
+                this.CurrentlySerivesOffered = this.slideDataResult.data[0].userNotice
+              }, 0);
+            }
+          })
         })
       }
     })

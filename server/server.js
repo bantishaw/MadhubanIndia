@@ -302,19 +302,34 @@ app.get('/getAboutUsMethod', function (request, response) {
 })
 
 //get Menu service list of Home page
-app.get('/getHomePageServiceMenu', function (request, response) {
-    databaseConnectivity.collection('HomePageServiceMenu').find().toArray(function (error, result) {
-        if (error) {
-            console.log(error)
-            response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
-        } else {
-            if (result.length > 0) {
-                response.json({ "response": "success", "data": result })
+app.post('/getHomePageServiceMenu', function (request, response) {
+    var homeArray = [];
+    geocoder.reverse({ lat: request.body.latitude, lon: request.body.longitude }, function (error, geoResponse) {
+       databaseConnectivity.collection('HomePageServiceMenu').find().toArray(function (error, result) {
+            if (error) {
+                console.log(error)
+                response.json({ "response": "failure", "data": "Please check your Interent connection and try again" })
             } else {
-                response.json({ "response": "failure", "data": "Database is inaccessable. Please try later" })
+                if (result.length > 0) {
+                    result[0].HomeMenuService.map(function (individualObject) {
+                      individualObject.collectionName.map(function (individualItem) {
+                        if (individualItem.city === geoResponse[0].city) {
+                          var collectionNameToShow = {
+                            "img_path": individualObject.img_path,
+                            "service_name": individualObject.service_name,
+                            "collectionName": individualItem.collection
+                          }
+                          homeArray.push(collectionNameToShow)
+                        }
+                      })
+                    })
+                    response.json({ "response": "success", "data": homeArray })
+                } else {
+                    response.json({ "response": "failure", "data": "Database is inaccessable. Please try later" })
+                }
             }
-        }
-    })
+        })
+    });
 })
 
 //get path of images stored in mongoDB

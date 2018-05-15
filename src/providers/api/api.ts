@@ -138,11 +138,11 @@ export class Api {
   }
 
 
-  getHomeMenuService() {
+  getHomeMenuService(positionObject) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-       this.http.get("https://immense-river-69583.herokuapp.com/getHomePageServiceMenu", { headers: headers })
+      this.http.post("https://immense-river-69583.herokuapp.com/getHomePageServiceMenu", positionObject, { headers: headers })
         .subscribe(res => {
           resolve(res.json());
         }, (err) => {
