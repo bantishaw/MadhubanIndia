@@ -1,25 +1,77 @@
 {
-    "_id" : ObjectId("5ad4e08b938022096d3a9497"),
+    "_id" : ObjectId("5afb1fef974a0cebea1a6c3d"),
     "HomeMenuService" : [ 
         {
             "img_path" : "assets/img/fruits.svg",
             "service_name" : "Fruits",
-            "collectionName" : "FruitsCollection"
+            "collectionName" : [ 
+                {
+                    "city" : "Bengaluru",
+                    "collection" : "FruitsCollection_Bengaluru"
+                }, 
+                {
+                    "city" : "Mumbai",
+                    "collection" : "FruitsCollection_Mumbai"
+                }, 
+                {
+                    "city" : "Pune",
+                    "collection" : "FruitsCollection_Pune"
+                }
+            ]
         }, 
         {
             "img_path" : "assets/img/WaterCan.svg",
             "service_name" : "Water Can",
-            "collectionName" : "waterCanCollection"
+            "collectionName" : [ 
+                {
+                    "city" : "Bengaluru",
+                    "collection" : "waterCanCollection_Bengaluru"
+                }, 
+                {
+                    "city" : "Mumbai",
+                    "collection" : "waterCanCollection_Mumbai"
+                }, 
+                {
+                    "city" : "Pune",
+                    "collection" : "waterCanCollection_Pune"
+                }
+            ]
         }, 
         {
             "img_path" : "assets/img/mehendi.svg",
             "service_name" : "Mehendi",
-            "collectionName" : "MehendiCollection"
+            "collectionName" : [ 
+                {
+                    "city" : "Bengaluru",
+                    "collection" : "MehendiCollection_Bengaluru"
+                }, 
+                {
+                    "city" : "Mumbai",
+                    "collection" : "MehendiCollection_Mumbai"
+                }, 
+                {
+                    "city" : "Pune",
+                    "collection" : "MehendiCollection_Pune"
+                }
+            ]
         }, 
         {
             "img_path" : "assets/img/carDecoration.svg",
             "service_name" : "Vehicle Decoration",
-            "collectionName" : "VehicleDecorationCollection"
+            "collectionName" : [ 
+                {
+                    "city" : "Bengaluru",
+                    "collection" : "VehicleDecorationCollection_Bengaluru"
+                }, 
+                {
+                    "city" : "Mumbai",
+                    "collection" : "VehicleDecorationCollection_Mumbai"
+                }, 
+                {
+                    "city" : "Pune",
+                    "collection" : "VehicleDecorationCollection_Pune"
+                }
+            ]
         }
     ]
 }

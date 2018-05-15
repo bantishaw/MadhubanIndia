@@ -1,0 +1,137 @@
+{
+    "_id" : ObjectId("5afb2fee974a0cebea1d20d0"),
+    "FruitsNameAndPrices" : [ 
+        {
+            "product" : "Apple",
+            "profilePic" : "assets/img/apple.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Green Apple",
+            "profilePic" : "assets/img/greenApple.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Banana",
+            "profilePic" : "assets/img/banana.svg",
+            "description" : "₹ 20 per Kg",
+            "rate" : 20
+        }, 
+        {
+            "product" : "Black Grapes",
+            "profilePic" : "assets/img/blackGrapes.svg",
+            "description" : "₹ 50 per Kg",
+            "rate" : 50
+        }, 
+        {
+            "product" : "Green Grapes",
+            "profilePic" : "assets/img/greenGrapes.svg",
+            "description" : "₹ 60 per Kg",
+            "rate" : 60
+        }, 
+        {
+            "product" : "Orange",
+            "profilePic" : "assets/img/orange.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Pineapple",
+            "profilePic" : "assets/img/pineapple.svg",
+            "description" : "₹ 90 per Kg",
+            "rate" : 90
+        }, 
+        {
+            "product" : "Strawberry",
+            "profilePic" : "assets/img/strawberry.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Watermelon",
+            "profilePic" : "assets/img/watermelon.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Alphanso Mango",
+            "profilePic" : "assets/img/alphansoMango.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "LaalBaag Mango",
+            "profilePic" : "assets/img/normalMango.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Ragapuri Mango",
+            "profilePic" : "assets/img/normalMango.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Guava",
+            "profilePic" : "assets/img/guava.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Lychee",
+            "profilePic" : "assets/img/lychee.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Mosambi",
+            "profilePic" : "assets/img/mosambi.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Papaya",
+            "profilePic" : "assets/img/papaya.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Pears",
+            "profilePic" : "assets/img/pears.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Pomegranate",
+            "profilePic" : "assets/img/pomegranate.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Sapodilla",
+            "profilePic" : "assets/img/sapodilla.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Muskmelon",
+            "profilePic" : "assets/img/muskmelon.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Kiwi",
+            "profilePic" : "assets/img/kiwi.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }, 
+        {
+            "product" : "Cherry",
+            "profilePic" : "assets/img/cherry.svg",
+            "description" : "₹ 30 per Kg",
+            "rate" : 30
+        }
+    ]
+}
