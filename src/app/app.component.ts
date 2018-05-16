@@ -3,7 +3,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
 import { TranslateService } from '@ngx-translate/core';
 import { Config, Nav, Platform, ToastController } from 'ionic-angular';
-import { StartUpPage, MainPage } from '../pages/pages';
+import { MainPage } from '../pages/pages';
 import { Settings } from '../providers/providers';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
@@ -11,14 +11,14 @@ import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { ListMasterPage } from '../pages/list-master/list-master';
 import { HomePage } from '../pages/home/home';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
-
+import { TutorialPage } from '../pages/tutorial/tutorial';
 @Component({
   templateUrl: 'app.html'
 })
 
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage = "StartUpPage";
+  rootPage = TutorialPage;
   pages: Array<{ title: string, component: any }>;
   public counter = 0;
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,
