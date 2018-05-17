@@ -2,7 +2,7 @@
     "_id" : ObjectId("5afb1fef974a0cebea1a6c3d"),
     "HomeMenuService" : [ 
         {
-            "img_path" : "assets/img/fruits.svg",
+            "img_path" : "assets/img/fruits.jpg",
             "service_name" : "Fruits",
             "collectionName" : [ 
                 {
@@ -10,7 +10,7 @@
                     "collection" : "FruitsCollection_Bengaluru"
                 }, 
                 {
-                    "city" : "Mumbai",
+                    "city" : "Navi Mumbai",
                     "collection" : "FruitsCollection_Mumbai"
                 }, 
                 {
@@ -20,7 +20,7 @@
             ]
         }, 
         {
-            "img_path" : "assets/img/WaterCan.svg",
+            "img_path" : "assets/img/WaterCan.jpg",
             "service_name" : "Water Can",
             "collectionName" : [ 
                 {
@@ -28,7 +28,7 @@
                     "collection" : "waterCanCollection_Bengaluru"
                 }, 
                 {
-                    "city" : "Mumbai",
+                    "city" : "Navi Mumbai",
                     "collection" : "waterCanCollection_Mumbai"
                 }, 
                 {
@@ -38,7 +38,7 @@
             ]
         }, 
         {
-            "img_path" : "assets/img/mehendi.svg",
+            "img_path" : "assets/img/mehendi.jpg",
             "service_name" : "Mehendi",
             "collectionName" : [ 
                 {
@@ -46,7 +46,7 @@
                     "collection" : "MehendiCollection_Bengaluru"
                 }, 
                 {
-                    "city" : "Mumbai",
+                    "city" : "Navi Mumbai",
                     "collection" : "MehendiCollection_Mumbai"
                 }, 
                 {
@@ -56,7 +56,7 @@
             ]
         }, 
         {
-            "img_path" : "assets/img/carDecoration.svg",
+            "img_path" : "assets/img/carDecoration.jpg",
             "service_name" : "Vehicle Decoration",
             "collectionName" : [ 
                 {
@@ -64,7 +64,7 @@
                     "collection" : "VehicleDecorationCollection_Bengaluru"
                 }, 
                 {
-                    "city" : "Mumbai",
+                    "city" : "Navi Mumbai",
                     "collection" : "VehicleDecorationCollection_Mumbai"
                 }, 
                 {
