@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, ModalController, NavController, LoadingController, NavParams } from 'ionic-angular';
 import { Item } from '../../models/item';
-import { Items } from '../../providers/providers';
 import { Http, Headers } from '@angular/http';
 import { Api } from '../../providers/providers';
 

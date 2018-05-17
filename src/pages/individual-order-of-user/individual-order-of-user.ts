@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { AlertController } from 'ionic-angular';
-import { YourOrdersPage } from '../your-orders/your-orders';
 import { ToastController } from 'ionic-angular';
 @IonicPage()
 @Component({

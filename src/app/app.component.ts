@@ -8,8 +8,6 @@ import { Settings } from '../providers/providers';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
-import { ListMasterPage } from '../pages/list-master/list-master';
-import { HomePage } from '../pages/home/home';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 @Component({

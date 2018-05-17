@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController } from 'ionic-angular';
 import { ListMasterPage } from '../list-master/list-master';
 import { ShoppingCartPage } from '../shopping-cart/shopping-cart'
-import { Http, Headers } from '@angular/http';
+import { Http } from '@angular/http';
 import { Api } from '../../providers/providers';
 import { App } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
@@ -28,7 +28,6 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
-    let headers = new Headers();
     var options = {
       enableHighAccuracy: true,
       timeout: Infinity,

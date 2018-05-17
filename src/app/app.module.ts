@@ -18,11 +18,8 @@ import { MyApp } from './app.component';
 import { AboutUsPage } from '../pages/about-us/about-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { ContactUsPage } from '../pages/contact-us/contact-us';
-import { HomePage } from '../pages/home/home';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { ListMasterPage } from '../pages/list-master/list-master';
-import { TabsPage } from '../pages/tabs/tabs';
-import { TabsPageModule } from '../pages/tabs/tabs.module';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
@@ -30,7 +27,6 @@ import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 import { ShowContentPage } from '../pages/show-content/show-content';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart';
-import { FilterUserOrderPage } from '../pages/filter-user-order/filter-user-order';
 import { IndividualOrderOfUserPage } from '../pages/individual-order-of-user/individual-order-of-user';
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,7 +61,6 @@ export function provideSettings(storage: Storage) {
     ShowContentPage,
     ShoppingCartPage,
     IndividualOrderOfUserPage,
-    FilterUserOrderPage
   ],
   imports: [
     BrowserModule,
@@ -93,8 +88,7 @@ export function provideSettings(storage: Storage) {
     ListMasterPage,
     ShowContentPage,
     ShoppingCartPage,
-    IndividualOrderOfUserPage,
-    FilterUserOrderPage
+    IndividualOrderOfUserPage
 
   ],
   providers: [

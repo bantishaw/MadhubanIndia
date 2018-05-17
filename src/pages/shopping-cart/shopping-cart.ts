@@ -1,10 +1,9 @@
-import { Component, ViewChild, ElementRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { Geolocation } from '@ionic-native/geolocation';
 import { MainPage } from '../pages';
 
-declare var google;
 @IonicPage()
 @Component({
   selector: 'page-shopping-cart',

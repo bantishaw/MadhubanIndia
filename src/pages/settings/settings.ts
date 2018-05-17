@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, AlertController, ToastController, LoadingController } from 'ionic-angular';
 import { Settings } from '../../providers/providers';
 import { Api } from '../../providers/providers';
-import { MainPage } from '../pages';
 import { App } from 'ionic-angular';
 import { LoginPage } from '../login/login'
 import { TutorialPage } from '../tutorial/tutorial';

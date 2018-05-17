@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController, LoadingController, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Http } from '@angular/http';
 import { Api } from '../../providers/providers';
 import { ShowContentPage } from '../show-content/show-content';
@@ -15,7 +15,6 @@ export class AboutUsPage {
   FreshPoolLink: any;
   constructor(
     private socialSharing: SocialSharing,
-    private actionSheetControler: ActionSheetController,
     public navCtrl: NavController, public navParams: NavParams,
     public apiProvider: Api, public toastCtrl: ToastController, public loadingCtrl: LoadingController,
     public http: Http) {

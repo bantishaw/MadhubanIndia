@@ -1,9 +1,7 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
-import { Header } from 'ionic-angular/components/toolbar/toolbar-header';
-
 /**
  * Api is a generic REST Api handler. Set your API url first.
  */

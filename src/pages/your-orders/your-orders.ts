@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Api } from '../../providers/providers';
 import { Http } from '@angular/http';
-import { LoginPage } from '../login/login'
-import { Item } from '../../models/item';
-import { FilterUserOrderPage } from '../filter-user-order/filter-user-order';
 import { IndividualOrderOfUserPage } from '../individual-order-of-user/individual-order-of-user';
 
 @IonicPage()
