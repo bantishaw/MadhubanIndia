@@ -16,6 +16,8 @@ export class LoginPage {
   existingUser: any;
   email: string;
   password: string;
+  isActiveToggleTextPassword: Boolean = true;
+  showPasswordEye: Boolean = true;
   constructor(
     private menu: MenuController,
     public navCtrl: NavController,
@@ -33,7 +35,7 @@ export class LoginPage {
   ionViewWillLeave() {
     this.menu.swipeEnable(true);
   }
-  
+
   doLogin() {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -84,5 +86,17 @@ export class LoginPage {
       cssClass: 'showToast'
     });
     toast.present();
+  }
+
+  toggleTextPassword() {
+    this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword == true) ? false : true;
+    this.showPasswordEye = (this.showPasswordEye == true) ? false : true;
+  }
+  getType() {
+    return this.isActiveToggleTextPassword ? 'password' : 'text';
+  }
+
+  hideAndShow() {
+    return this.showPasswordEye ? 'eye' : 'eye-off';
   }
 }

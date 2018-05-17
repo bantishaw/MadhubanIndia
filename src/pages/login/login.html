@@ -11,7 +11,8 @@
 
   <ion-item class="backgroundstyle" style="padding-bottom: 40px;padding-top: 35px;">
     <ion-label stacked style="color:white">Password</ion-label>
-    <ion-input type="password" class="fieldStyle" [(ngModel)]="password"></ion-input>
+    <ion-input [type]="getType()" class="fieldStyle" [(ngModel)]="password"></ion-input>
+    <ion-icon [name]="hideAndShow()" item-end (click)="toggleTextPassword()" class="eyePosition"></ion-icon>
   </ion-item>
 
   <div padding>
