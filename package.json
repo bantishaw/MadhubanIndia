@@ -66,8 +66,7 @@
       "cordova-plugin-geolocation": {
         "GEOLOCATION_USAGE_DESCRIPTION": "To locate you"
       },
-      "cordova-plugin-nativegeocoder": {},
-      "cordova-sms-plugin": {}
+      "cordova-plugin-nativegeocoder": {}
     },
     "platforms": [
       "browser"

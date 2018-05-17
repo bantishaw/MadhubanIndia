@@ -88,5 +88,4 @@
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
     <engine name="browser" spec="5.0.1" />
-    <plugin name="cordova-sms-plugin" spec="~0.1.11" />
 </widget>
