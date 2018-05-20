@@ -6,6 +6,7 @@ import { Http } from '@angular/http';
 import { Api } from '../../providers/providers';
 import { App } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 @IonicPage()
 @Component({
@@ -23,7 +24,8 @@ export class HomePage {
   CurrentlySerivesOffered: any;
   email: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
-    public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, public geolocation: Geolocation) {
+    public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, public geolocation: Geolocation,
+    private locationAccuracy: LocationAccuracy) {
     this.email = this.apiProvider.settingsInformation.settingsInformation[0].email
   }
 
@@ -37,6 +39,7 @@ export class HomePage {
       spinner: 'crescent',
       cssClass: "wrapper"
     });
+    this.enableLocation();
     loading.present();
     this.apiProvider.getHomePageSlidingImages().then((result) => {
       this.slideDataResult = result;
@@ -65,6 +68,18 @@ export class HomePage {
   processRequest(serviceDetails) {
     console.log('in processRequest ', serviceDetails);
     this.navCtrl.push(ListMasterPage, { menuDetails: serviceDetails });
+  }
+
+  enableLocation() {
+    this.locationAccuracy.canRequest().then((canRequest: boolean) => {
+      if (canRequest) {
+        // the accuracy option will be ignored by iOS
+        this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+          () => console.log('Request successful'),
+          error => console.log('Error requesting location permissions', error)
+        );
+      }
+    });
   }
 
   doRefresh(refresher) {

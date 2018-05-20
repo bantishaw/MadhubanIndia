@@ -28,6 +28,8 @@ import { ShowContentPage } from '../pages/show-content/show-content';
 import { SocialSharing } from '@ionic-native/social-sharing';
 import { ShoppingCartPage } from '../pages/shopping-cart/shopping-cart';
 import { IndividualOrderOfUserPage } from '../pages/individual-order-of-user/individual-order-of-user';
+import { LocationAccuracy } from '@ionic-native/location-accuracy';
+
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
@@ -100,6 +102,7 @@ export function provideSettings(storage: Storage) {
     StatusBar,
     SocialSharing,
     Geolocation,
+    LocationAccuracy,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler }
