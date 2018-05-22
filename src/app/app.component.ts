@@ -37,23 +37,17 @@ export class MyApp {
           platform.exitApp();
         }
       }, 0)
-      var options = {
-        enableHighAccuracy: true,
-        timeout: Infinity,
-        maximumAge: 0
-      };
       this.locationAccuracy.canRequest().then((canRequest: boolean) => {
         if (canRequest) {
           // the accuracy option will be ignored by iOS
-          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(() => console.log('Request successful'),
-            (error) => {
-              console.log('Error requesting location permissions', error)
-              platform.exitApp();
-            }
+          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
+            () => console.log('Request successful'),
+            error => console.log('Error requesting location permissions', error)
           );
+        } else {
+          platform.exitApp();
         }
       });
-
     });
     this.pages = [
       { title: 'Home', component: MainPage },
