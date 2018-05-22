@@ -15,7 +15,6 @@
   position: absolute;
   margin-top: -10px;
   margin-left: -7px;
-
 }
 
 .cartPostion {
@@ -69,3 +68,21 @@
   .cartDisplay {}
 }
 
+.messageDisplay {
+  font-size: 16px;
+  font-family: sans-serif;
+  margin-left: 10px;
+  color: #999;
+  margin-top: 15px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.navigateIcon {
+  float: right;
+  font-size: 38px;
+  margin-right: 15px;
+  margin-top: -15px;
+  transform: rotate(40deg);
+  color: #488aff;
+}

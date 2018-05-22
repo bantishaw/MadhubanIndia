@@ -32,7 +32,9 @@
   <ion-item class="noteHeading" *ngFor="let item of CurrentlySerivesOffered">
     <ion-label style="font-size:11px;color:white;white-space: normal;">{{item.notice}}</ion-label>
   </ion-item>
-
+  <p class="messageDisplay">{{welcomeMessage}}
+    <ion-icon name="navigate" class="navigateIcon" (click)="navigateLocation()"></ion-icon>
+  </p>
   <div class="col col-50">
     <p class="pHeading">SERVICES FOR YOU</p>
     <ion-grid>

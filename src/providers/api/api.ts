@@ -309,6 +309,20 @@ export class Api {
     })
   }
 
+  updateUserLocation(location) {
+    return new Promise((resolve, reject) => {
+      let headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      this.http.post("https://immense-river-69583.herokuapp.com/updateUserLocation", location, { headers: headers })
+        .subscribe(res => {
+          resolve(res.json());
+        }, (err) => {
+          console.log(err)
+          reject(err)
+        })
+    })
+  }
+
   get(endpoint: string, params?: any, reqOpts?: any) {
     if (!reqOpts) {
       reqOpts = {
