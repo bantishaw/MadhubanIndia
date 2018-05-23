@@ -11,6 +11,7 @@ export class Api {
   data: any;
   settingsInformation: any;
   shoppingCartData: any;
+  userCity: any;
   constructor(public http: Http) {
     this.data = null;
   }
@@ -142,6 +143,7 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.get("https://immense-river-69583.herokuapp.com/getHomePageServiceMenu", { headers: headers })
         .subscribe(res => {
+          this.userCity = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err)
@@ -315,6 +317,7 @@ export class Api {
       headers.append('Content-Type', 'application/json');
       this.http.post("https://immense-river-69583.herokuapp.com/updateUserLocation", location, { headers: headers })
         .subscribe(res => {
+          this.userCity = res.json();
           resolve(res.json());
         }, (err) => {
           console.log(err)

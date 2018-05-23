@@ -22,7 +22,7 @@ export class ShoppingCartPage {
   databaseAddressBox: any;
   gpsAddressBox: any;
   realTimeAddress: any;
-  UserCityName: any;
+  UserCityName= this.apiProvider.userCity.data[0].city;
   UserPinCode: any;
   UserState: any;
   UserStreetName: any;
@@ -243,7 +243,7 @@ export class ShoppingCartPage {
     this.showAddresSaveButton = true;
     this.showPriceAndContinue = false;
     this.showAddressAndContinue = false;
-    this.UserCityName = "", this.UserPinCode = "", this.UserState = "";
+    this.UserPinCode = "", this.UserState = "";
     this.UserStreetName = "", this.formatAddress = "", this.landmarkModel = "", this.flatNoBuildingNoModel = "";
   }
 
@@ -254,7 +254,7 @@ export class ShoppingCartPage {
       maximumAge: 0
     };
     this.showLoading = true;
-    this.UserCityName = "", this.UserPinCode = "", this.UserState = "";
+    this.UserPinCode = "", this.UserState = "";
     this.UserStreetName = "", this.formatAddress = "", this.landmarkModel = "", this.flatNoBuildingNoModel = "";
     this.geolocation.getCurrentPosition(options).then((position) => {
       let positionObject = {
@@ -281,7 +281,6 @@ export class ShoppingCartPage {
                 handler: () => {
                   console.log(this.realTimeAddress.googleResponse[0])
                   this.formatAddress = this.realTimeAddress.googleResponse[0].formattedAddress;
-                  this.UserCityName = this.realTimeAddress.googleResponse[0].city;
                   this.UserPinCode = this.realTimeAddress.googleResponse[0].zipcode;
                   this.UserState = this.realTimeAddress.googleResponse[0].administrativeLevels.level1long;
                   this.UserStreetName = this.realTimeAddress.googleResponse[0].streetName + " " + this.realTimeAddress.googleResponse[0].extra.neighborhood
@@ -303,7 +302,7 @@ export class ShoppingCartPage {
     if (this.formatAddress) {
       addressObject = {
         "email": this.apiProvider.settingsInformation.settingsInformation[0].email,
-        "address": this.flatNoBuildingNoModel + ", " + this.formatAddress + ", Landmark : " + this.landmarkModel
+        "address": this.flatNoBuildingNoModel + ", " + this.formatAddress + ", Landmark : " + this.landmarkModel + ", City : " + this.UserCityName
       }
     } else {
       addressObject = {
