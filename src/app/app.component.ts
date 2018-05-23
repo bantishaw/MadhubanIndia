@@ -10,7 +10,6 @@ import { ContactUsPage } from '../pages/contact-us/contact-us';
 import { YourOrdersPage } from '../pages/your-orders/your-orders';
 import { SendFeedbackPage } from '../pages/send-feedback/send-feedback';
 import { TutorialPage } from '../pages/tutorial/tutorial';
-import { LocationAccuracy } from '@ionic-native/location-accuracy';
 
 @Component({
   templateUrl: 'app.html'
@@ -22,7 +21,7 @@ export class MyApp {
   pages: Array<{ title: string, component: any }>;
   public counter = 0;
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,
-    public toastCtrl: ToastController, private locationAccuracy: LocationAccuracy) {
+    public toastCtrl: ToastController) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -37,17 +36,6 @@ export class MyApp {
           platform.exitApp();
         }
       }, 0)
-      this.locationAccuracy.canRequest().then((canRequest: boolean) => {
-        if (canRequest) {
-          // the accuracy option will be ignored by iOS
-          this.locationAccuracy.request(this.locationAccuracy.REQUEST_PRIORITY_HIGH_ACCURACY).then(
-            () => console.log('Request successful'),
-            error => console.log('Error requesting location permissions', error)
-          );
-        } else {
-          platform.exitApp();
-        }
-      });
     });
     this.pages = [
       { title: 'Home', component: MainPage },
