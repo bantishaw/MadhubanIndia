@@ -71,7 +71,7 @@ export class MyApp {
     let toast = this.toastCtrl.create({
       message: "Press again back to exit",
       duration: 1000,
-      position: "middle"
+      position: "bottom"
     });
     toast.present();
   }
