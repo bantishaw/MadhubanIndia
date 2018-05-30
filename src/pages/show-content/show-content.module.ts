@@ -4,7 +4,6 @@ import { ShowContentPage } from './show-content';
 
 @NgModule({
   declarations: [
-    ShowContentPage,
   ],
   imports: [
     IonicPageModule.forChild(ShowContentPage),

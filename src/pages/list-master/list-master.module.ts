@@ -6,14 +6,10 @@ import { ListMasterPage } from './list-master';
 
 @NgModule({
   declarations: [
-    ListMasterPage,
   ],
   imports: [
     IonicPageModule.forChild(ListMasterPage),
     TranslateModule.forChild()
-  ],
-  exports: [
-    ListMasterPage
   ]
 })
 export class ListMasterPageModule { }

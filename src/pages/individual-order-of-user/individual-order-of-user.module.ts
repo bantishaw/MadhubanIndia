@@ -4,7 +4,6 @@ import { IndividualOrderOfUserPage } from './individual-order-of-user';
 
 @NgModule({
   declarations: [
-    IndividualOrderOfUserPage,
   ],
   imports: [
     IonicPageModule.forChild(IndividualOrderOfUserPage),

@@ -4,7 +4,6 @@ import { SendFeedbackPage } from './send-feedback';
 
 @NgModule({
   declarations: [
-    SendFeedbackPage,
   ],
   imports: [
     IonicPageModule.forChild(SendFeedbackPage),
