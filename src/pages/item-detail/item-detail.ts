@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController, LoadingController } from 'ionic-angular';
 import { Items } from '../../providers/providers';
 import { Api } from '../../providers/providers';
+import { ShoppingCartPage } from '../shopping-cart/shopping-cart'
 
 @IonicPage()
 @Component({
@@ -14,6 +15,8 @@ export class ItemDetailPage {
   numberOfItemsOrdered: number;
   totalAmount: number;
   databaseCartResult: any;
+  cartResultDisplay: any;
+  addToCartLength: any;
   constructor(public navCtrl: NavController, navParams: NavParams, items: Items, public apiProvider: Api,
     public toastCtrl: ToastController, public loadingCtrl: LoadingController) {
     this.item = navParams.get('item')
@@ -25,6 +28,18 @@ export class ItemDetailPage {
     this.numberOfItemsOrdered = 0;
     this.totalAmount = 0;
     console.log(this.item)
+    let queryCartObject = {
+      "reference_email": this.apiProvider.settingsInformation.settingsInformation[0].email
+    }
+    this.apiProvider.queryCartlength(queryCartObject).then((data) => {
+      this.cartResultDisplay = data;
+      if (this.cartResultDisplay.response === "success") {
+        this.addToCartLength = this.cartResultDisplay.length;
+        //this.cartData = this.cartResultDisplay.data;
+        console.log("this.addToCartLength", this.addToCartLength)
+      }
+    })
+
   }
 
   decreaseQuantity(decreaseNumber) {
@@ -50,7 +65,7 @@ export class ItemDetailPage {
           "quantity": this.numberOfItemsOrdered,
           "rate": this.item.rate,
           "description": this.item.description,
-          "productPic" : this.item.profilePic
+          "productPic": this.item.profilePic
         }
       ],
       "total_amount": this.totalAmount
@@ -89,6 +104,14 @@ export class ItemDetailPage {
       cssClass: 'showToast'
     });
     toast.present();
+  }
+
+  goToShopping() {
+    this.navCtrl.push(ShoppingCartPage)
+  }
+
+  ionViewDidEnter() {
+    this.ionViewDidLoad();
   }
 }
 

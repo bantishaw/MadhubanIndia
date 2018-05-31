@@ -1,6 +1,15 @@
 <ion-header>
   <ion-navbar>
     <ion-title class="titleStyleAll">{{ item.name }}</ion-title>
+    <ion-buttons right>
+      <button ion-button icon-only (click)="goToShopping()">
+        <div style="font-size: 20px;">
+          <ion-icon name="cart" class="cartPostionDisplay">
+            <p class="itemNumberPostionDisplay" *ngIf="addToCartLength">{{addToCartLength}}</p>
+          </ion-icon>
+        </div>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
