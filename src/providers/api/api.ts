@@ -191,12 +191,13 @@ export class Api {
     });
   }
 
-  getHomePageSlidingImages() {
+  getHomePageSlidingImages(userData) {
     return new Promise((resolve, reject) => {
       let headers = new Headers();
       headers.append('Content-Type', 'application/json');
-      this.http.get("https://immense-river-69583.herokuapp.com/getHomePageSlidingImages", { headers: headers })
+      this.http.post("https://immense-river-69583.herokuapp.com/getHomePageSlidingImages", userData, { headers: headers })
         .subscribe(res => {
+          this.settingsInformation = res.json();
           resolve(res.json());
         }, (err) => {
           reject(err)

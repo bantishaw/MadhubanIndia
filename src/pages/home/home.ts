@@ -28,7 +28,7 @@ export class HomePage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public apiProvider: Api,
     public http: Http, public loadingCtrl: LoadingController, public appCtrl: App, public geolocation: Geolocation,
     public alertCtrl: AlertController, public toastCtrl: ToastController) {
-    this.email = this.apiProvider.settingsInformation.settingsInformation[0].email
+    this.email = window.localStorage.getItem('username')
   }
 
   ionViewDidLoad() {
@@ -36,8 +36,11 @@ export class HomePage {
       spinner: 'crescent',
       cssClass: "wrapper"
     });
+    var userData = {
+      email : window.localStorage.getItem('username')
+    }
     loading.present();
-    this.apiProvider.getHomePageSlidingImages().then((result) => {
+    this.apiProvider.getHomePageSlidingImages(userData).then((result) => {
       this.slideDataResult = result;
       if (this.slideDataResult.response === "success") {
         this.apiProvider.getHomeMenuService().then((data) => {

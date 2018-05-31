@@ -17,7 +17,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
-  rootPage = TutorialPage;
+  rootPage: any;
   pages: Array<{ title: string, component: any }>;
   public counter = 0;
   constructor(private translate: TranslateService, platform: Platform, settings: Settings, private config: Config, private statusBar: StatusBar, private splashScreen: SplashScreen,
@@ -27,6 +27,7 @@ export class MyApp {
       // Here you can do any higher level native things you might need.
       this.statusBar.styleDefault();
       this.splashScreen.hide();
+      this.checkPreviousAuthorization();
       platform.registerBackButtonAction(() => {
         if (this.counter == 0) {
           this.counter++;
@@ -74,5 +75,14 @@ export class MyApp {
       position: "bottom"
     });
     toast.present();
+  }
+
+  checkPreviousAuthorization(): void {
+    if ((window.localStorage.getItem('username') === "undefined" || window.localStorage.getItem('username') === null) &&
+      (window.localStorage.getItem('password') === "undefined" || window.localStorage.getItem('password') === null)) {
+      this.rootPage = TutorialPage;
+    } else {
+      this.rootPage = MainPage;
+    }
   }
 }

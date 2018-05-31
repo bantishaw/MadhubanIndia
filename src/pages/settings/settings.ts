@@ -59,6 +59,8 @@ export class SettingsPage {
         {
           text: 'Yes',
           handler: () => {
+            window.localStorage.removeItem('username');
+            window.localStorage.removeItem('password');
             this.navCtrl.push(LoginPage)
           }
         },
