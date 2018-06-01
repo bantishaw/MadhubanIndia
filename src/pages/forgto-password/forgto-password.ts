@@ -16,6 +16,8 @@ export class ForgtoPasswordPage {
   otp: number;
   newPassword: any;
   reNewPassword: any;
+  isActiveToggleTextPassword: Boolean = true;
+  showPasswordEye: Boolean = true;
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public apiProvider: Api, public http: Http, public toastCtrl: ToastController,
     public loadingCtrl: LoadingController,
@@ -43,12 +45,23 @@ export class ForgtoPasswordPage {
     if (!forgotAccount.email) {
       this.toastMessage("Email Address cannot be empty")
     } else {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
       this.apiProvider.forgotPassword(forgotAccount).then((data) => {
         this.account = data;
         if (this.account.response === 'success') {
-          this.showForgotPage = 1;
+          loading.dismiss();
+          setTimeout(() => {
+            this.showForgotPage = 1;
+          }, 500);
         } else {
-          this.toastMessage(this.account.data)
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.account.data)
+          }, 500);
         }
       })
     }
@@ -63,12 +76,23 @@ export class ForgtoPasswordPage {
     if (!otpObject.otp) {
       this.toastMessage("Enter the OTP to change password")
     } else {
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
       this.apiProvider.forgotPassword(otpObject).then((data) => {
         this.account = data;
         if (this.account.response === 'success') {
-          this.showForgotPage = 2;
+          loading.dismiss();
+          setTimeout(() => {
+            this.showForgotPage = 2;
+          }, 500);
         } else {
-          this.toastMessage(this.account.data)
+          loading.dismiss();
+          setTimeout(() => {
+            this.toastMessage(this.account.data)
+          }, 500);
         }
       })
     }
@@ -80,43 +104,28 @@ export class ForgtoPasswordPage {
       password: this.newPassword,
       action: 3
     }
-    let loading = this.loadingCtrl.create({
-      spinner: 'crescent',
-      cssClass: "wrapper"
-    });
     if (!this.newPassword || !this.reNewPassword) {
-      let toast = this.toastCtrl.create({
-        message: 'Passwords cannot be empty',
-        duration: 1000,
-        position: 'middle',
-        cssClass: 'showToast'
-      });
-      toast.present();
+      this.toastMessage('Passwords cannot be empty')
     } else if (this.newPassword !== this.reNewPassword) {
-      let toast = this.toastCtrl.create({
-        message: 'Passwords are not matching',
-        duration: 1000,
-        position: 'middle',
-        cssClass: 'showToast'
-      });
-      toast.present();
+      this.toastMessage('Passwords are not matching')
     } else {
-
+      let loading = this.loadingCtrl.create({
+        spinner: 'crescent',
+        cssClass: "wrapper"
+      });
+      loading.present();
       this.apiProvider.forgotPassword(changePass).then((data) => {
         this.account = data;
         if (this.account.response === 'success') {
+          loading.dismiss();
           setTimeout(() => {
-            loading.present();
-            loading.dismiss();
+            this.toastMessage(this.account.data)
+          }, 500);
+          setTimeout(() => {
             this.navCtrl.push(LoginPage);
           }, 1000);
-          let toast = this.toastCtrl.create({
-            message: this.account.data,
-            duration: 1000,
-            position: 'middle',
-            cssClass: 'showToast'
-          });
-          toast.present();
+        } else {
+          loading.dismiss();
         }
       })
     }
@@ -130,6 +139,18 @@ export class ForgtoPasswordPage {
       cssClass: 'showToast'
     });
     toast.present();
+  }
+
+  toggleTextPassword() {
+    this.isActiveToggleTextPassword = (this.isActiveToggleTextPassword == true) ? false : true;
+    this.showPasswordEye = (this.showPasswordEye == true) ? false : true;
+  }
+  getType() {
+    return this.isActiveToggleTextPassword ? 'password' : 'text';
+  }
+
+  hideAndShow() {
+    return this.showPasswordEye ? 'eye' : 'eye-off';
   }
 
 }

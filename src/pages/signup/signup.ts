@@ -69,6 +69,8 @@ export class SignupPage {
         if (this.newUserAccount.response === 'success') {
           loading.dismiss();
           setTimeout(() => {
+            window.localStorage.setItem('password', this.signUpPassword);
+            window.localStorage.setItem('username', this.signUpEmail);
             this.navCtrl.push(MainPage);
           }, 500);
         } else {
