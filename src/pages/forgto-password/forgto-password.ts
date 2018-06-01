@@ -39,7 +39,7 @@ export class ForgtoPasswordPage {
 
   forgotPassword() {
     var forgotAccount = {
-      email: this.forgotEmail,
+      email: this.forgotEmail.toLowerCase(),
       action: 1
     }
     if (!forgotAccount.email) {
@@ -69,7 +69,7 @@ export class ForgtoPasswordPage {
 
   otpSubmit() {
     var otpObject = {
-      email: this.forgotEmail,
+      email: this.forgotEmail.toLowerCase(),
       otp: this.otp,
       action: 2
     }
@@ -100,7 +100,7 @@ export class ForgtoPasswordPage {
 
   changePassword() {
     let changePass = {
-      email: this.forgotEmail,
+      email: this.forgotEmail.toLowerCase(),
       password: this.newPassword,
       action: 3
     }

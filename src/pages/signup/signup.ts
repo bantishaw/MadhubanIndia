@@ -38,7 +38,7 @@ export class SignupPage {
     var account = {
       name: this.signUpName,
       lastName: this.signUpLastName,
-      email: this.signUpEmail,
+      email: this.signUpEmail.toLowerCase(),
       password: this.signUpPassword,
       Confirmpassword: this.ConfirmSignUpPassword,
       phoneNumber: this.signUpPhone
@@ -69,8 +69,8 @@ export class SignupPage {
         if (this.newUserAccount.response === 'success') {
           loading.dismiss();
           setTimeout(() => {
-            window.localStorage.setItem('password', this.signUpPassword);
-            window.localStorage.setItem('username', this.signUpEmail);
+            window.localStorage.setItem('password', account.password);
+            window.localStorage.setItem('username', account.email);
             this.navCtrl.push(MainPage);
           }, 500);
         } else {

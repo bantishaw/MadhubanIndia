@@ -40,7 +40,7 @@ export class LoginPage {
         let headers = new Headers();
         headers.append('Content-Type', 'application/json');
         var userObject = {
-            email: this.email,
+            email: this.email.toLowerCase(),
             password: this.password
         }
         if (!userObject.email) {
@@ -58,8 +58,8 @@ export class LoginPage {
                 if (this.existingUser.response === 'success') {
                     loading.dismiss();
                     setTimeout(() => {
-                        window.localStorage.setItem('password', this.password);
-                        window.localStorage.setItem('username', this.email);
+                        window.localStorage.setItem('password', userObject.password);
+                        window.localStorage.setItem('username', userObject.email);
                         this.navCtrl.push(MainPage);
                     }, 500);
                 } else {
